@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantynet.domain.TestPersonVO;
 import com.plantynet.persistence.TestPersonDAO;
@@ -32,7 +33,20 @@ public class TestController {
 		logger.info("connect test page");
 		List<TestPersonVO> voList = dao.getPerson();
 		model.addAttribute("vo",voList);
-		return "test2";
+		return "test";
 	}
 	
+	@RequestMapping(value = "/prohibit_delete", method = RequestMethod.POST)
+	public String prohibit_delete(@RequestParam("word")String word) {
+		logger.info("prohibit_delete");
+		System.out.println("삭제 쿼리 실행 : "+ word);
+		return "redirect:/test";
+	}
+	
+	@RequestMapping(value = "/prohibit_insert", method = RequestMethod.POST)
+	public String prohibit_insert(@RequestParam("word")String word) {
+		logger.info("prohibit_insert");
+		System.out.println("금칙어 삽입 ("+ word +" )실행");
+		return "redirect:/test";
+	}
 }

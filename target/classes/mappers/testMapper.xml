@@ -26,6 +26,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+<insert id="prohibit_insert">
+	
+</insert>
+
+<delete id="prohibit_delete">
+
+</delete>
+
+
+
 <!-- 
 <insert id="create">
  insert into tbl_board (title, content, writer) 

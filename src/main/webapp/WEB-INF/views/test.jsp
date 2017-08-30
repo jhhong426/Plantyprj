@@ -37,16 +37,33 @@
  	</table>
  	
  	<h1>금칙어 실험</h1>
+    </table>
  	<table id="example1" class="display" cellspacing="0" width="100%">
 		<thead>
-			<tr id="filter_global"><th><input type="text" class="global_filter" id="global_filter"></th></tr>
+			 <tr id="filter_global">
+                <td align="left">
+ 					<form style="display:inline;" name="prohibit_insert" method="post" action="/prohibit_insert">
+                		<input type="text" class="global_filter" id="global_filter" name ="word">
+                		<button id="createBtn" style="display:inline;" type="submit">생성하기</button>
+                	</form>
+                </td>
+             </tr>
 		</thead>	
         <tbody>
         <c:forEach var="vo" items="${vo}">
-		<tr><td> ${vo.name}</td></tr>
+			<tr>
+				<td> ${vo.name} 
+					<form style="display:inline;" name="prohibit_delete" method="post" action="/prohibit_delete">
+						<button style="display:inline;" type="submit" name="word" value="${vo.name}">X</button>
+					</form>
+				</td>
+			</tr>
 		</c:forEach>
         </tbody>
     </table>	
+    
+    
+    <h1> 푸터바 </h1>
 			
 
 <!-- jQuery 2.2.3 -->
@@ -65,11 +82,50 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/dist/js/demo.js"></script>
 <!-- page script -->
+
 <script>
-  $(function () {
-    $("#example1").DataTable();
+function filterGlobal () {
+    $('#example1').DataTable().search(
+        $('#global_filter').val(),
+    ).draw();
+}
+
+ 
+$(document).ready(function() {
     
-  });
+   var table = $('#example1').DataTable({
+    		  "scrollY":  "300px",
+    	      "scrollCollapse": true,
+    	      "paging": false,		
+    	      "sDom" : 't'
+    });
+ 
+    $('input.global_filter').on( 'keyup click', function () {
+        filterGlobal();
+        if($('#global_filter').val() == "" ){
+        	$('#createBtn').hide();
+        }else if($('#example1 tr').length-1 > 1 ){
+        	$('#createBtn').hide();
+        }else{
+        	$('#createBtn').show();
+        }
+    } );
+    
+    
+  
+	
+    
+    
+    
+    
+  
+    
+    
+} );
+
+
 </script>
+
+
 </body>
 </html>
