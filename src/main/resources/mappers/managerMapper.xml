@@ -5,12 +5,21 @@
 
 	<select id="login" resultType="ManagerVO">
   
-  		SELECT mngr_id, password, mngr_name
+  		SELECT mngr_id, mngr_name, emp_no, department, position, authority
   		FROM tb_manager
   		WHERE mngr_id = #{mngr_id} and password = #{password}
   
   	</select>
-  
+  	
+  	  <!-- 
+  	<select id="managerInfo" resultType="ManagerVO">
+  	
+  		SELECT mngr_id, mngr_name, emp_no, department, position, authority
+  		FROM tb_manager
+  		WHERE mngr_id = #
+  	
+  	</select>
+
 	<update id="keepLogin" >
 	
   		UPDATE tb_manager
@@ -26,7 +35,7 @@
 		AND sessionlimit > now()	
 		
 	</select>	
-
+-->
 </mapper>
 
 <!-- 

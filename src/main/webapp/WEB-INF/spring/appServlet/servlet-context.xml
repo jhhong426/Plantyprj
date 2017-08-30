@@ -27,11 +27,25 @@
 	<context:component-scan base-package="com.plantynet.controller" />
 	
 	<interceptors>
+	
+		<!-- 로그인 처리 페이지 -->
 		<interceptor>
-			<mapping path="/ask/loginPost" />
+			<mapping path="/loginPost" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
+		
+		<!-- 
+		 
+		 로그인이 필요한 페이지 등록 
+		<interceptor>
+			<mapping path="/ask/myPage" />
+			<beans:ref bean="authInterceptor" />
+		</interceptor>
+		
+		-->
 	</interceptors>
+	
+	
 	
 	
 	

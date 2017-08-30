@@ -6,10 +6,10 @@ public class LoginDTO {
 	private String mngr_id;
 	private String password;
 	
-	public String getMngrId() {
+	public String getMngr_id() {
 		return mngr_id;
 	}
-	public void setMngrId(String mngr_id) {
+	public void setMngr_id(String mngr_id) {
 		this.mngr_id = mngr_id;
 	}
 	public String getPassword() {

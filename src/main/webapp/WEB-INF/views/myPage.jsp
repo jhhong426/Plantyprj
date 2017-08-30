@@ -1,14 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@include file="include/header.jsp" %>
 
   <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>관리자 로그인</title>
+  <title>관리자 페이지</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -28,21 +28,35 @@
 </head>
 <body>
   
- 	<h1>Manager Login</h1>
-
- 	<form name="frmLogin" action="/ask/loginPost" method="POST" method="post"  onSubmit="return frmChk();">
+ 	<h1>My 정보</h1>
  	
-	 	<input type="text" name="mngr_id" id="mngr_id" placeholder="관리자 아이디" /> <br>
-	  	<input type="password" name="password" id="password" placeholder="관리자 비밀번호"/>
-	  	
-	  	<input type="submit" id="btn-login" value="로그인" />
-	  	<c:if test="${sessionScope.flag eq 'failure'}" >
-	  	
-	  		<font color=red> 아이디 혹은 비밀번호가 틀렸습니다! </font>
-	  	</c:if>
+ 	<p> ID : <c:out value="${sessionScope.mngr_id}"> </c:out> 		</p>
+ 	<p> 이름 : ${sessionScope.mngr_name}	</p>
+ 	<p> 사원번호 : ${emp_no}		</p>
+ 	<p> 소속부서 : ${department}	</p>
+ 	<p> 직책 : ${position}			</p>
+ 	<p> 권한 : ${authority}			</p>
+ 	
+ 	
+ 	<h1>비밀번호 변경</h1>
+ 	<input type="button" name="btn-editPw" value="비밀번호 변경" />
+ 	
+ 	
+ 	
+	<h1>처리내역</h1>
+	
+	<h3>처리된 내역 : 건</h3>
+	
+	
+	
+	
+	
+	
+	<h3>처리된 신고 : 건</h3>
   	
-  	</form>
-  	
+ 	
+ 	
+ 	
  	
 			
 
@@ -66,33 +80,14 @@
 <!-- page script -->
 <script type="text/javascript">
 
-	function frmChk(){
-		
-		var frm = document.frmLogin;
-		
-    	if(frm.mngr_id.value=='') {
-    		
-    		alert("관리자 아이디를 입력하세요!!");
-    		
-    		frm.mngr_id.focus();
-    		
-    		return false;
-    		
-    	}else if(frm.password.value=='') {
-    		
-			alert("관리자 비밀번호를 입력하세요!!");  
-			
-			frm.password.focus();
-			
-			return false;
-			
-		}else {
-			
-			frm.submit(); 
-			
-			return true;
-		}
-	}
+	
+	
+	
+	
+	
+	
+	
+	
 </script>
 </body>
 </html>

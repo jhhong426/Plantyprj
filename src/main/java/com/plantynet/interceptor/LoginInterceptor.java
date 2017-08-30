@@ -1,5 +1,6 @@
 package com.plantynet.interceptor;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	private static final String login = "login";
+	private static final String flag = "flag";
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	@Override
@@ -24,17 +26,46 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	    ModelMap modelMap = modelAndView.getModelMap();
 	    
-	    Object managerVO = modelMap.get("managerVO");
+	    Object managerVO = modelMap.get("ManagerVO");
+	    
+	    //System.out.println(modelMap);
+	    
+	    System.out.println(managerVO);
 
 	    if (managerVO != null) {
 
 	    	logger.info("new login success");
 	    	
 	    	session.setAttribute(login, managerVO);
+	    	session.setAttribute(flag, "success");
+	    	
+	    	response.sendRedirect("/ask/myPage");
 
-	    	response.sendRedirect("/");
+	    	System.out.println(session.getAttribute(login));
+	    	System.out.println(session.getAttribute(flag));
+//	    	if(request.getParameter("useCookie") != null) {
+//	    		
+//	    		Cookie loginCookie = new Cookie("loginCookie", session.getId());
+//	    		loginCookie.setPath("/");
+//	    		response.addCookie(loginCookie);
+//	    	}
+//	    	
+//	    	
+//	    	Object dest = session.getAttribute("dest");
+//	    	
+//	    	response.sendRedirect(dest != null ? (String)dest: "/");
 	    }
-	  }
+	    else {
+	    	
+	    	session.setAttribute(flag, "failure");
+	    	
+	    	response.sendRedirect("/ask/login");
+	    	
+	    	System.out.println(session.getAttribute(flag));
+	    	
+	    	
+	    }
+	}
 
 	  @Override
 	  public boolean preHandle(HttpServletRequest request, 
