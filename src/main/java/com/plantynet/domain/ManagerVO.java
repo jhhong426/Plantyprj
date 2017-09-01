@@ -1,6 +1,5 @@
 package com.plantynet.domain;
 
-//세션에 보관될 데이터 - 아이디, 비밀번호(해쉬), 이름
 public class ManagerVO {
 
 	  private String mngr_id;
@@ -69,7 +68,8 @@ public class ManagerVO {
 		
 	  @Override
 	  public String toString() {
-		  return "ManagerVO [mngr_id=" + mngr_id + ", mngr_name=" + mngr_name + "]";
+		  return "ManagerVO [mngr_id=" + mngr_id + ", mngr_name=" + mngr_name +
+				  ", emp_no=" + emp_no +", department=" + department + ", position=" + position + ", authority=" +authority +"]";
 	  }
 	
 	

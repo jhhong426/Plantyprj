@@ -39,6 +39,7 @@
 	  	<c:if test="${sessionScope.flag eq 'failure'}" >
 	  	
 	  		<font color=red> 아이디 혹은 비밀번호가 틀렸습니다! </font>
+	  		
 	  	</c:if>
   	
   	</form>

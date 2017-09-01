@@ -34,15 +34,7 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		
-		<!-- 
-		 
-		 로그인이 필요한 페이지 등록 
-		<interceptor>
-			<mapping path="/ask/myPage" />
-			<beans:ref bean="authInterceptor" />
-		</interceptor>
 		
-		-->
 	</interceptors>
 	
 	
