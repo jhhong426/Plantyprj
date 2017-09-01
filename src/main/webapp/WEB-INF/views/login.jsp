@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- 세션 사용 페이지 여부 : False -->
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -30,12 +31,15 @@
   
  	<h1>Manager Login</h1>
 
+	<!-- 로그인 Form -->
  	<form name="frmLogin" action="/ask/loginPost" method="POST" method="post"  onSubmit="return frmChk();">
  	
 	 	<input type="text" name="mngr_id" id="mngr_id" placeholder="관리자 아이디" /> <br>
 	  	<input type="password" name="password" id="password" placeholder="관리자 비밀번호"/>
 	  	
 	  	<input type="submit" id="btn-login" value="로그인" />
+	  	
+	  	<!-- 로그인 실패시 session의 flag 값을 판별하여 실패 문구가 들어간 페이지 상태로 Redirect -->
 	  	<c:if test="${sessionScope.flag eq 'failure'}" >
 	  	
 	  		<font color=red> 아이디 혹은 비밀번호가 틀렸습니다! </font>

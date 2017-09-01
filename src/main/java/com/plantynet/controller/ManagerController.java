@@ -23,13 +23,14 @@ public class ManagerController {
 	@Inject
 	private ManagerService service;
 
-	//LoginDTO 에서 처리
+	// URL : /ask/login
+	// LoginDTO 에서 처리
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginGet(@ModelAttribute("dto") LoginDTO dto) {
 		
 	}
 	
-	// /ask/login에 대한 결과처리
+	// URL : /ask/login에 대한 결과처리
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPost(LoginDTO dto, HttpSession session, Model model)
 	throws Exception {
@@ -41,7 +42,21 @@ public class ManagerController {
 			return ;
 		}
 		
+		//session.setAttribute("name", dto.getMngr_id());
+		
 		model.addAttribute("ManagerVO", vo);
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 //		if(dto.isUseCookie()) {
 //			

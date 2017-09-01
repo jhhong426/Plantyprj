@@ -24,23 +24,6 @@ public class ManagerDAOImpl implements ManagerDAO {
 		
 		return session.selectOne(namespace + ".login", dto);
 	}
-	
-//  @Override
-//  public void keepLogin(String mngr_id, String sessionId, Date next) {
-//
-//    Map<String, Object> paramMap = new HashMap<String, Object>();
-//    paramMap.put("mngr_id", mngr_id);
-//    paramMap.put("sessionId", sessionId);
-//    paramMap.put("next", next);
-//    
-//    session.update(namespace+".keepLogin", paramMap);
-//    
-//  }
-//
-//  @Override
-//  public ManagerVO checkManagerWithSessionKey(String value) {
-//
-//    return session.selectOne(namespace +".checkManagerWithSessionKey", value);
-//  }	
+
 
 }

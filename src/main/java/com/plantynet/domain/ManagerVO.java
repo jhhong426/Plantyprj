@@ -1,14 +1,16 @@
 package com.plantynet.domain;
 
+
+// DB와 송수신되는 데이터
 public class ManagerVO {
 
-	  private String mngr_id;
-	  private String password;
-	  private String mngr_name;
-	  private String emp_no;
-	  private String department;
-	  private String position;
-	  private String authority;
+	  private String mngr_id;		// 관리자 ID
+	  private String password;		// 관리자 PW
+	  private String mngr_name;		// 관리자 이름
+	  private String emp_no;		// 관리자 사원번호
+	  private String department;	// 관리자 부서
+	  private String position;		// 관리자 직책
+	  private String authority;		// 관리자 권한
 
 	  public String getMngrId() {
 	    return mngr_id;

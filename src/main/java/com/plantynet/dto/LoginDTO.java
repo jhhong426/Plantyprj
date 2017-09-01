@@ -3,8 +3,8 @@ package com.plantynet.dto;
 //화면에 전달되는 데이터를 수집
 public class LoginDTO {
 	
-	private String mngr_id;
-	private String password;
+	private String mngr_id;		//관리자 ID
+	private String password;	//관리자 PW
 	
 	public String getMngr_id() {
 		return mngr_id;

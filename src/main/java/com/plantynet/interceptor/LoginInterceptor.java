@@ -11,10 +11,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.plantynet.domain.ManagerVO;
+
+// 로그인 검증 - 아이디/비밀번호 체크
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
-	private static final String login = "login";
-	private static final String flag = "flag";
+	private static final String login = "login";	// login 세션에 들어갈 정보
+	private static final String flag = "flag";	// flag 세션에 들어갈 정보
+	
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	@Override
@@ -23,43 +27,37 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) throws Exception {
 
 		HttpSession session = request.getSession();
-
+		
 	    ModelMap modelMap = modelAndView.getModelMap();
 	    
-	    Object managerVO = modelMap.get("ManagerVO");
+	    ManagerVO managerVO = (ManagerVO) modelMap.get("ManagerVO");
 	    
-	    //System.out.println(modelMap);
 	    
+	    // Check
 	    System.out.println(managerVO);
 
+	    // 로그인 성공
 	    if (managerVO != null) {
 
 	    	logger.info("new login success");
 	    	
+	    	// 세션의 login 파라미터에 들어갈 값
 	    	session.setAttribute(login, managerVO);
 	    	session.setAttribute(flag, "success");
-	    	
+
 	    	response.sendRedirect("/ask/myPage");
 
 	    	System.out.println(session.getAttribute(login));
 	    	System.out.println(session.getAttribute(flag));
 	    	
-//	    	if(request.getParameter("useCookie") != null) {
-//	    		
-//	    		Cookie loginCookie = new Cookie("loginCookie", session.getId());
-//	    		loginCookie.setPath("/");
-//	    		response.addCookie(loginCookie);
-//	    	}
-//	    	
-//	    	
-//	    	Object dest = session.getAttribute("dest");
-//	    	
-//	    	response.sendRedirect(dest != null ? (String)dest: "/");
+
 	    }
+	    // 로그인 실패
 	    else {
 	    	
+	    	// 세션의 flag 파라미터에 들어갈 값
 	    	session.setAttribute(flag, "failure");
-	    	
+
 	    	response.sendRedirect("/ask/login");
 	    	
 	    	System.out.println(session.getAttribute(flag));
