@@ -1,5 +1,7 @@
 package com.plantynet.controller;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +39,7 @@ public class ManagerController {
 		
 		//Model 객체에 사용자가 존재할 경우, ManagerVO라는 이름으로 저장.
 		ManagerVO vo = service.login(dto);
+//		boolean loginFlag = true;
 		
 		if(vo == null) {
 			return ;
@@ -44,56 +47,34 @@ public class ManagerController {
 		
 		//session.setAttribute("name", dto.getMngr_id());
 		
-		model.addAttribute("ManagerVO", vo);
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-//		if(dto.isUseCookie()) {
-//			
-//			//쿠키의 세션시간 초 * 분 * 시간 * 일
-//			int amount = 60 * 60 * 24 * 7;
-//			
-//			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
-//			
-//			service.keepLogin(vo.getUid(), session.getId() sessionLimit);
+		model.addAttribute("managerVO", vo);
+//		
+//		if(vo == null) {
+//			loginFlag = false;
+//			model.addAttribute("flag", loginFlag);
 //		}
+//		else {
+//			model.addAttribute("ManagerVO", vo);
+//			model.addAttribute("flag",loginFlag);
+//		}
+//		
 		
 	}
 	
-}
-//	//로그아웃
-//	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-//	public void logout(HttpServletRequest request, 
-//	    HttpServletResponse response, HttpSession session) throws Exception {
-//
-//		Object obj = session.getAttribute("login");
-//
-//	    if (obj != null) {
-//	    	
-//	    	UserVO vo = (UserVO) obj;
-//
-//	    	session.removeAttribute("login");
-//	    	session.invalidate();
-//
-//	    	Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-//
-//	    	if (loginCookie != null) {
-//	    		
-//	    		loginCookie.setPath("/");
-//	    		loginCookie.setMaxAge(0);
-//	    		response.addCookie(loginCookie);
-//	    		service.keepLogin(vo.getUid(), session.getId(), new Date());
-//	    	}
-//	    }
-//	}	
 
+	//로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public void logout(HttpServletRequest request, 
+	    HttpServletResponse response, HttpSession session) throws Exception {
+
+		Object obj = session.getAttribute("login");
+
+	    if (obj != null) {
+	
+	    	session.removeAttribute("login");
+	    	session.invalidate();
+	    	
+	    	response.sendRedirect("/ask/login");
+	    }
+	}	
+}

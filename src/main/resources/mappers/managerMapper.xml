@@ -5,12 +5,29 @@
 
 	<select id="login" resultType="ManagerVO">
   
-  		SELECT mngr_id, mngr_name, emp_no, department, position, authority
-  		FROM tb_manager
-  		WHERE mngr_id = #{mngr_id} and password = #{password}
+  		SELECT mngr_no, mngr_id, mngr_name, emp_no, department, position, authority
+  		FROM TB_MANAGER
+  		WHERE mngr_id = #{mngr_id} AND password = #{password}
   
   	</select>
   	
+  	<select id="check" resultType="ManagerVO">
+  		
+  		SELECT mngr_id
+  		From TB_MANAGER
+  		WHERE mngr_id = #{mngr_id} AND password = #{password}
+  		
+  	</select>
+  	
+  	
+  	<select id="update" resultType="ManagerVO">
+		
+		UPDATE TB_MANAGER
+		SET password=#{newPW}
+		WHERE mngr_id = #{login.getMngrId()} AND password = #{password}
+
+	</select>  	
+	
   	  <!-- 
   	<select id="managerInfo" resultType="ManagerVO">
   	

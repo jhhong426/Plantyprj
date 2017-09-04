@@ -30,16 +30,18 @@
   
  	<h1>My 정보</h1>
  	
- 	<p> ID : <c:out value="${sessionScope.mngr_id}"> </c:out> 		</p>
- 	<p> 이름 : ${sessionScope.mngr_name}	</p>
- 	<p> 사원번호 : ${emp_no}		</p>
- 	<p> 소속부서 : ${department}	</p>
- 	<p> 직책 : ${position}			</p>
- 	<p> 권한 : ${authority}			</p>
+ 	<p> ID : ${login.getMngrId()}</p>
+ 	<p> 이름 : ${login.getMngrName()}	</p>
+ 	<p> 사원번호 : ${login.getEmp_no()}		</p>
+ 	<p> 소속부서 : ${login.getDepartment()}	</p>
+ 	<p> 직책 : ${login.getPosition()}			</p>
+ 	<p> 권한 : ${login.getAuthority()}			</p>
  	
  	
  	<h1>비밀번호 변경</h1>
- 	<input type="button" name="btn-editPw" value="비밀번호 변경" />
+ 	
+ 	<a href="/ask/editPW"><button>비밀번호 변경</button></a>
+ 	
  	
  	
  	

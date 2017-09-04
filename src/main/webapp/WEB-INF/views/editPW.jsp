@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!-- 세션 사용 페이지 여부 : False -->
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
@@ -29,20 +28,17 @@
 </head>
 <body>
   
- 	<h1>Manager Login</h1>
+ 	<h1>Manager Edit Password</h1>
 
-	<!-- 로그인 Form -->
- 	<form name="frmLogin" action="/ask/loginPost" method="POST" onSubmit="return frmChk();">
+ 	<form name="frmEditPW" action="/ask/editPW" method="POST" onSubmit="return frmChkBlank();">
  	
-	 	<input type="text" name="mngr_id" id="mngr_id" placeholder="관리자 아이디" /> <br>
-	  	<input type="password" name="password" id="password" placeholder="관리자 비밀번호"/>
+ 		<input type="hidden" name="mngr_no" id="mngr_no" value="${login.getMngr_no()}"/>
+	 	<input type="password" name="password" id="password" placeholder="현재 비밀번호" /> <br>
+	  	<input type="password" name="newWPW" id="newPW" placeholder="변경 비밀번호"/>	<br>
+	  	<input type="password" name="chkPW" id="chkPW" placeholder="변경 비밀번호 확인"/>	<br>
 	  	
-	  	<input type="submit" id="btn-login" value="로그인" />
-	  	
-	  	<!-- 로그인 실패시 실패 문구가 들어간 페이지 상태로 Redirect -->
-	
-	  	
-	
+	  	<a href="/ask/editPW"><input type="submit" id="btn-editPW" value="비밀번호 변경" /></a>
+
   	</form>
 
 <!-- jQuery 2.2.3 -->
@@ -67,23 +63,31 @@
 	
 	
 
-	function frmChk(){
+	function frmChkBlank(){
 		
-		var frm = document.frmLogin;
+		var frm = document.frmEditPW;
 		
-    	if(frm.mngr_id.value=='') {
+    	if(frm.password.value=='') {
     		
-    		alert("관리자 아이디를 입력하세요!!");
+    		alert("현재 비밀번호를 입력하세요!!");
     		
-    		frm.mngr_id.focus();
+    		frm.password.focus();
     		
     		return false;
     		
-    	}else if(frm.password.value=='') {
+    	}else if(frm.newPW.value=='') {
     		
-			alert("관리자 비밀번호를 입력하세요!!");  
+			alert("변경할 비밀번호를 입력하세요!!");  
 			
-			frm.password.focus();
+			frm.newPW.focus();
+			
+			return false;
+			
+		}else if(frm.chkPW.value=='') {
+    		
+			alert("변경 비밀번호 확인을 위해 다시 한 번 더 입력하세요!!");  
+			
+			frm.chkPW.focus();
 			
 			return false;
 			

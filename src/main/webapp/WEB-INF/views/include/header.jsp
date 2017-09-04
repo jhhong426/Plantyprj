@@ -74,8 +74,10 @@
                </ul>
                <!-- RIGHT CONTENT -->
               <ul class="nav navbar-nav navbar-right">
-                 <li><a href="#"><u> ${sessionScope.login.mngr_name} 님</u></a></li>
-                 <li><a href="#"><button class="btn btn-default btn-xs">로그아웃</button></a></li>
+                 <li><a href="#"><u> ${login.getMngrName()} 님</u></a></li>
+
+                 <li><a href="/ask/logout"><button class="btn btn-default btn-xs">로그아웃</button></a></li>
+
               </ul>
             </div>
            </div> <!-- row -->
