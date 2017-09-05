@@ -1,7 +1,5 @@
 package com.plantynet.service;
 
-import java.util.Date;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -23,13 +21,13 @@ public class ManagerServiceImpl implements ManagerService {
 	    return dao.login(dto);
 	}
 	  
-	@Override
-	public void keepLogin(String mngr_id, String sessionId, Date next)
-			throws Exception {
-	    
-		dao.keepLogin(mngr_id, sessionId, next);
-	    
-	}
+//	@Override
+//	public void keepLogin(String mngr_id, String sessionId, Date next)
+//			throws Exception {
+//	    
+//		dao.keepLogin(mngr_id, sessionId, next);
+//	    
+//	}
 
 	@Override
 	public void editPassword(EditPasswordDTO dto) throws Exception {

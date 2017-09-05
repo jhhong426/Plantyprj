@@ -1,24 +1,17 @@
 package com.plantynet.interceptor;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import com.plantynet.domain.ManagerVO;
 
 // 로그인 검증 - 아이디/비밀번호 체크
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	private static final String LOGIN = "login";		// 세션에 들어갈 관리자 ID
-	
-	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	@Override
 	public void postHandle(HttpServletRequest request, 
@@ -43,7 +36,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	    	System.out.println(session.getAttribute(LOGIN));
 	    	
-
 	    }
 	    // 로그인 실패
 	    else {

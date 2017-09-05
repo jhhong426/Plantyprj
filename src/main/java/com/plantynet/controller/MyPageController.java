@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.plantynet.domain.ManagerVO;
 import com.plantynet.dto.EditPasswordDTO;
-import com.plantynet.dto.LoginDTO;
 import com.plantynet.service.ManagerService;
-import com.plantynet.service.MypageService;
-
-
 
 @Controller
 public class MyPageController {
@@ -46,10 +42,16 @@ public class MyPageController {
 		ManagerVO vo = service.checkManager(dto);
 		
 		if (vo == null) {
+			
 			response.sendRedirect("/ask/failEditPW");
+			
 		}
 		else {
+			
 			service.editPassword(dto);
+			
+			response.sendRedirect("/ask/myPage");
+			
 		}
 	}
 }

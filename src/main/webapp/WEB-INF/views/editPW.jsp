@@ -30,11 +30,11 @@
   
  	<h1>Manager Edit Password</h1>
 
- 	<form name="frmEditPW" action="/ask/editPW" method="POST" onSubmit="return frmChkBlank();">
+ 	<form name="frmEditPW" action="/ask/editPW" method="POST" onSubmit="return frmChk();">
  	
  		<input type="hidden" name="mngr_no" id="mngr_no" value="${login.getMngr_no()}"/>
 	 	<input type="password" name="password" id="password" placeholder="현재 비밀번호" /> <br>
-	  	<input type="password" name="newWPW" id="newPW" placeholder="변경 비밀번호"/>	<br>
+	  	<input type="password" name="newPW" id="newPW" placeholder="변경 비밀번호"/>	<br>
 	  	<input type="password" name="chkPW" id="chkPW" placeholder="변경 비밀번호 확인"/>	<br>
 	  	
 	  	<a href="/ask/editPW"><input type="submit" id="btn-editPW" value="비밀번호 변경" /></a>
@@ -60,10 +60,8 @@
 
 <!-- page script -->
 <script type="text/javascript">
-	
-	
 
-	function frmChkBlank(){
+	function frmChk(){
 		
 		var frm = document.frmEditPW;
 		
@@ -75,7 +73,7 @@
     		
     		return false;
     		
-    	}else if(frm.newPW.value=='') {
+    	} else if(frm.newPW.value=='') {
     		
 			alert("변경할 비밀번호를 입력하세요!!");  
 			
@@ -83,7 +81,7 @@
 			
 			return false;
 			
-		}else if(frm.chkPW.value=='') {
+		} else if(frm.chkPW.value=='') {
     		
 			alert("변경 비밀번호 확인을 위해 다시 한 번 더 입력하세요!!");  
 			
@@ -91,13 +89,31 @@
 			
 			return false;
 			
-		}else {
+		} else if (frm.newPW.value != frm.chkPW.value){
+    		
+    		alert("변경할 비밀번호가 불일치합니다!");
+    		
+    		frm.newPW.focus();
+    		
+    		return false;
+    					
+		} else {
 			
-			frm.submit(); 
+			if (frm.newPW.value.length<6||frm.newPW.value.length>18) {
+				
+				alert("비밀번호를 6~18자리로 입력해주세요!");
+				
+				frm.newPW.focus();
+				
+				return false;
+			}
 			
-			return true;
-		}
+				frm.submit(); 
+				
+				return true;
+			}
 	}
+
 </script>
 </body>
 </html>

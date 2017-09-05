@@ -1,5 +1,5 @@
 package com.plantynet.service;
 
-public class MypageServiceImpl {
+public class MypageServiceImpl implements MypageService{
 
 }

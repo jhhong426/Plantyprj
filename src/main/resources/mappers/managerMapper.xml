@@ -13,20 +13,22 @@
   	
   	<select id="check" resultType="ManagerVO">
   		
-  		SELECT mngr_id
+  		SELECT mngr_no
   		From TB_MANAGER
-  		WHERE mngr_id = #{mngr_id} AND password = #{password}
+  		WHERE mngr_no = #{mngr_no} AND password = #{password}
   		
   	</select>
   	
   	
-  	<select id="update" resultType="ManagerVO">
+  	<update id="update">
 		
 		UPDATE TB_MANAGER
-		SET password=#{newPW}
-		WHERE mngr_id = #{login.getMngrId()} AND password = #{password}
+		SET password = #{newPW}
+		WHERE mngr_no = #{mngr_no} AND password = #{password}
 
-	</select>  	
+	</update>  	
+	
+</mapper>
 	
   	  <!-- 
   	<select id="managerInfo" resultType="ManagerVO">
@@ -36,13 +38,15 @@
   		WHERE mngr_id = #
   	
   	</select>
-
-	<update id="keepLogin" >
+  	
+  	<update id="keepLogin" >
 	
-  		UPDATE tb_manager
+  		UPDATE TB_MANAGER
   		SET sessionKey = #{sessionId}, sessionLimit = #{next} where mngr_id = #{mngr_id}
   		
   	</update>
+
+	
 
 	<select id="checkManagerWithSessionKey" resultType="ManagerVO">
 	
@@ -53,7 +57,7 @@
 		
 	</select>	
 -->
-</mapper>
+
 
 <!-- 
 <insert id="create">

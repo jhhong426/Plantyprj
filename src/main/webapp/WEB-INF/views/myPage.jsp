@@ -5,10 +5,9 @@
 
   <!DOCTYPE html>
 <html>
-<head>
+<head><title>관리자 페이지</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>관리자 페이지</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -25,6 +24,8 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/resources/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 <body>
   
@@ -48,6 +49,11 @@
 	<h1>처리내역</h1>
 	
 	<h3>처리된 내역 : 건</h3>
+
+	<p>기간 설정: <input type="text" id="datepicker"> ~ <input type="text" id="datepicker"></p>
+ 
+ 
+
 	
 	
 	
@@ -77,18 +83,15 @@
 <script src="/resources/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/dist/js/demo.js"></script>
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- page script -->
-<script type="text/javascript">
+<script>
 
-	
-	
-	
-	
-	
-	
-	
+$( function() {
+    $( "#datepicker" ).datepicker();
+  } );
 	
 </script>
 </body>
