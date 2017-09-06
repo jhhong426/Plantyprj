@@ -39,6 +39,7 @@ public class MyPageController {
 	@RequestMapping(value = "/editPW", method = RequestMethod.POST)
 	public void editPWPost(EditPasswordDTO dto, HttpServletResponse response, HttpSession session, Model model) throws Exception {
 		
+		
 		ManagerVO vo = service.checkManager(dto);
 		
 		if (vo == null) {

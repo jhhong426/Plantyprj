@@ -12,11 +12,11 @@ public class ManagerVO {
 	private String position;	// 관리자 직책
 	private String authority;	// 관리자 권한
 
-	public String getMngr_no() {
+	public String getMngrNo() {
 		return mngr_no;
 	}
 
-	public void setMngr_no(String mngr_no) {
+	public void setMngrNo(String mngr_no) {
 		this.mngr_no = mngr_no;
 	}
 	
