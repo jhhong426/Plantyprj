@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.plantynet.mapper.QuestMapper">
+
+
+<!-- 미처리 문의사항 데이터 출력, 테이블 2개 Join -->
+<select id= "quest_not" resultType="com.plantynet.domain.NotVO">
+	select
+		a.quest_no,
+		a.quest_category,
+		a.title,
+		a.reg_date,
+		b.email
+	from 
+		TB_QUESTION a, TB_MEMBER b
+	where
+		 a.mber_no = b.mber_no and
+		 a.status = '미처리';
+</select>
+
+
+
+<!-- 처리 문의사항 데이터 출력 , 테이블 4개 Join --> 
+<select id= "quest_cmpl" resultType="com.plantynet.domain.CmplVO">
+	select
+		a.quest_no,
+		a.quest_category,
+		a.title,
+		a.reg_date,
+		c.email,
+		b.cmpl_date,
+		d.mngr_id
+	from 
+		TB_QUESTION a, TB_QUESTION_ANSWER b, TB_MEMBER c, TB_MANAGER d
+	where
+		a.mber_no = c.mber_no and
+        a.quest_no = b.quest_no and
+        b.mngr_id = d.mngr_id and
+        a.status = '처리';
+</select>
+
+
+</mapper>
+
