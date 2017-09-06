@@ -6,23 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.plantynet.mapper.VoteMapper">
 
 
-<select id= "testSelect" resultType="com.plantynet.domain.TestPersonVO">
-	select *
-	from person
-</select>
 
-<select id= "getTime" resultType="string">
-	select now()
-</select>
-
- <insert id="testInsert2">
-	insert into person values(#{name} ,#{age})
-</insert> 
-
-
- <insert id="testInsert">
-	insert into person values(#{name} ,#{age})
-</insert> 
 
   
 </mapper>

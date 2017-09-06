@@ -23,8 +23,7 @@
 	
 	<beans:bean id="loginInterceptor" class="com.plantynet.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" class="com.plantynet.interceptor.AuthInterceptor"></beans:bean>
-	
-	<context:component-scan base-package="com.plantynet.ask" />
+
 
 	<context:component-scan base-package="com.plantynet.controller" />
 	
