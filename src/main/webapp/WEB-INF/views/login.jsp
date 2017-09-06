@@ -2,8 +2,31 @@
 <!-- 세션 사용 페이지 여부 : False -->
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="include/header.jsp" %>
 
+
+  <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>관리자 로그인</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/resources/plugins/datatables/dataTables.bootstrap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/resources/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/resources/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+</head>
 <body>
   
  	<h1>Manager Login</h1>
@@ -17,6 +40,9 @@
 	  	<input type="submit" id="btn-login" value="로그인" />
 	  	
 	  	<!-- 로그인 실패시 실패 문구가 들어간 페이지 상태로 Redirect -->
+	
+	  	
+	
   	</form>
 
 <!-- jQuery 2.2.3 -->
@@ -70,7 +96,7 @@
 	}
 </script>
 </body>
-
+</html>
 
 
 <%@include file="include/footer.jsp" %>
