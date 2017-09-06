@@ -23,17 +23,17 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return session.selectOne(namespace + ".login", dto);
 	}
 	
-	@Override
-	public void editPassword(EditPasswordDTO dto) throws Exception {
-		
-		session.update(namespace + ".update", dto);
-	}
+//	@Override
+//	public void editPassword(EditPasswordDTO dto) throws Exception {
+//		
+//		session.update(namespace + ".update", dto);
+//	}
 
-	@Override
-	public ManagerVO checkManager(EditPasswordDTO dto) {
-
-		return session.selectOne(namespace + ".check", dto);
-	}
+//	@Override
+//	public ManagerVO checkManager(EditPasswordDTO dto) {
+//
+//		return session.selectOne(namespace + ".check", dto);
+//	}
 
 
 }

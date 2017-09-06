@@ -35,16 +35,16 @@ public class ManagerController {
 	throws Exception {
 		
 		//Model 객체에 사용자가 존재할 경우, ManagerVO라는 이름으로 저장.
-		ManagerVO vo = service.login(dto);
+		ManagerVO managerVO = service.login(dto);
 //		boolean loginFlag = true;
 		
-		if(vo == null) {
+		if(managerVO == null) {
 			return ;
 		}
 		
 		//session.setAttribute("name", dto.getMngr_id());
 		
-		model.addAttribute("managerVO", vo);
+		model.addAttribute("managerVO", managerVO);
 //		
 //		if(vo == null) {
 //			loginFlag = false;
@@ -62,9 +62,9 @@ public class ManagerController {
 	public void logout(HttpServletRequest request, 
 	    HttpServletResponse response, HttpSession session) throws Exception {
 
-		Object obj = session.getAttribute("login");
+		ManagerVO managerVO = (ManagerVO) session.getAttribute("login");
 
-	    if (obj != null) {
+	    if (managerVO != null) {
 	
 	    	session.removeAttribute("login");
 	    	session.invalidate();

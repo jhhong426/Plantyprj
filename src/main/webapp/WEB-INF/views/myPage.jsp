@@ -7,8 +7,8 @@
   
  	<h1>My 정보</h1>
  	
- 	<p> ID : ${login.getMngrId()}</p>
- 	<p> 이름 : ${login.getMngrName()}	</p>
+ 	<p> ID : ${login.getMngr_id()}</p>
+ 	<p> 이름 : ${login.getMngr_name()}	</p>
  	<p> 사원번호 : ${login.getEmp_no()}		</p>
  	<p> 소속부서 : ${login.getDepartment()}	</p>
  	<p> 직책 : ${login.getPosition()}			</p>
