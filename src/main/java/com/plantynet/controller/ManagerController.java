@@ -1,3 +1,4 @@
+
 package com.plantynet.controller;
 
 import javax.inject.Inject;
@@ -72,3 +73,4 @@ public class ManagerController {
 	    }
 	}	
 }
+

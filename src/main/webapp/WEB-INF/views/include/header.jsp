@@ -1,9 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +31,6 @@
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 
-    </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -74,13 +70,12 @@
                </ul>
                <!-- RIGHT CONTENT -->
               <ul class="nav navbar-nav navbar-right">
-                 <li><a href="#"><u> ${login.getMngrName()} 님</u></a></li>
-
-                 <li><a href="/ask/logout"><button class="btn btn-default btn-xs">로그아웃</button></a></li>
-
+                 <li><a href="#"><u>###### 님</u></a></li>
+                 <li><a href="#"><button class="btn btn-default btn-xs">로그아웃</button></a></li>
               </ul>
             </div>
            </div> <!-- row -->
          </div> <!-- container -->
        </div> <!-- nav -->
      </div> <!-- wrapper -->
+

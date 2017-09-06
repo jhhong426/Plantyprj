@@ -1,3 +1,4 @@
+
 package com.plantynet.persistence;
 
 import javax.inject.Inject;
@@ -36,3 +37,4 @@ public class ManagerDAOImpl implements ManagerDAO {
 
 
 }
+

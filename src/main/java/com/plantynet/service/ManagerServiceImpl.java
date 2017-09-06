@@ -1,3 +1,4 @@
+
 package com.plantynet.service;
 
 import javax.inject.Inject;
@@ -43,3 +44,4 @@ public class ManagerServiceImpl implements ManagerService {
 
 	
 }
+

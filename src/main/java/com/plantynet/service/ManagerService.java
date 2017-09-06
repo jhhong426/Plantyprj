@@ -1,3 +1,4 @@
+
 package com.plantynet.service;
 
 import com.plantynet.domain.ManagerVO;
@@ -12,3 +13,5 @@ public interface ManagerService {
 
 	  public ManagerVO checkManager(EditPasswordDTO dto);
 }
+
+

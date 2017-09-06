@@ -1,3 +1,4 @@
+
 package com.plantynet.persistence;
 
 import com.plantynet.domain.ManagerVO;
@@ -13,3 +14,4 @@ public interface ManagerDAO {
 	public ManagerVO checkManager(EditPasswordDTO dto);
 	
 }
+
