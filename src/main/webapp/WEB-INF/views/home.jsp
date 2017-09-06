@@ -18,7 +18,7 @@
  	
     
     
-  		</div><!--/.col (left) -->
+  	</div><!--/.col (left) -->
 	</div>   <!-- /.row -->
 </section><!-- /.content -->
 
