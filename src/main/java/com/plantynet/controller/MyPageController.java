@@ -5,6 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+
+import org.springframework.security.crypto.codec.Base64;
+//import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +23,9 @@ import com.plantynet.service.MypageService;
 
 @Controller
 public class MyPageController {
+	
+//	@Inject
+//	private StandardPasswordEncoder encoder;
 	
 	@Inject
 	private AuthService authService;
@@ -69,8 +77,12 @@ public class MyPageController {
 		}
 		else {
 			
+			//변경 실패시, alert창 "변경에 실패하였습니다!" (예정)
 			response.sendRedirect("/ask/failPW");
 			
 		}
 	}
+	
+
+
 }

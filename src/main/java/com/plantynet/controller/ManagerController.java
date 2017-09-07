@@ -36,25 +36,13 @@ public class ManagerController {
 		
 		//Model 객체에 사용자가 존재할 경우, ManagerVO라는 이름으로 저장.
 		ManagerVO managerVO = service.login(dto);
-//		boolean loginFlag = true;
 		
 		if(managerVO == null) {
 			return ;
 		}
 		
-		//session.setAttribute("name", dto.getMngr_id());
-		
 		model.addAttribute("managerVO", managerVO);
-//		
-//		if(vo == null) {
-//			loginFlag = false;
-//			model.addAttribute("flag", loginFlag);
-//		}
-//		else {
-//			model.addAttribute("ManagerVO", vo);
-//			model.addAttribute("flag",loginFlag);
-//		}
-//		
+
 	}
 
 	//로그아웃
