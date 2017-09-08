@@ -30,7 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		d.mngr_id,
 		a.reg_date,
 		b.cmpl_date,
-		b.answer_category
+		b.answer_category,
+		a.survey_no
 	
 	from 
 		TB_REPORT a, TB_REPORT_ANSWER b, TB_MEMBER c, TB_MANAGER d
