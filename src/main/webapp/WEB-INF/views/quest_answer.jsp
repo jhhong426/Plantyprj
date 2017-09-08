@@ -1,20 +1,54 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
   <title>문의사항 답변 작성</title>
 </head>
-<body onload="window.resizeTo(400,200)">  <!-- 아직 bPopup 라이브러리 적용 전이라 임의로 팝업창 UI 작성했음. -->
-
-          <input type="button" value="문의사항 답변 작성" onclick="read();" />
-          <script language="javascript">
-            function read() { window.open("question_read", "문의사항 답변 작성", "width=600, height=400, left=100, top=50"); }
-          </script>
-
-          <input type="button" value="문의사항 답변 결과" onclick="answer();" />
-          <script language="javascript">
-            function answer() { window.open("question_answer", "문의사항 답변 작성", "width=600, height=400, left=100, top=50"); }
-          </script>
 
 
+<body>
+	<!-- <table class="type2">
+     <tbody>
+       <tr>
+        <td></td>
+         <td style="text-align: center"><strong>등록번호</strong></td>
+         <td style="text-align: left">1323</td>
+         <td style="text-align: center"><strong>문의유형</strong></td>
+         <td style="text-align: left">투표</td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td style="text-align: center"><strong>제목</strong></td>
+         <td style="text-align: left">질문등록이 되지 않습니다~!</td>
+         <td style="text-align: center"><strong>문의시간</strong></td>
+         <td style="text-align: left">2017-08-25 14:41:53</td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td style="text-align: center"><strong>문의자</strong></td>
+         <td style="text-align: left">abc@gmail.com</td>
+         <td></td>
+       </tr>
+       <tr>
+         <td></td>
+         <td style="text-align: center"><strong>내용</strong></td>
+         <td></td>
+       </tr>
+       <tr>
+        
+        
+       </tr>
+     </tbody>
+   </table> -->
+
+
+<!-- 
+	<div class="container">
           <div class="row">
             <div class="col-sm-1 text-right">
               <h4><strong>등록번호</strong></h4>
@@ -59,9 +93,12 @@
              <textarea name="contents" rows="4" class="form-control">제가 가입할 때 폰 번호를 잘못기입해서 그러는데 새로 수정해주실 수 있나요? 010-4385-3888 입니다.</textarea>
            </div>
           </div>
-
+         </div>
+-->
           <hr class="col-sm-5" style="border: solid 1px #ADADAD;">
 
-
 </body>
+
+
+
 </html>
