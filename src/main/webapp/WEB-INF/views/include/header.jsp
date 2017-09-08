@@ -65,14 +65,14 @@
              <div class="col-md-12">
                <!-- LEFT CONTENT -->
                <ul class="nav navbar-nav">
-                 <li><a href="#">서비스현황</a></li>
+                 <li><a href="/stat">서비스현황</a></li>
                  <li><a href="#">회원관리</a></li>
-                 <li><a href="#">투표관리</a></li>
-                 <li><a href="#">문의사항관리</a></li>
-                 <li><a href="#">신고관리</a></li>
-                 <li><a href="#">금칙어관리</a></li>
-                 <li><a href="#">MyPage</a></li>
-                 <li><a href="#">운영진관리</a></li>
+                 <li><a href="/vote/">투표관리</a></li>
+                 <li><a href="/quest">문의사항관리</a></li>
+                 <li><a href="/report">신고관리</a></li>
+                 <li><a href="/prohibit">금칙어관리</a></li>
+                 <li><a href="/myPage">MyPage</a></li>
+                 <li><a href="/manager">운영진관리</a></li>
                </ul>
                <!-- RIGHT CONTENT -->
               <ul class="nav navbar-nav navbar-right">

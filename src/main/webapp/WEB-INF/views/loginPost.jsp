@@ -8,7 +8,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    self.location = "/ask/login";
+    self.location = "/";
   </script>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	    	// 세션의 login 파라미터에 들어갈 값
 	    	session.setAttribute(LOGIN, managerVO);
 
-	    	response.sendRedirect("/ask/myPage");
+	    	response.sendRedirect("/stat");
 
 	    	
 	    	System.out.println(session.getAttribute(LOGIN));
@@ -44,7 +44,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	    // 로그인 실패
 	    else {
 
-	    	response.sendRedirect("/ask/login");
+	    	response.sendRedirect("/");
 	    	    
 	    }
 	}
