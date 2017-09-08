@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class SurveyVO {
 	
-	private int mber_no;
-	private Date reg_date;
+	private String email;
+	private String reg_date;
 	private int survey_no;
 	private String survey_contents;
 	private int total_score;
@@ -13,16 +13,17 @@ public class SurveyVO {
 	private String status;
 	private int reported_cnt;
 	
-	public int getMber_no() {
-		return mber_no;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setMber_no(int mber_no) {
-		this.mber_no = mber_no;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public Date getReg_date() {
+	public String getReg_date() {
 		return reg_date;
 	}
-	public void setReg_date(Date reg_date) {
+	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
 	public int getSurvey_no() {
@@ -64,7 +65,7 @@ public class SurveyVO {
 	
 	@Override
 	public String toString() {
-		return "SurveyVO [mber_no=" + mber_no + ", reg_date=" + reg_date + ", survey_no=" + survey_no
+		return "SurveyVO [email=" + email + ", reg_date=" + reg_date + ", survey_no=" + survey_no
 				+ ", survey_contents=" + survey_contents + ", total_score=" + total_score + ", limit_time=" + limit_time
 				+ ", status=" + status + ", reported_cnt=" + reported_cnt + "]";
 	}

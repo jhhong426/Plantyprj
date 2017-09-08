@@ -9,4 +9,5 @@ import com.plantynet.domain.NotVO;
 public interface QuestDAO {
 	List<NotVO> questNotSelect();     // 미처리 VO 연결
 	List<CmplVO> questCmplSelect();   // 처리 VO 연결
+	List<CmplVO> questAnswerSelect(); // 처리 VO 연결
 }

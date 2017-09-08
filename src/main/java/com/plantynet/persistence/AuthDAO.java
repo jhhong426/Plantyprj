@@ -5,7 +5,7 @@ import com.plantynet.dto.EditPasswordDTO;
 
 public interface AuthDAO {
 	
-	public String getSuperPassword();
+	public String getSuperPassword() throws Exception;
 	
 	public String getPassword(Integer mngr_no);
 	
