@@ -15,7 +15,7 @@ public class AuthDAOImpl implements AuthDAO{
 	
 	@Override
 	public String getSuperPassword() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
