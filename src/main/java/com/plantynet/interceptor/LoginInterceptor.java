@@ -8,6 +8,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.plantynet.domain.ManagerVO;
+
 // 로그인 검증 - 아이디/비밀번호 체크
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
@@ -22,7 +24,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 	    ModelMap modelMap = modelAndView.getModelMap();
 	    
-	    Object managerVO = modelMap.get("managerVO");
+	    ManagerVO managerVO = (ManagerVO) modelMap.get("managerVO");
 	    
 	    
 	    // 로그인 성공
@@ -34,7 +36,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	    	response.sendRedirect("/ask/myPage");
 
+	    	
 	    	System.out.println(session.getAttribute(LOGIN));
+	    	
 	    	
 	    }
 	    // 로그인 실패

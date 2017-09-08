@@ -3,7 +3,7 @@ package com.plantynet.domain;
 // DB와 송수신되는 데이터
 public class ManagerVO {
 
-	private String mngr_no; 	//관리자 NO
+	private Integer mngr_no; 	//관리자 NO
 	private String mngr_id;		// 관리자 ID
 	private String password;	// 관리자 PW
 	private String mngr_name;	// 관리자 이름
@@ -12,19 +12,19 @@ public class ManagerVO {
 	private String position;	// 관리자 직책
 	private String authority;	// 관리자 권한
 
-	public String getMngrNo() {
+	public Integer getMngr_no() {
 		return mngr_no;
 	}
 
-	public void setMngrNo(String mngr_no) {
+	public void setMngr_no(Integer mngr_no) {
 		this.mngr_no = mngr_no;
 	}
 	
-	public String getMngrId() {
+	public String getMngr_id() {
 		return mngr_id;
 	}
 
-	public void setMngrId(String mngr_id) {
+	public void setMngr_id(String mngr_id) {
 	    this.mngr_id = mngr_id;
 	}
 
@@ -36,11 +36,11 @@ public class ManagerVO {
 	    this.password = password;
 	}
 
-	public String getMngrName() {
+	public String getMngr_name() {
 	    return mngr_name;
 	}
 
-	public void setMngrName(String mngr_name) {
+	public void setMngr_name(String mngr_name) {
 	    this.mngr_name = mngr_name;
 	}
 	  

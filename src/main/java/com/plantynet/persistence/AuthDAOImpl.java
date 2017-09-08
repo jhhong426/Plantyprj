@@ -16,5 +16,13 @@ public class AuthDAOImpl implements AuthDAO {
 	public String getSuperPassword() throws Exception {
 		return sqlSession.selectOne(namespace+".getSuperPassword");
 	}
+  
+  @Override
+	public String getPassword(Integer mngr_no) {
+
+		return session.selectOne(namespace + ".getPassword", mngr_no);
+	}
+
 
 }
+
