@@ -20,7 +20,7 @@ public class AuthDAOImpl implements AuthDAO {
   @Override
 	public String getPassword(Integer mngr_no) {
 
-		return session.selectOne(namespace + ".getPassword", mngr_no);
+		return sqlSession.selectOne(namespace + ".getPassword", mngr_no);
 	}
 
 
