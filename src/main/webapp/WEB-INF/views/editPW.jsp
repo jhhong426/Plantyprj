@@ -32,7 +32,7 @@
 
  	<form name="frmEditPW" action="/ask/editPW" method="POST" onSubmit="return frmChk();">
  	
- 		<input type="hidden" name="mngr_no" id="mngr_no" value="${login.getMngrNo()}"/>
+ 		<input type="hidden" name="mngr_no" id="mngr_no" value="${login.getMngr_no()}"/>
 	 	<input type="password" name="password" id="password" placeholder="현재 비밀번호" /> <br>
 	  	<input type="password" name="newPW" id="newPW" placeholder="변경 비밀번호"/>	<br>
 	  	<input type="password" name="chkPW" id="chkPW" placeholder="변경 비밀번호 확인"/>	<br>

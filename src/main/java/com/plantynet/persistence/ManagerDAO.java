@@ -9,9 +9,9 @@ public interface ManagerDAO {
 	
 	public ManagerVO login(LoginDTO dto)throws Exception;
 
-	public void editPassword(EditPasswordDTO dto)throws Exception;
+//	public void editPassword(EditPasswordDTO dto)throws Exception;
 
-	public ManagerVO checkManager(EditPasswordDTO dto);
+	
 	
 }
 

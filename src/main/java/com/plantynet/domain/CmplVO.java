@@ -8,6 +8,7 @@ public class CmplVO {   // '처리' 문의사항 VO
 	private String email;
 	private String cmpl_date;
 	private String mngr_id;
+	private String answer_contents;
 	
 	
 	public int getQuest_no() {
@@ -51,5 +52,11 @@ public class CmplVO {   // '처리' 문의사항 VO
 	}
 	public void setMngr_id(String mngr_id) {
 		this.mngr_id = mngr_id;
+	}
+	public String getAnswer_contents() {
+		return answer_contents;
+	}
+	public void setAnswer_contents(String answer_contents) {
+		this.answer_contents = answer_contents;
 	}
 }

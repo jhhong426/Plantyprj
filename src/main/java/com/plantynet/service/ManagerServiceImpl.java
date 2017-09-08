@@ -22,25 +22,18 @@ public class ManagerServiceImpl implements ManagerService {
 	    return dao.login(dto);
 	}
 	  
+
 //	@Override
-//	public void keepLogin(String mngr_id, String sessionId, Date next)
-//			throws Exception {
-//	    
-//		dao.keepLogin(mngr_id, sessionId, next);
-//	    
+//	public void editPassword(EditPasswordDTO dto) throws Exception {
+//		
+//		dao.editPassword(dto);
 //	}
 
-	@Override
-	public void editPassword(EditPasswordDTO dto) throws Exception {
-		
-		dao.editPassword(dto);
-	}
-
-	@Override
-	public ManagerVO checkManager(EditPasswordDTO dto) {
-		
-		return dao.checkManager(dto);
-	}
+//	@Override
+//	public ManagerVO checkManager(EditPasswordDTO dto) {
+//		
+//		return dao.checkManager(dto);
+//	}
 
 	
 }

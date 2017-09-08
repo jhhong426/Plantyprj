@@ -34,6 +34,7 @@
 	<!-- 로그인 Form -->
  	<form name="frmLogin" action="/ask/loginPost" method="POST" onSubmit="return frmChk();">
  	
+ 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	 	<input type="text" name="mngr_id" id="mngr_id" placeholder="관리자 아이디" /> <br>
 	  	<input type="password" name="password" id="password" placeholder="관리자 비밀번호"/>
 	  	

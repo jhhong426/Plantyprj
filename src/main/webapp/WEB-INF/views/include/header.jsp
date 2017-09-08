@@ -24,6 +24,8 @@
     <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <!-- Custom Style -->
     <link href="/resources/bootstrap/css/style.css" rel="stylesheet">
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 
 	<!-- 데이터테이블 스킨 -->
     <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
