@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:beans="http://www.springframework.org/schema/beans"
-  xmlns:sec="http://www.springframework.org/schema/security"
-  xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security-4.2.xsd
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
- 
- 	<http />
 
-	<user-service>
-		<user name="user" password="password" authorities="ROLE_USER" />
-	</user-service>
- 
-
-	<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
-  		<beans:constructor-arg name="strength" value="256"></beans:constructor-arg>
-	</beans:bean>
+	<http pattern="/resources/**" security="none"></http> 
 	
-	<!--  
-	<session-management invalid-session-url="/user/loginPage">
- 		<concurrency-control max-sessions="1" expired-url="/user/loginPage"/>
-	</session-management>
-	-->
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/resources/**" access="permitAll" />
+		<intercept-url pattern="/ask/**" access="permitAll" />
+		<!-- <intercept-url pattern="/**" access="hasRole('ROLE_USER')" /> -->
+		<form-login login-page="/ask/login" login-processing-url="/user/login"
+			always-use-default-target="true" default-target-url="/ask/loginPost"
+			username-parameter="mngr_id" password-parameter="password" />
+	</http>
+
+
+	<jdbc-user-service data-source-ref="dataSource" id="managerService"
+		users-by-username-query="SELECT mngr_id, password FROM TB_MANAGER WHERE mngr_id=?" />
+
+
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="managerService">
+			<password-encoder ref="passwordEncoder" />
+		</authentication-provider>
+	</authentication-manager>
+
+
+
+	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<!-- <beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"> 
+		<beans:constructor-arg name="strength" value="256"></beans:constructor-arg> 
+		</beans:bean> <session-management invalid-session-url="/user/loginPage"> 
+		<concurrency-control max-sessions="1" expired-url="/user/loginPage"/> </session-management> -->
 
 </beans:beans>

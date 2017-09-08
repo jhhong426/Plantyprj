@@ -2,28 +2,6 @@
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Data Tables</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="/resources/plugins/datatables/dataTables.bootstrap.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/resources/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="/resources/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 
 	<%@include file="include/header.jsp" %>
 
@@ -31,9 +9,40 @@
 	<h2>  <!-- 미처리 문의사항 Count 출력 -->
 		<div id='countNot' ></div>
 	</h2>
+
+	<!--  
+	<select id="select1" onchange="itemChange()">
+		<option>문의자</option>
+		<option>문의유형</option>
+	</select>
+	<select id="select2">
+	</select>    -->
+
+	
+	<div class="box-body">
+     <div class="input-group">
+       <div class="row">
+         <div class="col-md-6">
+           <select id="questCategory" class="form-control form-group-inline" onchange="selectChange()" style="display:inline-block">
+             <option value="4">문의자</option>
+             <option value="1">문의유형</option>
+           </select>
+         </div>
+         <div class="col-md-6">
+           <input type="text" id="questSearch" class="form-control"></input>
+         </div>
+       </div>
+     </div>
+
+	<input type="button" value="문의사항 답변작성" onclick="popup();" />
+        <script language="javascript"> 
+            function popup() { 
+            	window.open("quest_answer.jsp", "문의사항 답변 작성", "width=600, height=400, left=100, top=50"); 
+            } 
+       </script>
 	
 	<!-- DataTable로 '미처리' 문의사항 데이터 출력 -->
-	<table id="question1" class="display" cellspacing="0" width="100%">
+	<table id="quest_not" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<th style="text-align:center">등록번호</th>
@@ -43,7 +52,7 @@
 				<th style="text-align:center">문의자</th>
 				</tr>
 			</thead>	
-	        <tbody style="text-align:center">
+	        <tbody id="mouseclick" onchange="selectMouse()" style="text-align:center">
 	        <c:forEach var="voNot" items="${voNot}">
 			<tr>
 			<td>${voNot.quest_no}</td>
@@ -54,7 +63,8 @@
 			</tr>
 			</c:forEach>
 	        </tbody>
-	</table>	
+	</table>
+   </div>	
 	
 	
 	<br/>  <!-- 그냥 한 칸 띄운 거 -->
@@ -65,7 +75,7 @@
 	</h2>
 	
 	<!-- DataTable로 '처리' 문의사항 데이터 출력 -->
-	<table id="question2" class="display" cellspacing="0" width="100%">
+	<table id="quest_cmpl" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<th style="text-align:center">등록번호</th>
@@ -117,9 +127,8 @@
 
 <script>
 
-// DataTable 옵션 변경, 처리/미처리 둘 다 같은 옵션을 쓰므로 같이 설정해줌
-$(function () {
-    $("#question1, #question2").DataTable({
+	// DataTable 옵션 변경, 미처리 문의사항 옵션 설정
+    var quest_not = $("#quest_not, #quest_cmpl").DataTable({
            "language" : {
         	     search : "검색 : ",
         	    'zeroRecords'	: "검색결과가 없습니다.",
@@ -143,18 +152,71 @@ $(function () {
            "info": false, 
            "ordering": false,   // 칼럼별로 따로 오름차순, 내림차순할 필요 없어서 설정 꺼놨음
            "autoWidth": false,
-           "dom": '<"top"<"col-md-2"f><"col-md-8"B><"col-md-2"l>>' +
+           "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
 			    'rt' +
 			    '<"bottom"<"col-md-8"p><"col-md-4"B>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
-      })
-  });
- 
+      });
+	
+    $('#questSearch').on( 'keyup', function () {
+    	quest_not
+            .columns( $('#questCategory > option:selected').val() )
+            .search( this.value )
+            .draw();
+    });
+    
+    function selectChange(){
+        var temp = $("#questSearch").val();
+        quest_not
+              .search('')
+              .columns().search('')
+              .draw();
+        quest_not
+              .columns( $('#questCategory > option:selected').val() )
+              .search(temp)
+              .draw();
+      }
+
+     
+	$('#mouseclick').on('click', 'tr', function () {
+	    alert();
+    });
+    
+    function selectMouse(){
+    	var popup = quest_not.row(this).popup();
+        alert();
+    }
+    
+    
+    
+    <%--
+    itemChange();
+    if($('#selectItem').val() == "문의자" ){  // 1번째 카테고리가 '문의자'일 때
+    	$('#select2').hide();   // 2번째 카테고리 드롭박스를 숨김
+    } else if($('#selectItem').val() == "문의유형" ){  // 1번째 카테고리가 '문의유형'일 때
+    	$('#select2').show();   // 2번째 카테고리 드롭박스를 보여줌
+    } 
+    
+    function itemChange() {
+    	var quest_category = ["서비스", "투표", "회원관리", "금칙어", "운영", "기타"];
+    	var selectItem = $("#select1").val();
+    	var changeItem;
+    	if(selectItem == "문의유형") {
+    	  changeItem = quest_category;
+    	}
+    	
+    	$('#select2').empty();
+    	for(var count = 0; count < changeItem.length; count++){                
+    	         var option = $("<option>"+changeItem[count]+"</option>");
+    	         $('#select2').append(option);
+    	}
+    }
+	--%>
   
   // 처리/미처리 각 출력 건수를 count 해서 뿌려주는 역할
-  var num1 = $('#question1 tr').length-1;
-  var num2 = $('#question2 tr').length-1;
-  $('#countNot').html("미처리 문의사항 :" + num1 );
-  $('#countCmpl').html("처리 문의사항 :" + num2 );
+  var num1 = $('#quest_not tr').length-1;
+  var num2 = $('#quest_cmpl tr').length-1;
+  $('#countNot').html("미처리 문의사항 :" + num1);
+  $('#countCmpl').html("처리 문의사항 :" + num2);
   
   
 	

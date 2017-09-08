@@ -49,7 +49,7 @@ public class EditPasswordDTO {
 
 	@Override
 	public String toString() {
-		return "EditPasswordDTO [password=" + password + ", newPW=" + newPW + ", chkPW=" + chkPW+ "]";
+		return "EditPasswordDTO [mngr_no=" + mngr_no + ", password=" + password + ", newPW=" + newPW + ", chkPW=" + chkPW+ "]";
 	}
 	
 }

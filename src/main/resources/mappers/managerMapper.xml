@@ -12,14 +12,15 @@
   
   	</select>
   	
+  	<!-- 
   	<select id="check" resultType="ManagerVO">
   		
   		SELECT mngr_no
   		From TB_MANAGER
   		WHERE mngr_no = #{mngr_no} AND password = #{password}
-  		
-  	</select>
   	
+  	</select>
+  	-->
   	
   	<update id="update">
 		

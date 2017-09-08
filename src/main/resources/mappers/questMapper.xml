@@ -42,5 +42,20 @@
 </select>
 
 
+
+<!-- 문의사항 답변 작성  --> 
+<select id= "quest_answer" resultType="com.plantynet.domain.CmplVO">
+	select
+		a.mngr_id,
+		b.cmpl_date,
+		b.answer_contents
+	from 
+		TB_MANAGER a, TB_QUESTION_ANSWER b
+	where
+        a.mngr_id = b.mngr_id and
+        a.status = '처리';
+</select>
+
+
 </mapper>
 

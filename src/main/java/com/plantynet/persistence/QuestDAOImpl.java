@@ -28,4 +28,8 @@ public class QuestDAOImpl implements QuestDAO {
 		return  sqlSession.selectList(namespace+".quest_cmpl");
 	}
 
+	@Override
+	public List<CmplVO> questAnswerSelect() { // 처리 VO
+		return  sqlSession.selectList(namespace+".quest_answer");
+	}
 }

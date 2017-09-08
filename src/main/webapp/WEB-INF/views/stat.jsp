@@ -272,6 +272,8 @@
           //Number - Spacing between data sets within X values
           barDatasetSpacing       : 1,
           //String - A legend template
+
+
           //Boolean - whether to make the chart responsive
           responsive              : false,
           maintainAspectRatio     : true

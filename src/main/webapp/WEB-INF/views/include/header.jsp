@@ -24,12 +24,19 @@
     <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <!-- Custom Style -->
     <link href="/resources/bootstrap/css/style.css" rel="stylesheet">
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+	<!-- 데이터테이블 스킨 -->
+    <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+	
+
 
     <!-- SCRIPT -->
     <!-- jQuery 2.1.4 -->
     <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-
+	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
