@@ -32,7 +32,7 @@
 
              </div>
 
-             <table id="tabQuest" class="table table-bordered table-hover">
+             <table id="tabQuest" class="table table-bordered table-hover display">
                <thead>
                <tr>
                  <th><input type="checkbox" name="select_all" value="1" id="tabQuest-select-all"></th>
@@ -47,183 +47,35 @@
                </tr>
                </thead>
                <tbody>
-                 <tr>
-                   <td></td>
-                   <td>2342</td>
-                   <td>가나달마바사아자차카파타하</td>
-                   <td>zajan91@naver.com</td>
-                   <td>433</td>
-                   <td>17-12-23 14:34:55</td>
-                   <td>30분</td>
-                   <td>완료</td>
-                   <td>2</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                 <tr>
-                   <td></td>
-                   <td>2444</td>
-                   <td>케케케케케갸캬캬캬컄코코코콬코리</td>
-                   <td>abc@gmail.com</td>
-                   <td>123</td>
-                   <td>17-12-25 14:34:55</td>
-                   <td>15분</td>
-                   <td>완료</td>
-                   <td>0</td>
-                 </tr>
-                </tbody>
+                <c:forEach items="${surveyList}" var="survey">
+                 	<tr>
+                 		<td></td>
+                 		<td>${survey.survey_no}</td>
+                 		<td>${survey.survey_contents}</td>
+                 		<td>${survey.email}</td>
+                 		<td>${survey.total_score}</td>
+                 		<td>${survey.reg_date}</td>
+                 		<td>${survey.limit_time} 분</td>
+                 		<td>
+                 			<c:choose>
+                 				<c:when test="${survey.status == 'SS00'}">
+                 					<c:out value="투표 진행중"/>
+                 				</c:when>
+                 				<c:when test="${survey.status == 'SS01'}">
+                 					<c:out value="투표 완료"/>
+                 				</c:when>
+                 				<c:when test="${survey.status == 'SS02'}">
+                 					<c:out value="블라인드"/>
+                 				</c:when>
+                 				<c:otherwise>
+                 					<c:out value="${survey.status }"/>
+                 				</c:otherwise>
+                 			</c:choose>
+                 		</td>
+                 		<td>${survey.reported_cnt}</td>
+                 	</tr>
+                 </c:forEach>
+               </tbody>
 
               </table>
               <div class="row">
@@ -235,7 +87,7 @@
             </div>
           </div>  <!-- /.box-body -->
 
-          <form id="frmBlind" class="" action="" method="post" hidden="hidden">
+          <form id="frmBlind" class="" action="/vote/blind" method="post" hidden="hidden">
 
           </form>
 
@@ -273,124 +125,24 @@
                  </tr>
                  </thead>
                  <tbody id="body" hidden="hidden">
-                   <tr>
-                       <td>우갸갸갸갸갸갸갸갸갸갸</td>
-                       <td>코카콜라</td>
-                       <td>zajan91@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>전지현이 이뻐요 송혜교가 이뻐요</td>
-                       <td>전지현</td>
-                       <td>dgdg@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                   <tr>
-                       <td>커피먹는다 콜라먹는다</td>
-                       <td>커피</td>
-                       <td>dfgdhwewf@naver.com</td>
-                       <td>17-01-31 14:32:13</td>
-                   </tr>
-                </tbody>
+                 	<c:forEach items="${voteList}" var="vote">
+	                 	<tr>
+	                 		<input type="text" val="${vote.survey_no }" hidden="hidden"/>
+	                 		<td>${vote.survey_contents}</td>
+	                 		<td>${vote.item_contents}</td>
+	                 		<td>${vote.email}</td>
+	                 		<td>${vote.reg_date}</td>
+	                 	</tr>
+                 	</c:forEach>
+                 </tbody>
               </table>
             </div>
           </div>
+          
+	         <!-- 레이어 팝업  Wrapper-->
+	        <div id="popupWrapper" style="display:none;">
+	        
+	        </div>
 
     <!-- Bootstrap 3.3.2 JS -->
     <script src="/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -404,9 +156,17 @@
     <!-- DataTables -->
     <script src="/resources/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="/resources/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script src="/resources/plugins/datatables/extensions/Select-1.2.2/js/dataTables.select.min.js"></script>
+    <!-- BPopup Plugin -->
+    <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
 
     <script>
+      
+      // 블라인드 처리 및 삭제 서버 측 alert 
+      var rttr = "<c:out value='${rttr}'/>";
+      
+      if(rttr){
+    	  alert(rttr);
+      }
 
       /*******   질문 글 관련 Script *********/
 
@@ -426,7 +186,7 @@
 
         },
         "scrollY"              : 400,
-        "scrollCollapse"       : false,
+        "scrollCollapse"       : true,
         "lengthMenu"           : [ 15, 25, 50 ],
         "pageLength"           : 25,
         "pagingType"           : "full_numbers",
@@ -448,22 +208,24 @@
 
 
       });
-
+	  
+      // 전체 체크박스 선택 및 해제 기능 구현
       $('#tabQuest-select-all').on('click', function(){
-          // Get all rows with search applied
+    	  
           var rows = tabQuest.rows({ 'search': 'applied' }).nodes();
-          // Check/uncheck checkboxes for all rows in the table
           $('input[type="checkbox"]', rows).prop('checked', this.checked);
 
      });
-
+      
+	  //카테고리 변경 시 search 컬럼 변경
       $('#questSearch').on( 'keyup', function () {
           tabQuest
               .columns( $('#questCategory > option:selected').val() )
               .search( this.value )
               .draw();
       });
-
+	  
+	  //Select 변화 시 수행되는 함수	
       function selectChange(){
 
         var temp = $("#questSearch").val();
@@ -476,30 +238,115 @@
               .search(temp)
               .draw();
       }
-
+	  
+	  
+	  // 블라인드 적용 버튼 클릭 시 이벤트
       $("#btnBlind").click(function(){
 
         tabQuest.$("input[type='checkbox']").each(function(){
-          if(this.checked){
-             // Create a hidden element
-            //  $(form).append(
-            //     $('<input>')
-            //        .attr('type', 'hidden')
-            //        .attr('name', this.name)
-            //        .val(this.
-            //  );
-            alert($(this).parents("td").next().text());
+          if(this.checked){											//체크된게 있으면 form에 input 동적 추가		
+              $("#frmBlind").append(
+                 $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'blindSurvyNoList')
+                    .val($(this).parents("td").next().text())
+      			);
           }
         });
-        // $("#frmEx").submit(function(e){
-        //
-        //   var form = this;
-        //
-        // });
+        if(confirm("선택된 질문 글을 블라인드 처리 하시겠습니까?")){
+        	$("#frmBlind").submit();
+        }
       });
+	  
+	  // 삭제 버튼 클릭 시 이벤트
+	  $("#btnDelete").click(function(){
+		  
+		  tabQuest.$("input[type='checkbox']").each(function(){
+	          if(this.checked){											//체크된게 있으면 form에 input 동적 추가		
+	              $("#frmDelete").append(
+	                 $('<input>')
+	                    .attr('type', 'hidden')
+	                    .attr('name', 'delSurvyNoList')
+	                    .val($(this).parents("td").next().text())
+	      			);
+	          }
+	      });
+		  
+		  $.ajax({
+	  			
+	  			type:"GET",
+	  			url:"/vote/delete",
+	  			data: {
+	  				
+	  			},
+	  			dataType:"html",
+	  			success:function(data){
+	  				
+	  				$("#popupWrapper").bPopup({
+	  					follow: [true, true],
+	  		            //position: [465, 0] 
+	  				});
+	  				$("#popupWrapper").html(data);
+	  				
+	  			},
+	  			error:function(request,status){
+	  				$("#popupWrapper").hide();
+	  				alert("리뷰 팝업 오류");
+	  			}
+	  		});
+		  
+	        
+	
+	  });
+	  
+	  
+	  
+	  
+	  // Table row 클릭 이벤트
+	  $("#tabQuest tr").dblclick(function(){
+		 
+		  var surveyNo = $(this).children("td").eq(1).text();
+		  openVoteInfoPopup(surveyNo);
 
-
-
+	  });
+	  
+	  // 질문 글 상세 정보 팝업 함수
+	  function openVoteInfoPopup(selectedSurveyNo){
+		  
+		  $.ajax({
+  			
+  			type:"GET",
+  			url:"/vote/info",
+  			data: {
+  				surveyNo : selectedSurveyNo
+  			},
+  			dataType:"html",
+  			success:function(data){
+  				
+  				$("#popupWrapper").bPopup({
+  					follow: [true, true],
+  		            position: [465, 0] 
+  				});
+  				$("#popupWrapper").html(data);
+  				
+  			},
+  			error:function(request,status){
+  				$("#popupWrapper").hide();
+  				alert("리뷰 팝업 오류");
+  			}
+  		});
+	  }
+	  
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
       /*******   투표 참여 관리 관련 Script *********/
 
       var tabVote = $("#tabVote").DataTable({

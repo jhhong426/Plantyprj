@@ -2,6 +2,6 @@ package com.plantynet.persistence;
 
 public interface AuthDAO {
 	
-	public String getSuperPassword();
+	public String getSuperPassword() throws Exception;
 	
 }
