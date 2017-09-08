@@ -24,9 +24,9 @@ public class ManagerController {
 
 	// URL : /ask/login
 	// LoginDTO 에서 처리
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGet(@ModelAttribute("dto") LoginDTO dto) {
-		
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public  String loginGet(@ModelAttribute("dto") LoginDTO dto) {
+		return "login";
 	}
 	
 	// URL : /ask/login에 대한 결과처리

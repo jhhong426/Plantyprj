@@ -17,7 +17,7 @@
  	
  	<h1>비밀번호 변경</h1>
  	
- 	<a href="/ask/editPW"><button>비밀번호 변경</button></a>
+ 	<a href="/editPW"><button>비밀번호 변경</button></a>
  	
  	
  	
