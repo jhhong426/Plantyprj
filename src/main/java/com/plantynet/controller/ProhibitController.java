@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantynet.domain.ProhibitVO;
 import com.plantynet.persistence.ProhibitDAO;
+import com.plantynet.service.ProhibitService;
 
 @Controller
 public class ProhibitController {
 	
 	
 	@Autowired
-	ProhibitDAO prohibitDao;
+	ProhibitService prohibitService;
 	
 	
 	
@@ -28,7 +29,7 @@ public class ProhibitController {
 	@RequestMapping(value = "/prohibit", method = RequestMethod.GET)
 	public String test(Model model) {
 		logger.info("connect test page");
-		List<ProhibitVO> voList = prohibitDao.getWord(); //금칙어 내역을 리스트로 생성
+		List<ProhibitVO> voList = prohibitService.getWord(); //금칙어 내역을 리스트로 생성
 		model.addAttribute("vo",voList); // view에 voList란 이름으로 금칙어 내역 전달
 		return "prohibit";  // prohibit.jsp 뷰 로 이동 
 	}
@@ -38,7 +39,7 @@ public class ProhibitController {
 	public String prohibit_delete(@RequestParam("word")String word) {  //뷰로부터  DB에 삭제할 금칙어의 이름을 String word로 가져옴
 		logger.info("prohibit_delete");
 		System.out.println("삭제 쿼리 실행 : "+ word); 
-		prohibitDao.delete(word);   //  뷰로부터  가져온 word로  DB에 가지고있는 금칙어를  삭제
+		prohibitService.delete(word);   //  뷰로부터  가져온 word로  DB에 가지고있는 금칙어를  삭제
 		return "redirect:/prohibit"; //삭제 완료시 금칙어 관리페이지로 리다이렉트
 	}
 	
@@ -52,7 +53,7 @@ public class ProhibitController {
 		prohibitVO.setWord(word);
 		
 		System.out.println("금칙어"+ word +"mngr_no" +mngr_no+"실행");
-		prohibitDao.insert(prohibitVO);   // 뷰로부터  가져온 word로  DB에 가지고있는 금칙어를  삭제
+		prohibitService.insert(prohibitVO);   // 뷰로부터  가져온 word로  DB에 가지고있는 금칙어를  삭제
 		
 		
 		return "redirect:/prohibit";//삽입 완료시 금칙어 관리페이지로 리다이렉트
