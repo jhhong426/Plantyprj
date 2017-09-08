@@ -22,7 +22,6 @@ public class AuthDAOImpl implements AuthDAO {
 
 		return sqlSession.selectOne(namespace + ".getPassword", mngr_no);
 	}
-
-
 }
+
 
