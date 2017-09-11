@@ -1,11 +1,15 @@
 package com.plantynet.dto;
 
+import com.plantynet.service.PasswordEncoder;
+
 //로그인 화면에 전달되는 데이터를 수집
 public class LoginDTO {
 	
+	
 	private String mngr_id;		//관리자 ID
 	private String password;	//관리자 PW
-	
+
+
 	public String getMngr_id() {
 		return mngr_id;
 	}
@@ -16,14 +20,13 @@ public class LoginDTO {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = PasswordEncoder.SHA256(password);
+//		this.password = password;
 	}
 	
 	@Override
 	public String toString() {
 		return "LoginDTO [mngr_id=" + mngr_id + ", password=" + password + "]";
 	}
-	
-	
 	
 }
