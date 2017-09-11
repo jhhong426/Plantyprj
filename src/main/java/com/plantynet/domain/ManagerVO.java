@@ -1,5 +1,9 @@
 package com.plantynet.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.plantynet.service.PasswordEncoder;
+
 // DB와 송수신되는 데이터
 public class ManagerVO {
 

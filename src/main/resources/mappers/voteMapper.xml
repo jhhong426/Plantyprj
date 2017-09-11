@@ -34,7 +34,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 선택된 질문 글을 가져오는 쿼리문 -->
 	<select id="getSurvey" resultType="com.plantynet.domain.SurveyVO">
-		select * from TB_SURVEY where survey_no = #{survey_no};
+		select
+		  a.survey_no,
+		  a.survey_contents,
+		  b.email,
+		  a.total_score,
+		  a.reg_date,
+		  a.limit_time,
+		  a.status,
+		  a.reported_cnt
+		from TB_SURVEY a, TB_MEMBER b
+		where a.survey_no = #{survey_no} and a.mber_no = b.mber_no;
 	</select>
 	
 	<!-- 질문 글을 블라인드 처리 하는 쿼리문 -->

@@ -14,24 +14,26 @@
            </div>
            <!-- /.box-header -->
            <div class="box-body">
-             <div class="input-group">
+             <div class="">
                <div class="row">
-                 <div class="col-md-2">
+                 <div class="col-md-1">
                     <h4>검색</h4>
                  </div>
-                 <div class="col-md-4">
+                 <div class="col-md-2">
                    <select id="questCategory" class="form-control form-group-inline" onchange="selectChange()" style="display:inline-block">
                      <option value="3">작성자</option>
                      <option value="1">등록번호</option>
                    </select>
                  </div>
-                 <div class="col-md-6">
+                 <div class="col-md-2">
                    <input type="text" id="questSearch" class="form-control"></input>
+                 </div>
+                 <div class="col-md-1">
+                 	<button id="btnQuestSearch" class="btn btn-default"><i class="fa fa-search"></i></button>
                  </div>
                </div>
 
              </div>
-
              <table id="tabQuest" class="table table-bordered table-hover display">
                <thead>
                <tr>
@@ -79,9 +81,9 @@
 
               </table>
               <div class="row">
-                <div class="col-md-3 pull-right">
-                  <button type="button" class="btn btn-primary" id="btnBlind">블라인드 적용</button>
-                  <button type="button" class="btn btn-danger" id="btnDelete">삭제</button>
+                <div class="col-md-2 pull-right">
+                  <button type="button" class="btn btn-danger pull-right" id="btnDelete">삭제</button>
+                  <button type="button" class="btn btn-primary pull-right" id="btnBlind">블라인드 적용</button>
                 </div>
               </div>
             </div>
@@ -91,7 +93,7 @@
 
           </form>
 
-          <form id="frmDelete" class="" action="" method="post" hidden="hidden">
+          <form id="frmDelete" class="frmForDelete" action="" method="post" hidden="hidden">
 
           </form>
 
@@ -103,14 +105,17 @@
              </div>
              <!-- /.box-header -->
              <div class="box-body">
-               <div class="input-group">
+               <div class="">
                  <div class="row">
-                   <div class="col-md-4">
+                   <div class="col-md-1">
                       <h4>참여자</h4>
                    </div>
-                   <div class="col-md-8">
+                   <div class="col-md-2">
                      <input type="text" id="voteSearch" class="form-control"></input>
                    </div>
+                   <div class="col-md-1">
+                 	<button id="btnVoteSearch" class="btn btn-default"><i class="fa fa-search"></i></button>
+                 </div>
                  </div>
 
                </div>
@@ -126,8 +131,7 @@
                  </thead>
                  <tbody id="body" hidden="hidden">
                  	<c:forEach items="${voteList}" var="vote">
-	                 	<tr>
-	                 		<input type="text" val="${vote.survey_no }" hidden="hidden"/>
+	                 	<tr data-surveyno="${vote.survey_no }">             		
 	                 		<td>${vote.survey_contents}</td>
 	                 		<td>${vote.item_contents}</td>
 	                 		<td>${vote.email}</td>
@@ -169,7 +173,6 @@
       }
 
       /*******   질문 글 관련 Script *********/
-
       var tabQuest = $("#tabQuest").DataTable({
         "language"    : {
           'zeroRecords'       : "검색결과가 없습니다.",
@@ -216,14 +219,29 @@
           $('input[type="checkbox"]', rows).prop('checked', this.checked);
 
      });
-      
-	  //카테고리 변경 시 search 컬럼 변경
-      $('#questSearch').on( 'keyup', function () {
-          tabQuest
-              .columns( $('#questCategory > option:selected').val() )
-              .search( this.value )
-              .draw();
-      });
+        
+	  // 검색 버튼 클릭 이벤트
+	  $("#btnQuestSearch").click(function(){
+		 searchQuest(); 
+	  });
+	  
+	  // 입력창 엔터 이벤트
+	  $("#questSearch").keydown(function(key){
+		  
+		 if(key.keyCode == 13){
+			 searchQuest();
+		 } 
+	  });
+	  
+	  //질문 글 검색 후 테이블 그리는 함수
+	  function searchQuest(){
+		  tabQuest
+          .columns( $('#questCategory > option:selected').val() )
+          .search($("#questSearch").val())
+          .draw();
+	  }
+	  
+	  
 	  
 	  //Select 변화 시 수행되는 함수	
       function selectChange(){
@@ -242,61 +260,76 @@
 	  
 	  // 블라인드 적용 버튼 클릭 시 이벤트
       $("#btnBlind").click(function(){
-
-        tabQuest.$("input[type='checkbox']").each(function(){
-          if(this.checked){											//체크된게 있으면 form에 input 동적 추가		
-              $("#frmBlind").append(
-                 $('<input>')
-                    .attr('type', 'hidden')
-                    .attr('name', 'blindSurvyNoList')
-                    .val($(this).parents("td").next().text())
-      			);
-          }
-        });
-        if(confirm("선택된 질문 글을 블라인드 처리 하시겠습니까?")){
-        	$("#frmBlind").submit();
-        }
+    	  
+			var cnt = $("input[type='checkbox']:checked").length;           	// 선택된 체크 박스 수 구하기
+			  
+			if(cnt < 1){														// 선택된 체크 박스가 없으면 alert 있으면 로직  수행
+	     		alert("선택된 질문 글이 없습니다.");
+		    }
+			else{
+				
+				tabQuest.$("input[type='checkbox']").each(function(){
+			          if(this.checked){											//체크된게 있으면 form에 input 동적 추가		
+			              $("#frmBlind").append(
+			                 $('<input>')
+			                    .attr('type', 'hidden')
+			                    .attr('name', 'blindSurvyNoList')
+			                    .val($(this).parents("td").next().text())
+			      			);
+			          }
+			        });
+			        
+			        if(confirm("선택된 질문 글을 블라인드 처리 하시겠습니까?")){
+			        	$("#frmBlind").submit();
+			        }
+			}
       });
+	  
 	  
 	  // 삭제 버튼 클릭 시 이벤트
 	  $("#btnDelete").click(function(){
 		  
-		  tabQuest.$("input[type='checkbox']").each(function(){
-	          if(this.checked){											//체크된게 있으면 form에 input 동적 추가		
-	              $("#frmDelete").append(
-	                 $('<input>')
-	                    .attr('type', 'hidden')
-	                    .attr('name', 'delSurvyNoList')
-	                    .val($(this).parents("td").next().text())
-	      			);
-	          }
-	      });
+		  var cnt = $("input[type='checkbox']:checked").length;
 		  
-		  $.ajax({
-	  			
-	  			type:"GET",
-	  			url:"/vote/delete",
-	  			data: {
-	  				
-	  			},
-	  			dataType:"html",
-	  			success:function(data){
-	  				
-	  				$("#popupWrapper").bPopup({
-	  					follow: [true, true],
-	  		            //position: [465, 0] 
-	  				});
-	  				$("#popupWrapper").html(data);
-	  				
-	  			},
-	  			error:function(request,status){
-	  				$("#popupWrapper").hide();
-	  				alert("리뷰 팝업 오류");
-	  			}
-	  		});
-		  
-	        
-	
+		  if(cnt < 1){
+			  alert("선택된 질문 글이 없습니다.");
+		  }
+		  else{
+			  
+			  tabQuest.$("input[type='checkbox']").each(function(){
+		          if(this.checked){											//체크된게 있으면 form에 input 동적 추가		
+		              $("#frmDelete").append(
+		                 $('<input>')
+		                    .attr('type', 'hidden')
+		                    .attr('name', 'delSurvyNoList')
+		                    .val($(this).parents("td").next().text())
+		      			);
+		          }
+		      });
+			  
+			  $.ajax({
+		  			
+		  			type:"GET",
+		  			url:"/vote/delete",
+		  			data: {
+		  				
+		  			},
+		  			dataType:"html",
+		  			success:function(data){
+		  				
+		  				$("#popupWrapper").bPopup({
+		  					follow: [true, true],
+		  		            //position: [465, 0] 
+		  				});
+		  				$("#popupWrapper").html(data);
+		  				
+		  			},
+		  			error:function(request,status){
+		  				$("#popupWrapper").hide();
+		  				alert("팝업 오류");
+		  			}
+		  		});
+		  }
 	  });
 	  
 	  
@@ -376,15 +409,48 @@
         "autoWidth" : false,
 
       });
+ 
+ 	  // 검색 버튼 클릭 이벤트
+	  $("#btnVoteSearch").click(function(){
+		 searchVote(); 
+	  });
+	  
+	  // 입력창 엔터 이벤트
+	  $("#voteSearch").keydown(function(key){
+		  
+		 if(key.keyCode == 13){
+			 searchVote();
+		 } 
+	  });
+	  
+	  // 투표 조회 후 테이블에 그리는 함수 
+	  function searchVote(){
+		  
+		  var str = $("#voteSearch").val();
+		  
+		  if(str == ""){						//입력값이 없으면 alert (dataTable이 입력값 없으면 전체를 뿌려줌)
+			  alert("검색할 이메일을 입력하세요.")
+		  }
+		  else{
+			  
+			  $("#body").show();
+	          tabVote
+	              .columns(2)
+	              .search(str)
+	              .draw();
+		  }	  
+	  }
+      
+      
+   	  // Table row 클릭 이벤트
+	  $("#tabVote tr").dblclick(function(){
+		  
+		  console.log(this);
+		 
+		  var surveyNo = $(this).data("surveyno");
+		  openVoteInfoPopup(surveyNo);
 
-      $('#voteSearch').on( 'keyup', function () {
-
-          $("#body").show();
-          tabVote
-              .columns(2)
-              .search( this.value )
-              .draw();
-      });
+	  });
 
 
 

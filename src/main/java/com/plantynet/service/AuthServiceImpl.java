@@ -11,11 +11,6 @@ public class AuthServiceImpl implements AuthService{
 	@Inject
 	private AuthDAO dao;
 	
-	@Override
-	public String getSuperPassword() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public String getPassword(Integer mngr_no) {
@@ -23,7 +18,15 @@ public class AuthServiceImpl implements AuthService{
 		return dao.getPassword(mngr_no);
 	}
 
-	
-
+	@Override
+	public boolean checkSuperPassword(String inputPassword) throws Exception {
+		
+		if(inputPassword.equals(dao.getSuperPassword())){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	
 }
