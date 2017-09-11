@@ -7,19 +7,26 @@ import javax.servlet.http.HttpSession;
 
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.codec.Base64;
-//import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.plantynet.domain.CmplVO;
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.NotVO;
+import com.plantynet.domain.ReportDoneVO;
 import com.plantynet.dto.EditPasswordDTO;
+import com.plantynet.persistence.QuestDAO;
 import com.plantynet.service.AuthService;
 import com.plantynet.service.MypageService;
+import com.plantynet.service.QuestService;
+import com.plantynet.service.ReportService;
 
 @Controller
 public class MyPageController {
@@ -27,14 +34,27 @@ public class MyPageController {
 //	@Inject
 //	private StandardPasswordEncoder encoder;
 	
-	@Inject
+	@Autowired
 	private AuthService authService;
-	
-	@Inject
+	@Autowired
 	private MypageService mypageService;
+	@Autowired
+	private ReportService reportService;
+	@Autowired
+	private QuestDAO dao;
 
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public void myPageGet() throws Exception {
+	public void myPageGet(Model model) throws Exception {
+		
+		// 문의사항 답변완료 내용
+		List<CmplVO> voQuestCmpl = dao.questCmplSelect();
+		
+		// 신고사항 답변완료 내용
+		List<ReportDoneVO> reportDoneVO = reportService.getReportDone();
+
+		model.addAttribute("voCmpl", voQuestCmpl);
+		model.addAttribute("reportDoneVO", reportDoneVO);
+	
 		
 	}
 	
@@ -72,13 +92,13 @@ public class MyPageController {
 			
 			mypageService.editPassword(dto);
 			
-			response.sendRedirect("/ask/myPage");
+			response.sendRedirect("/myPage");
 			
 		}
 		else {
 			
 			//변경 실패시, alert창 "변경에 실패하였습니다!" (예정)
-			response.sendRedirect("/ask/failPW");
+			response.sendRedirect("/failPW");
 			
 		}
 	}
