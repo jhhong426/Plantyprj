@@ -20,6 +20,4 @@ public interface VoteService {
 	
 	public SurResultVO getSurResult(Integer survey_no) throws Exception;
 	
-	public String getSuperPassword() throws Exception;
-	
 }

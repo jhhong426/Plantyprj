@@ -1,8 +1,8 @@
 package com.plantynet.service;
 
 public interface AuthService {
-	
-	public String getSuperPassword();
 
-	public String getPassword(Integer mngr_no);
+	public String getPassword(Integer mngr_no) throws Exception;
+	
+	public boolean checkSuperPassword(String inputPassword) throws Exception;
 }
