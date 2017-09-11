@@ -1,11 +1,14 @@
 
 package com.plantynet.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,13 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.QuestDoneVO;
+import com.plantynet.domain.QuestYetVO;
 import com.plantynet.dto.LoginDTO;
 import com.plantynet.service.ManagerService;
 
 @Controller
 public class ManagerController {
 
-	@Inject
+	@Autowired
 	private ManagerService service;
 
 	// URL : /ask/login
@@ -60,5 +65,15 @@ public class ManagerController {
 	    	response.sendRedirect("/ask/login");
 	    }
 	}	
+	
+	
+	// 운영진관리 View 매핑
+	@RequestMapping(value = "/manager", method = RequestMethod.GET) 
+	public String manager(Model model)  {   
+		List<ManagerVO> managerVO = service.managerSelect();
+		model.addAttribute("mngrVO", managerVO);  
+	
+		return "manager";  
+	}
 }
 

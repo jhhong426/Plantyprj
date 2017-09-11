@@ -1,48 +1,37 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-	<%@include file="include/header.jsp" %>
+<%@include file="include/header.jsp" %>
 
  
-	<h2>  <!-- 미처리 문의사항 Count 출력 -->
-		<div id='countNot' ></div>
-	</h2>
-
-	<!--  
-	<select id="select1" onchange="itemChange()">
-		<option>문의자</option>
-		<option>문의유형</option>
-	</select>
-	<select id="select2">
-	</select>    -->
-
-	
+   <h2>  <!-- 미처리 문의사항 Count 출력 -->
+	 <div id='countYet' ></div>
+   </h2>
+   
+   <div class="box">
 	<div class="box-body">
      <div class="input-group">
        <div class="row">
-         <div class="col-md-6">
-           <select id="questCategory" class="form-control form-group-inline" onchange="selectChange()" style="display:inline-block">
+         <div class="col-md-5">
+           <select id="yetCategory" class="form-control form-group-inline" 
+           onchange="yetCategoryChange()" style="display:inline-block">
              <option value="4">문의자</option>
              <option value="1">문의유형</option>
            </select>
          </div>
-         <div class="col-md-6">
-           <input type="text" id="questSearch" class="form-control"></input>
+         <div class="col-md-5" id="yetDynamicCategory">
+           <input type="text" id="yetInput" class="form-control"></input>
          </div>
+         <div class="col-md-2">
+         		<button class="fa fa-search" id="yetSearch" onclick="yetSearch()" style="height:30px; width:40px;"></button>
+			</div>
        </div>
      </div>
 
-	<input type="button" value="문의사항 답변작성" onclick="popup();" />
-        <script language="javascript"> 
-            function popup() { 
-            	window.open("quest_answer.jsp", "문의사항 답변 작성", "width=600, height=400, left=100, top=50"); 
-            } 
-       </script>
-	
 	<!-- DataTable로 '미처리' 문의사항 데이터 출력 -->
-	<table id="quest_not" class="display" cellspacing="0" width="100%">
+	<table id="questYetSelect" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<th style="text-align:center">등록번호</th>
@@ -52,30 +41,50 @@
 				<th style="text-align:center">문의자</th>
 				</tr>
 			</thead>	
-	        <tbody id="mouseclick" onchange="selectMouse()" style="text-align:center">
-	        <c:forEach var="voNot" items="${voNot}">
+	        <tbody style="text-align:center">
+	        <c:forEach var="Yet" items="${questYetSelect}">
 			<tr>
-			<td>${voNot.quest_no}</td>
-			<td>${voNot.quest_category}</td>
-			<td>${voNot.title}</td>
-			<td>${voNot.reg_date}</td>
-			<td>${voNot.email}</td>
+			<td>${Yet.quest_no}</td>
+			<td>${Yet.quest_category}</td>
+			<td>${Yet.title}</td>
+			<td>${Yet.reg_date}</td>
+			<td>${Yet.email}</td>
 			</tr>
 			</c:forEach>
 	        </tbody>
 	</table>
    </div>	
+  </div>
+	
+
 	
 	
-	<br/>  <!-- 그냥 한 칸 띄운 거 -->
-	
-	
-	<h2>    <!-- 처리 문의사항 Count 출력 -->
-		<div id='countCmpl' ></div>
-	</h2>
+   <h2>    <!-- 처리 문의사항 Count 출력 -->
+	 <div id='countDone' ></div>
+   </h2>
+   <div class="box">
+	<div class="box-body">
+     <div class="input-group">
+       <div class="row">
+         <div class="col-md-5">
+           <select id="doneCategory" class="form-control form-group-inline" 
+           onchange="doneCategoryChange()" style="display:inline-block">
+             <option value="6">담당자</option>
+             <option value="4">문의자</option>
+             <option value="1">문의유형</option>
+           </select>
+         </div>
+         <div class="col-md-5" id="doneDynamicCategory">
+           <input type="text" id="doneInput" class="form-control"></input>
+         </div>
+         <div class="col-md-2" >
+				<button class="fa fa-search" id="doneSearch" onclick="doneSearch()" style="height:30px; width:40px;"></button>
+			</div>
+       </div>
+     </div>
 	
 	<!-- DataTable로 '처리' 문의사항 데이터 출력 -->
-	<table id="quest_cmpl" class="display" cellspacing="0" width="100%">
+	<table id="questDoneSelect" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 				<th style="text-align:center">등록번호</th>
@@ -88,24 +97,29 @@
 				</tr>
 			</thead>	
 	        <tbody style="text-align:center">
-	        <c:forEach var="voCmpl" items="${voCmpl}">
+	        <c:forEach var="Done" items="${questDoneSelect}">
 			<tr>
-			<td>${voCmpl.quest_no}</td>
-			<td>${voCmpl.quest_category}</td>
-			<td>${voCmpl.title}</td>
-			<td>${voCmpl.reg_date}</td>
-			<td>${voCmpl.email}</td>
-			<td>${voCmpl.cmpl_date}</td>
-			<td>${voCmpl.mngr_id}</td>
+			<td>${Done.quest_no}</td>
+			<td>${Done.quest_category}</td>
+			<td>${Done.title}</td>
+			<td>${Done.reg_date}</td>
+			<td>${Done.email}</td>
+			<td>${Done.cmpl_date}</td>
+			<td>${Done.mngr_id}</td>
 			</tr>
 			</c:forEach>
 	        </tbody>
 	</table>
+   </div>
+  </div>
+
+  <div id="popupWrapper" style="display:none;"></div>
 
 
 
 
-	<%@include file="include/footer.jsp" %>
+<%@include file="include/footer.jsp" %>
+
 
 <!-- jQuery 2.2.3 -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -122,15 +136,14 @@
 <script src="/resources/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/dist/js/demo.js"></script>
-
+<script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
 
 
 <script>
-
 	// DataTable 옵션 변경, 미처리 문의사항 옵션 설정
-    var quest_not = $("#quest_not, #quest_cmpl").DataTable({
+					
+    	var questYetSelect = $("#questYetSelect").DataTable({
            "language" : {
-        	     search : "검색 : ",
         	    'zeroRecords'	: "검색결과가 없습니다.",
    				'infoFiltered'	: " ",
    				'lengthMenu'	: "출력 개수 : _MENU_",
@@ -155,72 +168,147 @@
            "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
 			    'rt' +
 			    '<"bottom"<"col-md-8"p><"col-md-4"B>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
-      });
-	
-    $('#questSearch').on( 'keyup', function () {
-    	quest_not
-            .columns( $('#questCategory > option:selected').val() )
-            .search( this.value )
-            .draw();
+    		});
+    		
+    function yetSearch() {  // 미처리 검색 옵션 설정
+		if($("#yetCategory option:selected").val() == 1){ // yetCategory -> 문의자(value='4'), 문의유형(value='1')을 담은 카테고리    
+			var yetCategoryInput = $("#yetCategoryInput option:selected").val(); // yetCategoryInput -> 카테고리는 6가지 값을 가지고 있음 , yetCategoryChange에서 동적으로 생성
+			$('#questYetSelect').DataTable().columns(1).search(yetCategoryInput).draw();// 미처리 ($('#Yet').DataTable())의 문의유형(columns(1))에서 동적카테고리값을 찾아(search(yetCategoryInput)) 테이블 리로딩 draw();    
+		}else{
+			var yetCategoryNum = $("#yetCategory option:selected").val(); // yetCategory -> 문의자(value='4'), 문의유형(value='1')을 담은 카테고리에서 선택된 값을 yetCategoryNum에 담음
+			var yetInput = $('#yetInput').val()						      // 검색창에 키보드로 입력한 값
+			$('#questYetSelect').DataTable().columns(yetCategoryNum).search(yetInput).draw(); // 테이블에서 yetCategoryNum의 값이 yetInput과 일치하는 값을 찾고 리로딩
+			}
+	}
+    
+    function yetCategoryChange() {  // 미처리 검색 카테고리(문의유형) 설정
+		if($("#yetCategory option:selected").val() == 1 ){
+			$("#yetDynamicCategory").html(
+					"<select id='yetCategoryInput' class='form-control form-group-inline'"
+						+"style='display: inline-block'>"
+						+"<option value='서비스'>서비스</option>"
+						+"<option value='투표'>투표</option>"
+						+"<option value='회원관리'>회원관리</option>"
+						+"<option value='금칙어'>금칙어</option>"
+						+"<option value='운영'>운영</option>"
+						+"<option value='기타'>기타</option>"
+						+"</select>"	
+			);
+		}else{
+			$("#yetDynamicCategory").html(
+					"<input type='text' id='yetInput' class='form-control'></input>"
+			);
+		}
+	}
+    
+    var num1 = $('#questYetSelect tr').length-1;  // 미처리 출력 건수를 count 해서 뿌려주는 역할
+    $('#countYet').html("미처리 문의사항 :" + num1);
+    
+   
+    // Table row 클릭 이벤트
+	$("#questYetSelect tr").dblclick(function(){
+		var answerNo = $(this).children("td").eq(1).text();
+		openAnswerPopup(answerNo);
     });
+	  
+	// 질문 글 상세 정보 팝업 함수
+	function openAnswerPopup(selectedAnswerNo){
+		$.ajax({
+			
+		type:"GET",
+		url:"/quest/questAnswer",
+		data: {
+			answerNo : selectedAnswerNo
+		},
+		dataType:"html",
+		success:function(data){
+				
+		$("#popupWrapper").bPopup({
+			follow: [true, true],
+		    position: [465, 0] 
+		});
+		$("#popupWrapper").html(data);
+				
+		},
+		error:function(request, status){
+			$("#popupWrapper").hide();
+			alert("팝업 오류");
+		}
+		});
+	}
     
-    function selectChange(){
-        var temp = $("#questSearch").val();
-        quest_not
-              .search('')
-              .columns().search('')
-              .draw();
-        quest_not
-              .columns( $('#questCategory > option:selected').val() )
-              .search(temp)
-              .draw();
-      }
-
-     
-	$('#mouseclick').on('click', 'tr', function () {
-	    alert();
-    });
-    
-    function selectMouse(){
-    	var popup = quest_not.row(this).popup();
-        alert();
-    }
     
     
     
-    <%--
-    itemChange();
-    if($('#selectItem').val() == "문의자" ){  // 1번째 카테고리가 '문의자'일 때
-    	$('#select2').hide();   // 2번째 카테고리 드롭박스를 숨김
-    } else if($('#selectItem').val() == "문의유형" ){  // 1번째 카테고리가 '문의유형'일 때
-    	$('#select2').show();   // 2번째 카테고리 드롭박스를 보여줌
-    } 
+	var questDoneSelect = $("#questDoneSelect").DataTable({
+        "language" : {
+     	     search : "검색 : ",
+     	    'zeroRecords'	: "검색결과가 없습니다.",
+				'infoFiltered'	: " ",
+				'lengthMenu'	: "출력 개수 : _MENU_",
+				'paginate'		: {
+					"first"			: "처음",
+					"last"			: "마지막",
+					"next"			: "다음",
+					"previous"		: "이전"
+				}
+			},
+		   "scrollY"		: 400,
+		   "scrollCollapse" : true,
+        "lengthMenu"		: [15, 25, 50],
+        "pageLength"		: 25,
+        "pagingType"		: "full_numbers",
+        "lengthChange": true,
+        "searching": true,
+ 	   "paging": true,
+        "info": false, 
+        "ordering": false,   // 칼럼별로 따로 오름차순, 내림차순할 필요 없어서 설정 꺼놨음
+        "autoWidth": false,
+        "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
+			    'rt' +
+			    '<"bottom"<"col-md-8"p><"col-md-4"B>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
+ 		});
     
-    function itemChange() {
-    	var quest_category = ["서비스", "투표", "회원관리", "금칙어", "운영", "기타"];
-    	var selectItem = $("#select1").val();
-    	var changeItem;
-    	if(selectItem == "문의유형") {
-    	  changeItem = quest_category;
-    	}
-    	
-    	$('#select2').empty();
-    	for(var count = 0; count < changeItem.length; count++){                
-    	         var option = $("<option>"+changeItem[count]+"</option>");
-    	         $('#select2').append(option);
-    	}
-    }
-	--%>
+    function doneSearch() {
+		if($("#doneCategory option:selected").val() == 1){  // yetCategory -> 담당자(value='6'), 문의자(value='4'), 문의유형(value='1')을 담은 카테고리    
+			var doneCategoryInput = $("#doneCategoryInput option:selected").val();
+			$('#questDoneSelect').DataTable().columns(1).search(doneCategoryInput).draw();   
+		}else{
+			var doneCategoryNum = $("#doneCategory option:selected").val();
+			var doneInput = $('#doneInput').val()						      
+			$('#questDoneSelect').DataTable().columns(doneCategoryNum).search(doneInput).draw(); 
+			}
+	}
+    function doneCategoryChange() {
+		if($("#doneCategory option:selected").val() == 1){
+			$("#doneDynamicCategory").html(
+					"<select id='doneCategoryInput' class='form-control form-group-inline'"
+					+"style='display: inline-block'>"
+					+"<option value='서비스'>서비스</option>"
+					+"<option value='투표'>투표</option>"
+					+"<option value='회원관리'>회원관리</option>"
+					+"<option value='금칙어'>금칙어</option>"
+					+"<option value='운영'>운영</option>"
+					+"<option value='기타'>기타</option>"
+					+"</select>"	
+			);
+		}else{
+			$("#doneDynamicCategory").html(
+					"<input type='text' id='doneInput' class='form-control'></input>"
+			);
+		}
+	}
+    var num2 = $('#questDoneSelect tr').length-1;  // 처리 출력 건수를 count 해서 뿌려주는 역할
+    $('#countDone').html("처리 문의사항 :" + num2);
   
-  // 처리/미처리 각 출력 건수를 count 해서 뿌려주는 역할
-  var num1 = $('#quest_not tr').length-1;
-  var num2 = $('#quest_cmpl tr').length-1;
-  $('#countNot').html("미처리 문의사항 :" + num1);
-  $('#countCmpl').html("처리 문의사항 :" + num2);
-  
-  
-	
-	
+    
+    
+    
+    
+    
+    
+    
+    
 </script>
 </body>
 </html>

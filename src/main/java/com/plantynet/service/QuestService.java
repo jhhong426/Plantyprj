@@ -2,17 +2,23 @@ package com.plantynet.service;
 
 import java.util.List;
 
-import com.plantynet.domain.CmplVO;
+import com.plantynet.domain.QuestDoneVO;
+import com.plantynet.domain.QuestYetVO;
 
+/* 원래방식
 public class QuestService {
-	public void questNotSelect() throws Exception {
-	}
-	public void questCmplSelect() throws Exception {
-	}
 	
+	List<QuestYetVO> questYetVO;
 	
-	// 아직 Service 단은 구현 못했음.
+	List<QuestDoneVO> questDoneVO;
+	
+} */
+
+public interface QuestService {
+	
+	public List<QuestYetVO> questYetSelect() throws Exception;
+	
+	public List<QuestDoneVO> questDoneSelect() throws Exception;
+	
+	public QuestYetVO questAnswerSelect(Integer quest_no) throws Exception;
 }
-
-
-

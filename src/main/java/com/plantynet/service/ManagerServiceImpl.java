@@ -1,8 +1,11 @@
 
 package com.plantynet.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.plantynet.domain.ManagerVO;
@@ -13,7 +16,7 @@ import com.plantynet.persistence.ManagerDAO;
 @Service
 public class ManagerServiceImpl implements ManagerService {
 	
-	@Inject
+	@Autowired
 	private ManagerDAO dao;
 
 	@Override
@@ -34,7 +37,10 @@ public class ManagerServiceImpl implements ManagerService {
 //		
 //		return dao.checkManager(dto);
 //	}
-
+	
+	 public List<ManagerVO> managerSelect() {
+	 	return dao.managerSelect();
+	}
 	
 }
 
