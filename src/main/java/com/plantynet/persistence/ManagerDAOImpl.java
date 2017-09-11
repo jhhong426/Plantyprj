@@ -1,18 +1,22 @@
 
 package com.plantynet.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.QuestYetVO;
 import com.plantynet.dto.EditPasswordDTO;
 import com.plantynet.dto.LoginDTO;
 
 @Repository
 public class ManagerDAOImpl implements ManagerDAO {
 	
-	@Inject
+	@Autowired
 	private SqlSession session;
 	
 	private static String namespace ="com.plantynet.mapper.ManagerMapper";	
@@ -34,7 +38,10 @@ public class ManagerDAOImpl implements ManagerDAO {
 //
 //		return session.selectOne(namespace + ".check", dto);
 //	}
-
-
+	
+	@Override
+	public List<ManagerVO> managerSelect() {   
+		return  session.selectList(namespace+".managerSelect");
+	}
 }
 

@@ -1,6 +1,8 @@
 
 package com.plantynet.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.QuestDoneVO;
+import com.plantynet.domain.QuestYetVO;
 import com.plantynet.dto.LoginDTO;
 import com.plantynet.service.ManagerService;
 import com.plantynet.service.PasswordEncoder;
@@ -62,5 +66,15 @@ public class ManagerController {
 	    	response.sendRedirect("/");
 	    }
 	}	
+	
+	
+	// 운영진관리 View 매핑
+	@RequestMapping(value = "/manager", method = RequestMethod.GET) 
+	public String manager(Model model)  {   
+		List<ManagerVO> managerVO = service.managerSelect();
+		model.addAttribute("mngrVO", managerVO);  
+	
+		return "manager";  
+	}
 }
 

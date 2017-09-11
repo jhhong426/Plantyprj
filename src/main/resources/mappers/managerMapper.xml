@@ -30,6 +30,24 @@
 
 	</update>  	
 	
+	
+	
+	<select id= "managerSelect" resultType="com.plantynet.domain.ManagerVO">
+		select
+			emp_no,
+			mngr_name,
+			mngr_id,
+			department,
+			position,
+			authority
+		from 
+			TB_MANAGER
+		where
+			 status = '활성화';
+	</select>
+	
+	
+	
 </mapper>
 	
   	  <!-- 

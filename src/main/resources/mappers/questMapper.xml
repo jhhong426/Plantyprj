@@ -5,8 +5,7 @@
 <mapper namespace="com.plantynet.mapper.QuestMapper">
 
 
-<!-- 미처리 문의사항 데이터 출력, 테이블 2개 Join -->
-<select id= "quest_not" resultType="com.plantynet.domain.NotVO">
+<select id= "questYetSelect" resultType="com.plantynet.domain.QuestYetVO">
 	select
 		a.quest_no,
 		a.quest_category,
@@ -20,10 +19,7 @@
 		 a.status = '미처리';
 </select>
 
-
-
-<!-- 처리 문의사항 데이터 출력 , 테이블 4개 Join --> 
-<select id= "quest_cmpl" resultType="com.plantynet.domain.CmplVO">
+<select id= "questDoneSelect" resultType="com.plantynet.domain.QuestDoneVO">
 	select
 		a.quest_no,
 		a.quest_category,
@@ -42,19 +38,28 @@
 </select>
 
 
-
-<!-- 문의사항 답변 작성  --> 
-<select id= "quest_answer" resultType="com.plantynet.domain.CmplVO">
+<select id= "questAnswerSelect" resultType="com.plantynet.domain.QuestYetVO">
 	select
-		a.mngr_id,
-		b.cmpl_date,
-		b.answer_contents
+		a.quest_no,
+		a.quest_category,
+		a.title,
+		a.reg_date,
+		b.email
+		a.quest_contents,
 	from 
-		TB_MANAGER a, TB_QUESTION_ANSWER b
+		TB_QUESTION a, TB_MEMBER b
 	where
-        a.mngr_id = b.mngr_id and
-        a.status = '처리';
+		 a.quest_no = b.quest_no and
+		 a.status = '미처리';
 </select>
+
+
+<insert id= "questAnswerInsert" parameterType="String">
+	insert into TB_QUESTION_ANSWER 
+		(answer_contents, mngr_id, cmpl_date)
+	values 
+		('${answer_contents}', ${mngr_id}, ${cmpl_date})
+</insert>
 
 
 </mapper>
