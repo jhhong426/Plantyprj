@@ -1,6 +1,6 @@
 package com.plantynet.persistence;
 
-import com.plantynet.dto.EditPasswordDTO;
+import com.plantynet.domain.EditPasswordDTO;
 
 public interface MypageDAO {
 

@@ -8,9 +8,9 @@ import javax.inject.Inject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.plantynet.domain.EditPasswordDTO;
+import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
-import com.plantynet.dto.EditPasswordDTO;
-import com.plantynet.dto.LoginDTO;
 import com.plantynet.persistence.ManagerDAO;
 
 @Service

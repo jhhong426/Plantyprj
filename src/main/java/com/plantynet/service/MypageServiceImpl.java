@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.plantynet.dto.EditPasswordDTO;
+import com.plantynet.domain.EditPasswordDTO;
 import com.plantynet.persistence.MypageDAO;
 
 @Service
