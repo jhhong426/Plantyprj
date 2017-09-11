@@ -76,8 +76,8 @@
                </ul>
                <!-- RIGHT CONTENT -->
               <ul class="nav navbar-nav navbar-right">
-                 <li><a href="#"><u>###### 님</u></a></li>
-                 <li><a href="#"><button class="btn btn-default btn-xs">로그아웃</button></a></li>
+                 <li><a href="/myPage"><u>${login.getMngr_name() } 님</u></a></li>
+                 <li><a href="/logout"><button class="btn btn-default btn-xs">로그아웃</button></a></li>
               </ul>
             </div>
            </div> <!-- row -->

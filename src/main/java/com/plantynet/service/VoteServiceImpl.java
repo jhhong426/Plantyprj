@@ -16,7 +16,6 @@ public class VoteServiceImpl implements VoteService {
 	
 	@Autowired
 	private VoteDAO voteDao;
-	private AuthDAO authDao;
 	
 	@Override
 	public List<SurveyVO> getAllSurvey() throws Exception {
@@ -46,11 +45,6 @@ public class VoteServiceImpl implements VoteService {
 	@Override
 	public SurResultVO getSurResult(Integer survey_no) throws Exception {
 		return voteDao.getSurResult(survey_no);
-	}
-
-	@Override
-	public String getSuperPassword() throws Exception {
-		return authDao.getSuperPassword();
 	}
 
 }
