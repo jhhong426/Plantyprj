@@ -1,7 +1,7 @@
 package com.plantynet.persistence;
 
+import com.plantynet.domain.EditPasswordDTO;
 import com.plantynet.domain.ManagerVO;
-import com.plantynet.dto.EditPasswordDTO;
 
 public interface AuthDAO {
 	

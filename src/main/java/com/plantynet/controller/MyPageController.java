@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.plantynet.domain.CmplVO;
+import com.plantynet.domain.EditPasswordDTO;
 import com.plantynet.domain.ManagerVO;
-import com.plantynet.domain.NotVO;
+import com.plantynet.domain.QuestDoneVO;
+import com.plantynet.domain.QuestYetVO;
 import com.plantynet.domain.ReportDoneVO;
-import com.plantynet.dto.EditPasswordDTO;
 import com.plantynet.persistence.QuestDAO;
 import com.plantynet.service.AuthService;
 import com.plantynet.service.MypageService;
@@ -41,18 +41,18 @@ public class MyPageController {
 	@Autowired
 	private ReportService reportService;
 	@Autowired
-	private QuestDAO dao;
+	private QuestService questService;
 
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public void myPageGet(Model model) throws Exception {
 		
 		// 문의사항 답변완료 내용
-		List<CmplVO> voQuestCmpl = dao.questCmplSelect();
+		List<QuestDoneVO> questDoneVO = questService.questDoneSelect();
 		
 		// 신고사항 답변완료 내용
 		List<ReportDoneVO> reportDoneVO = reportService.getReportDone();
 
-		model.addAttribute("voCmpl", voQuestCmpl);
+		model.addAttribute("questDoneSelect", questDoneVO);
 		model.addAttribute("reportDoneVO", reportDoneVO);
 	
 		

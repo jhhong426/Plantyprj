@@ -8,10 +8,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.plantynet.domain.EditPasswordDTO;
+import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
 import com.plantynet.domain.QuestYetVO;
-import com.plantynet.dto.EditPasswordDTO;
-import com.plantynet.dto.LoginDTO;
 
 @Repository
 public class ManagerDAOImpl implements ManagerDAO {

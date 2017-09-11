@@ -3,10 +3,10 @@ package com.plantynet.service;
 
 import java.util.List;
 
+import com.plantynet.domain.EditPasswordDTO;
+import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
 import com.plantynet.domain.QuestYetVO;
-import com.plantynet.dto.EditPasswordDTO;
-import com.plantynet.dto.LoginDTO;
 
 public interface ManagerService {
 	

@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
 import com.plantynet.domain.QuestDoneVO;
 import com.plantynet.domain.QuestYetVO;
-import com.plantynet.dto.LoginDTO;
 import com.plantynet.service.ManagerService;
 import com.plantynet.service.PasswordEncoder;
 

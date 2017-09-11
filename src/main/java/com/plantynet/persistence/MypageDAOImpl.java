@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.plantynet.dto.EditPasswordDTO;
+import com.plantynet.domain.EditPasswordDTO;
 
 @Repository
 public class MypageDAOImpl implements MypageDAO{

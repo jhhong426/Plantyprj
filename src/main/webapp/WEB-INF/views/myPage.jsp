@@ -73,15 +73,15 @@
 					</tr>
 				</thead>
 				<tbody style="text-align: center">
-					<c:forEach var="voCmpl" items="${voCmpl}">
+					<c:forEach var="Done" items="${questDoneSelect}">
 						<tr>
-							<td>${voCmpl.quest_no}</td>
-							<td>${voCmpl.quest_category}</td>
-							<td>${voCmpl.title}</td>
-							<td>${voCmpl.reg_date}</td>
-							<td>${voCmpl.email}</td>
-							<td>${voCmpl.mngr_id}</td>
-							<td>${voCmpl.cmpl_date}</td>
+							<td>${Done.quest_no}</td>
+							<td>${Done.quest_category}</td>
+							<td>${Done.title}</td>
+							<td>${Done.reg_date}</td>
+							<td>${Done.email}</td>
+							<td>${Done.mngr_id}</td>
+							<td>${Done.cmpl_date}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
