@@ -57,7 +57,7 @@ public class ManagerController {
 	    	session.removeAttribute("login");
 	    	session.invalidate();
 	    	
-	    	response.sendRedirect("/ask/login");
+	    	response.sendRedirect("/");
 	    }
 	}	
 }
