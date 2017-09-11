@@ -207,7 +207,7 @@
    
     // Table row 클릭 이벤트
 	$("#questYetSelect tr").dblclick(function(){
-		var answerNo = $(this).children("td").eq(1).text();
+		var answerNo = $(this).children("td").eq(0).text();
 		openAnswerPopup(answerNo);
     });
 	  
@@ -216,7 +216,7 @@
 		$.ajax({
 			
 		type:"GET",
-		url:"/quest/questAnswer",
+		url:"/quest/Answer",
 		data: {
 			answerNo : selectedAnswerNo
 		},

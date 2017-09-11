@@ -43,18 +43,17 @@ public class QuestController {
 		model.addAttribute("questDoneSelect", service.questDoneSelect());	
 	}
 	
-	@RequestMapping(value = "/answerSelect", method = RequestMethod.GET)
+	@RequestMapping(value = "/Answer", method = RequestMethod.GET)
 	public String answerPopupSelect(@RequestParam("answerNo") int selectedAnswerNo) throws Exception {
 		
 		return "questAnswer";
 	}
 	
-	/*  입력한 내용 DB에 Insert
 	@RequestMapping(value = "/questAnswer", method = RequestMethod.POST)
 	public String answerPopupInsert(@RequestParam("answer_contents")String answer_contents) throws Exception {
-
+    // 
 		
 		return "redirect:/quest/";	
 	}
-	*/
+	
 }
