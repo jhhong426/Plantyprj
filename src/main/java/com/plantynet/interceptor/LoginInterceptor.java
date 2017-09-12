@@ -43,8 +43,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	    }
 	    // 로그인 실패
 	    else {
-
-	    	response.sendRedirect("/");
+	    	
+	    	request.setAttribute("flag", "false");
+	    	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	    	    
 	    }
 	}

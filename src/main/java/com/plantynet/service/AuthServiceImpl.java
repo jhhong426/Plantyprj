@@ -21,7 +21,10 @@ public class AuthServiceImpl implements AuthService{
 	@Override
 	public boolean checkSuperPassword(String inputPassword) throws Exception {
 		
-		if(inputPassword.equals(dao.getSuperPassword())){
+		PasswordEncoder sha256Encoder = new PasswordEncoder();
+		String passwordToSHA256 = sha256Encoder.SHA256(inputPassword);
+
+		if(passwordToSHA256.equals(dao.getSuperPassword())){
 			return true;
 		}
 		else{

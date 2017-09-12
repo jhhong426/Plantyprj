@@ -54,6 +54,7 @@ public class VoteController {
 		System.out.println("팝업 진입진입");
 		
 		model.addAttribute("survyInfo", voteService.getSurvey(selectedSurvyNo));
+		model.addAttribute("survyResult", voteService.getSurResult(selectedSurvyNo));
 
 		return "votePopup";
 	}
@@ -65,6 +66,7 @@ public class VoteController {
 		flag.setFlag(false);
 			
 		if(authService.checkSuperPassword(inputPassword)){
+			
 			for (Integer survyNo : delSurvyNoList) {
 				//voteService.delSurvy(survyNo);
 				System.out.println("삭제 완료 : " + survyNo);
