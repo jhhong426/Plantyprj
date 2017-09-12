@@ -67,7 +67,7 @@
                <!-- LEFT CONTENT -->
                <ul class="nav navbar-nav">
                  <li><a href="/stat">서비스현황</a></li>
-                 <li><a href="#">회원관리</a></li>
+                 <li><a href="/member">회원관리</a></li>
                  <li><a href="/vote/">투표관리</a></li>
                  <li><a href="/quest/">문의사항관리</a></li>
                  <li><a href="/report">신고관리</a></li>
