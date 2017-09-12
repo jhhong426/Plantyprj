@@ -43,8 +43,8 @@ public class VoteDAOImpl implements VoteDAO {
 	}
 
 	@Override
-	public SurResultVO getSurResult(Integer survey_no) throws Exception {
-		return sqlSession.selectOne(namespace+".getSurResult", survey_no);
+	public List<SurResultVO> getSurResult(Integer survey_no) throws Exception {
+		return sqlSession.selectList(namespace+".getSurResult", survey_no);
 	}
 
 }

@@ -8,60 +8,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 전체 질문 글을 가져오는 쿼리문 -->
 	<select id="getAllSurvey" resultType="com.plantynet.domain.SurveyVO">
 		select
-		  a.survey_no,
-		  a.survey_contents,
-		  b.email,
-		  a.total_score,
-		  a.reg_date,
-		  a.limit_time,
-		  a.status,
-		  a.reported_cnt
+		a.survey_no,
+		a.survey_contents,
+		b.email,
+		a.total_score,
+		a.reg_date,
+		a.limit_time,
+		a.status,
+		a.reported_cnt
 		from TB_SURVEY a, TB_MEMBER b
 		where a.mber_no = b.mber_no;
 	</select>
-	
+
 	<!-- 전체 투표 글을 가져오는 쿼리문 -->
 	<select id="getAllVotes" resultType="com.plantynet.domain.VoteVO">
 		select
-		  a.survey_contents,
-		  b.item_contents,
-		  c.email,
-		  d.reg_date,
-		  a.survey_no
+		a.survey_contents,
+		b.item_contents,
+		c.email,
+		d.reg_date,
+		a.survey_no
 		from TB_SURVEY a, TB_SURVEY_ITEM b, TB_MEMBER c, TB_VOTE d
-		where a.survey_no = d.survey_no and d.item_no = b.item_no and a.survey_no = b.survey_no and d.mber_no = c.mber_no;
+		where
+		a.survey_no = d.survey_no and d.item_no = b.item_no and a.survey_no =
+		b.survey_no and d.mber_no = c.mber_no;
 	</select>
-	
+
 	<!-- 선택된 질문 글을 가져오는 쿼리문 -->
 	<select id="getSurvey" resultType="com.plantynet.domain.SurveyVO">
 		select
-		  a.survey_no,
-		  a.survey_contents,
-		  b.email,
-		  a.total_score,
-		  a.reg_date,
-		  a.limit_time,
-		  a.status,
-		  a.reported_cnt
+		a.survey_no,
+		a.survey_contents,
+		b.email,
+		a.total_score,
+		a.reg_date,
+		a.limit_time,
+		a.status,
+		a.reported_cnt
 		from TB_SURVEY a, TB_MEMBER b
-		where a.survey_no = #{survey_no} and a.mber_no = b.mber_no;
+		where a.survey_no = #{survey_no} and
+		a.mber_no = b.mber_no;
 	</select>
-	
+
 	<!-- 질문 글을 블라인드 처리 하는 쿼리문 -->
 	<update id="blindSurvy">
 		update TB_SURVEY SET
-				  status = 'SS02'
-				  ,reported_cnt = reported_cnt+1
-		WHERE survey_no = #{survey_no}; 
+		status = 'SS02'
+		,reported_cnt = reported_cnt+1
+		WHERE survey_no = #{survey_no};
 	</update>
-	
+
 	<!-- 질문 글을 삭제하는 쿼리문 -->
 	<delete id="delSurvy">
 		delete from TB_SURVEY WHERE survey_no = #{survey_no};
 	</delete>
-	
+
 	<!-- 질문글의 결과 통계를 가져오는 쿼리문 -->
 	<select id="getSurResult" resultType="com.plantynet.domain.SurResultVO">
-	
+		SELECT B.item_contents, B.item_no, D.gender, COUNT(D.gender) AS "SCORE"
+		  FROM TB_SURVEY A, TB_SURVEY_ITEM B, TB_VOTE C, TB_MEMBER D
+		  WHERE A.survey_no = #{survey_no}
+		  AND A.survey_no = B.survey_no 
+		  AND A.survey_no = C.survey_no
+		  AND B.item_no = C.item_no 
+		  AND C.mber_no = D.mber_no
+		GROUP BY B.item_no, D.gender;
 	</select> 
 </mapper>

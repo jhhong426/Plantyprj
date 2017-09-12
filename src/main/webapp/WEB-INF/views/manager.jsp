@@ -24,8 +24,7 @@
 		 <h3>운영진 리스트</h3>
 	 </div>
 	 <div class="col-md-6" style="text-align:right">
-		 <form style="display: inline;" name="managerCreate"
-				method="post" action="/managerCreate">
+		 <form style="display: inline;" name="managerCreate" method="get" action="/create">
 			<button id="row" style="display:inline; height:40px; width:80px;" type="submit"><strong>계정 생성</strong></button>
 		</form>
 	 </div>
@@ -88,10 +87,11 @@
              <canvas id="barChart" width="400" height="100"></canvas>
         </div>
     </div>
-
-	 
+    
    </div>	
   </div>
+  
+  <div id="popupWrapper" style="display:none;"></div>
 
 
 
@@ -214,7 +214,33 @@
     	    barChartOptions.datasetFill = false
     	    barChart.Bar(barChartData, barChartOptions)
     	  })
+    	  
+    	  
 
+	$("#questYetSelect").click(function(){
+		createPopup();
+    });
+	  
+	function createPopup(){
+		$.ajax({
+			
+		type:"GET",
+		url:"/manager/create",
+		dataType:"html",
+		success:function(data){
+		$("#popupWrapper").bPopup({
+			follow: [true, true],
+		    position: [465, 0] 
+		});
+		$("#popupWrapper").html(data);
+				
+		},
+		error:function(request, status){
+			$("#popupWrapper").hide();
+			alert("팝업 오류");
+		}
+		});
+	}
 
 </script>
 </body>

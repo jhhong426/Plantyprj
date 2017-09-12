@@ -2,16 +2,9 @@ package com.plantynet.persistence;
 
 import java.util.List;
 
+import com.plantynet.domain.ProhibitVO;
 import com.plantynet.domain.QuestDoneVO;
 import com.plantynet.domain.QuestYetVO;
-
-/* 원래방식
-public interface QuestDAO {
-	
-	List<QuestYetVO> questYetSelect(); // 미처리 VO 연결
-	
-	List<QuestDoneVO> questDoneSelect(); // 처리 VO 연결
-}*/
 
 
 public interface QuestDAO {
@@ -20,6 +13,12 @@ public interface QuestDAO {
 	
 	public List<QuestDoneVO> questDoneSelect() throws Exception;
 	
-	public QuestYetVO questAnswerSelect(Integer quest_no) throws Exception;	
+	public List<QuestYetVO> questAnswerSelect(int quest_no) throws Exception;	
+	
+	void insert(QuestDoneVO doneVO);
+	
+	void update(Integer quest_no);
+	
+	public List<QuestDoneVO> questResultSelect(int quest_no) throws Exception;	
 }
 

@@ -44,22 +44,55 @@
 		a.quest_category,
 		a.title,
 		a.reg_date,
-		b.email
-		a.quest_contents,
+		b.email,
+		a.quest_contents
 	from 
 		TB_QUESTION a, TB_MEMBER b
 	where
-		 a.quest_no = b.quest_no and
+		 a.mber_no = b.mber_no and
+		 a.quest_no = #{quest_no} and
 		 a.status = '미처리';
 </select>
 
 
-<insert id= "questAnswerInsert" parameterType="String">
-	insert into TB_QUESTION_ANSWER 
-		(answer_contents, mngr_id, cmpl_date)
-	values 
-		('${answer_contents}', ${mngr_id}, ${cmpl_date})
+<insert id= "questAnswerInsert" >
+	INSERT INTO TB_QUESTION_ANSWER
+		(quest_no, answer_contents, mngr_id)
+	VALUES 
+		(${quest_no}, '${answer_contents}', '${mngr_id}');
 </insert>
+
+
+<update id= "questAnswerUpdate" >
+	UPDATE 
+		TB_QUESTION
+	SET
+		status = "처리"
+	where
+		quest_no = #{quest_no};
+</update>
+
+
+<select id= "questResultSelect" resultType="com.plantynet.domain.QuestDoneVO">
+	select
+		a.quest_no,
+		a.quest_category,
+		a.title,
+		a.reg_date,
+		b.email,
+		a.quest_contents,
+		c.cmpl_date,
+		d.mngr_id,
+		c.answer_contents
+	from 
+		TB_QUESTION a, TB_MEMBER b, TB_QUESTION_ANSWER c, TB_MANAGER d
+	where
+		a.quest_no = c.quest_no and
+		a.mber_no = b.mber_no and
+		c.mngr_id = d.mngr_id and
+        a.quest_no = #{quest_no} and
+        a.status = '처리';
+</select>
 
 
 </mapper>

@@ -18,6 +18,6 @@ public interface VoteDAO {
 	
 	public SurveyVO getSurvey(Integer survey_no) throws Exception;					// 하나의 질문 글을 가져오는 메소드
 	
-	public SurResultVO getSurResult(Integer survey_no) throws Exception;				// 해당 질문 글의 결과 통계룰 가져오는 메소드
+	public List<SurResultVO> getSurResult(Integer survey_no) throws Exception;				// 해당 질문 글의 결과 통계룰 가져오는 메소드
 	
 }

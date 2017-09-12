@@ -9,6 +9,7 @@ public class QuestDoneVO {   // '처리' 문의사항 VO
 	private String cmpl_date;
 	private String mngr_id;
 	private String answer_contents;
+	private String quest_contents;
 	
 	
 	public int getQuest_no() {
@@ -59,4 +60,20 @@ public class QuestDoneVO {   // '처리' 문의사항 VO
 	public void setAnswer_contents(String answer_contents) {
 		this.answer_contents = answer_contents;
 	}
+	public String getQuest_contents() {
+		return quest_contents;
+	}
+	public void setQuest_contents(String quest_contents) {
+		this.quest_contents = quest_contents;
+	}
+	
+	@Override
+	public String toString() {
+		return "QuestDoneVO [quest_no=" + quest_no + ", quest_category=" + quest_category + ", title=" + title
+				+ ", reg_date=" + reg_date + ", email=" + email + ", cmpl_date=" + cmpl_date + ", mngr_id=" + mngr_id
+				+ ", answer_contents=" + answer_contents + ", quest_contents=" + quest_contents + "]";
+	}
+	
+	
+	
 }

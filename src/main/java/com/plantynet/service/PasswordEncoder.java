@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public class PasswordEncoder {
 
-	public static String SHA256(String planText) {
+	public String SHA256(String planText) {
 		
 		try {
 			
@@ -37,7 +37,7 @@ public class PasswordEncoder {
 				
 			}
 			
-			return hexString.toString();
+			return hexString.toString().toUpperCase();
 			
 		} catch (Exception e) {
 			
