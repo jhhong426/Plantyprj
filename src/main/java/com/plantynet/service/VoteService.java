@@ -18,6 +18,6 @@ public interface VoteService {
 	
 	public SurveyVO getSurvey(Integer survey_no) throws Exception;
 	
-	public SurResultVO getSurResult(Integer survey_no) throws Exception;
+	public List<SurResultVO> getSurResult(Integer survey_no) throws Exception;
 	
 }

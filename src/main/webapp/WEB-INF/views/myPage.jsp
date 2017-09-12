@@ -7,11 +7,11 @@
 
 <!-- DataPicker -->
 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	  $( function() {
 		    $( "#reportPreDate" ).datepicker({dateFormat: "yy-mm-dd"});
@@ -54,7 +54,8 @@
 			</div>
 
 			<div class="col-md-4">
-				<input type="text" id="questPreDate"> ~ <input type="text" id="questPostDate">
+				<input type="text" id="questPreDate"> ~ <input type="text"
+					id="questPostDate">
 			</div>
 
 			<div class="col-md-1">
@@ -101,7 +102,8 @@
 			</div>
 
 			<div class="col-md-4">
-				<input type="text" id="reportPreDate"> ~ <input type="text" id="reportPostDate">
+				<input type="text" id="reportPreDate"> ~ <input type="text"
+					id="reportPostDate">
 			</div>
 
 			<div class="col-md-1">
@@ -157,7 +159,7 @@
 	<script src="/resources/dist/js/app.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="/resources/dist/js/demo.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 
@@ -248,61 +250,47 @@
 							})
 		});
 		
-		$.fn.dataTable.ext.search.push(
-			    function( settings, data, dataIndex ) {
-			    	var min = new Date($('questPreDate'));
-			    	var max = new Date($('questPostDate'));
-			    	var result = new Date(data[6]);
-			    	
-			        var preDate = parseInt( min, 10 );
-			        var postDate = parseInt( max, 10 );
-			        var dateColumn = parseFloat( data[3] ) || 0; // use data for the age column
-			 
-			        console.log(min + ',' + max + ',' + result + ',' + preDate + ',' + postDate + ',' +dateColumn)
-			        
-			        if ( ( isNaN( preDate ) && isNaN( postDate ) ) ||
-			             ( isNaN( preDate ) && age <= postDate ) ||
-			             ( preDate <= dateColumn   && isNaN( postDate ) ) ||
-			             ( preDate <= dateColumn   && dateColumn <= postDate ) )
-			        {
-			            return true;
-			        }
-			        return false;
-			    }
-			);
-		
-		$('#questPreDate, #questPostDate').keyup( function() {
-	        table.draw();
-	    } );
+	
+		var dateParsing =  function(arg) {
+			var splitArg = arg.split("-");
+			var stringArg = splitArg[0]+splitArg[1]+splitArg[2];
+			var intArg = parseInt(stringArg);
+			return intArg;
+		};
 		
 		
 		
-		function questDoneSearch() {
-			var pre = $("#questPreDate").val();
-			var post = $("#questPostDate").val();
-			
-			$('#question').DataTable().columns(6).search(
-					$('#doneInput').val()).draw();
-			console.log("done Search" + $('#doneInput').val());
-		}
 
+		
+		function questDoneSearch(){
+			$.fn.dataTable.ext.search.push(
+				    function( settings, data, dataIndex ) {
+				        var min = parseInt( dateParsing($('#questPreDate').val()) );
+				        var max = parseInt( dateParsing($('#questPostDate').val()) );
+				        var age = parseFloat( dateParsing(data[6]) ) || 0; // use data for the age column
+				 
+				        console.log("최소값" + min);
+				        console.log("최대값 :" + max);
+				        console.log("에이징: "+  age);
+				        
+				        if ( ( isNaN( min ) && isNaN( max ) ) ||
+				             ( isNaN( min ) && age <= max ) ||
+				             ( min <= age   && isNaN( max ) ) ||
+				             ( min <= age   && age <= max ) )
+				        {
+				            return true;
+				        }
+				        return false;
+				    }
+				);
+			
+				$("#question").DataTable().draw();
+		}
+		
 		function reportDoneSearch() {
 		}
+		
 
-		function dateCheck( settings, data, dataIndex ) {
-			var min = parseInt( $('#min').val(), 10 );
-			var max = parseInt( $('#max').val(), 10 );
-			var age = parseFloat( data[3] ) || 0; // use data for the age column
-			 
-			if ( ( isNaN( min ) && isNaN( max ) ) ||
-				( isNaN( min ) && age <= max ) ||
-				( min <= age   && isNaN( max ) ) ||
-				( min <= age   && age <= max ) )
-				{
-				return true;
-			}
-			return false;
-		}
 	</script>
 </body>
 

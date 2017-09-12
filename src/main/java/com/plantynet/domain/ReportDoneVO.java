@@ -12,7 +12,15 @@ public class ReportDoneVO {
 	private Timestamp cmpl_date;
 	private String answer_category;
 	private int survey_no;
+	private String answer_contents;
 	
+	public String getAnswer_contents() {
+		return answer_contents;
+	}
+	
+	public void setAnswer_contents(String answer_contents) {
+		this.answer_contents = answer_contents;
+	}
 	
 	public int getReport_no() {
 		return report_no;

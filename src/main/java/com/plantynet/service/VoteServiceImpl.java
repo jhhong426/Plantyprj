@@ -43,7 +43,7 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	@Override
-	public SurResultVO getSurResult(Integer survey_no) throws Exception {
+	public List<SurResultVO> getSurResult(Integer survey_no) throws Exception {
 		return voteDao.getSurResult(survey_no);
 	}
 
