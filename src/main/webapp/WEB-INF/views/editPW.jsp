@@ -37,7 +37,7 @@
 	  	<input type="password" name="newPW" id="newPW" placeholder="변경 비밀번호"/>	<br>
 	  	<input type="password" name="chkPW" id="chkPW" placeholder="변경 비밀번호 확인"/>	<br>
 	  	
-	  	<a href="/ask/editPW"><input type="submit" id="btn-editPW" value="비밀번호 변경" /></a>
+	  	<input type="submit" id="btn-editPW" value="비밀번호 변경" />
 
   	</form>
 

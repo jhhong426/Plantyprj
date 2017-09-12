@@ -1,14 +1,17 @@
 package com.plantynet.service;
 
-public interface MemberService {
+import java.util.List;
 
-	// 검색, 수정, 삭제, 표시개수 설정
+import com.plantynet.domain.MemberVO;
+
+public interface MemberService {
 	
-//	public void modify() throws Exceptions;
-//	
-//	public void remove() throws Exception;
-//	
-//	public List<MemberVO> searchMember() throws Exception;
-//	
-//	public void displayCount() throws Exception;
+	public List<MemberVO> memberList() throws Exception;
+
+	public MemberVO getMember(Integer mber_no) throws Exception;
+	
+	public void modifyMember(MemberVO memberVO) throws Exception;
+	
+	public void deleteMember(Integer mber_no) throws Exception;
+
 }
