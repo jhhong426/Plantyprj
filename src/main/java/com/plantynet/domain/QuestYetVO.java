@@ -7,6 +7,7 @@ public class QuestYetVO {    // '미처리' 문의사항 VO
 	private String reg_date;
 	private String email;
 	private String quest_contents;
+	private String status;
 	
 	
 	public int getQuest_no() {
@@ -45,4 +46,11 @@ public class QuestYetVO {    // '미처리' 문의사항 VO
 	public void setQuest_contents(String quest_contents) {
 		this.quest_contents = quest_contents;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 }

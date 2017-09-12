@@ -14,43 +14,43 @@
           <div class="form-group">
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>사원 번호</strong></h5>
+                <label for="">사원번호</label>
                  <input type="text" name="" value="">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>이름</strong></h5>
+                <label for="">이름</label>
                  <input type="text" name="" value="">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>아이디</strong></h5>
+                <label for="">아이디</label>
                  <input type="text" name="" value="">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>비밀번호</strong></h5>
+                <label for="">비밀번호</label>
                 <input type="text" name="" value="">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>소속</strong></h5>
+                <label for="">소속</label>
                  <input type="text" name="" value="">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>직책</strong></h5>
+                <label for="">직책</label>
                  <input type="text" name="" value="">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>권한</strong></h5>
+                <label for="">권한</label>
                   <select id="" class="form-control form-group-inline"
                     onchange="" style="display:inline-block">
                     <option value="1">오퍼레이터</option>
