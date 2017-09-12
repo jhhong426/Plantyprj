@@ -29,10 +29,9 @@ import com.plantynet.service.QuestService;
 import com.plantynet.service.ReportService;
 
 @Controller
+@RequestMapping("/myPage")
 public class MyPageController {
 	
-//	@Inject
-//	private StandardPasswordEncoder encoder;
 	
 	@Autowired
 	private AuthService authService;
@@ -43,7 +42,7 @@ public class MyPageController {
 	@Autowired
 	private QuestService questService;
 
-	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public void myPageGet(Model model) throws Exception {
 		
 		// 문의사항 답변완료 내용
@@ -58,17 +57,19 @@ public class MyPageController {
 		
 	}
 	
-	@RequestMapping(value = "/myPage", method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public void myPagePost() throws Exception {
 		
 	}
 	
-	@RequestMapping(value = "/editPW", method = RequestMethod.GET)
-	public void editPWGet() throws Exception {
+	@RequestMapping(value = "/modifyPW", method = RequestMethod.GET)
+	public String editPWGet() throws Exception {
+		
+		return "modifyPW";
 		
 	}
 	
-	@RequestMapping(value = "/editPW", method = RequestMethod.POST)
+	@RequestMapping(value = "/modifyPW", method = RequestMethod.POST)
 	public void editPWPost(EditPasswordDTO dto, HttpServletResponse response, HttpSession session, Model model) throws Exception {
 		
 		

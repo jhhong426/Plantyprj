@@ -1,123 +1,96 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="true" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-	<%@include file="include/header.jsp" %>
+<%@include file="include/header.jsp"%>
 
- 
-	<h2>  <!-- 미처리 문의사항 Count 출력 -->
-		<div id='countNot' ></div>
-	</h2>
 
-	<!--  
-	<select id="select1" onchange="itemChange()">
-		<option>문의자</option>
-		<option>문의유형</option>
-	</select>
-	<select id="select2">
-	</select>    -->
+<h2>회원 리스트</h2>
 
-	
-	<div class="box-body">
-     <div class="input-group">
-       <div class="row">
-         <div class="col-md-6">
-           <select id="questCategory" class="form-control form-group-inline" onchange="selectChange()" style="display:inline-block">
-             <option value="4">문의자</option>
-             <option value="1">문의유형</option>
-           </select>
-         </div>
-         <div class="col-md-6">
-           <input type="text" id="questSearch" class="form-control"></input>
-         </div>
-       </div>
-     </div>
+<hr>
 
-	<input type="button" value="문의사항 답변작성" onclick="popup();" />
-        <script language="javascript"> 
-            function popup() { 
-            	window.open("quest_answer.jsp", "문의사항 답변 작성", "width=600, height=400, left=100, top=50"); 
-            } 
-       </script>
-	
-	<!-- DataTable로 '미처리' 문의사항 데이터 출력 -->
-	<table id="quest_not" class="display" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-				<th style="text-align:center">전화번호</th>
-				<th style="text-align:center">이메일</th>
-				<th style="text-align:center">성별</th>
-				<th style="text-align:center">생년월일</th>
-				<th style="text-align:center">질문 수</th>
-				<th style="text-align:center">투표 수</th>
-				<th style="text-align:center">문의 수</th>
-				<th style="text-align:center">신고 수</th>
-				<th style="text-align:center">피 신고 수</th>
-				<th style="text-align:center">가입일자</th>
-				<th style="text-align:center">수정하기</th>
-				</tr>
-			</thead>	
-	        <tbody id="mouseclick" onchange="selectMouse()" style="text-align:center">
-	        <c:forEach var="voNot" items="${voNot}">
+
+
+<div class="box-body">
+	<div class="input-group">
+		<div class="row">
+			<div class="col-md-5">
+				<select id="searchCategory" class="form-control form-group-inline"
+					style="display: inline-block">
+					<option value="2">이메일</option>
+					<option value="1">전화번호</option>
+					<option value="4">생년월일</option>
+				</select>
+			</div>
+			<div class="col-md-5" id="yetDynamicCategory">
+				<input type="text" id="keywords" class="form-control"></input>
+			</div>
+			<div class="col-md-2">
+				<button class="fa fa-search" id="searchMember"
+					onclick="searchMember()" style="height: 30px; width: 40px;"></button>
+			</div>
+		</div>
+	</div>
+
+	<!-- DataTable로 회원 데이터 출력 -->
+	<table id="memberList" class="display" cellspacing="0" width="100%">
+		<thead>
 			<tr>
-			<td>${voNot.quest_no}</td>
-			<td>${voNot.quest_category}</td>
-			<td>${voNot.title}</td>
-			<td>${voNot.reg_date}</td>
-			<td>${voNot.email}</td>
-			<td>${voNot.email}</td>
-			<td>${voNot.email}</td>
-			<td>${voNot.email}</td>
-			<td>${voNot.email}</td>
-			<td>${voNot.email}</td>
-			<td>${voNot.email}</td>
+				<th><input type="checkbox" id="selectAll" name="selectAll"
+					value="chkVal" /></th>
+				<th style="text-align: center">전화번호</th>
+				<th style="text-align: center">이메일</th>
+				<th style="text-align: center">성별</th>
+				<th style="text-align: center">생년월일</th>
+				<th style="text-align: center">질문 수</th>
+				<th style="text-align: center">투표 수</th>
+				<th style="text-align: center">문의 수</th>
+				<th style="text-align: center">신고 수</th>
+				<th style="text-align: center">피 신고 수</th>
+				<th style="text-align: center">가입일자</th>
+				<th style="text-align: center">수정하기</th>
 			</tr>
-			</c:forEach>
-	        </tbody>
-	</table>
-   </div>	
-	
-	
-	<br/>  <!-- 그냥 한 칸 띄운 거 -->
-	
-	
-	<h2>    <!-- 처리 문의사항 Count 출력 -->
-		<div id='countCmpl' ></div>
-	</h2>
-	
-	<!-- DataTable로 '처리' 문의사항 데이터 출력 -->
-	<table id="quest_cmpl" class="display" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-				<th style="text-align:center">등록번호</th>
-				<th style="text-align:center">문의유형</th>
-				<th style="text-align:center">제목</th>
-				<th style="text-align:center">문의시간</th>
-				<th style="text-align:center">문의자</th>
-				<th style="text-align:center">답변완료시간</th>
-				<th style="text-align:center">담당자</th>
-				</tr>
-			</thead>	
-	        <tbody style="text-align:center">
-	        <c:forEach var="voCmpl" items="${voCmpl}">
+		</thead>
+		<c:forEach var="member" items="${member}">
 			<tr>
-			<td>${voCmpl.quest_no}</td>
-			<td>${voCmpl.quest_category}</td>
-			<td>${voCmpl.title}</td>
-			<td>${voCmpl.reg_date}</td>
-			<td>${voCmpl.email}</td>
-			<td>${voCmpl.cmpl_date}</td>
-			<td>${voCmpl.mngr_id}</td>
+				<td><input type="checkbox" id="selectMember"
+					name="selectMember" value="${member.mber_no}" /></td>
+				<td>${member.phone}</td>
+				<td>${member.email}</td>
+				<td>${member.gender}</td>
+				<td>${member.birth}</td>
+				<td>${member.survey_cnt}</td>
+				<td>${member.vote_cnt}</td>
+				<td>${member.quest_cnt}</td>
+				<td>${member.report_cnt}</td>
+				<td>${member.reported_cnt}</td>
+				<td>${member.reg_date}</td>
+				<td><button type="button" id="modifyMember" onclick="modify(${member.mber_no})">정보수정</button></td>
 			</tr>
-			</c:forEach>
-	        </tbody>
+		</c:forEach>
+		</tbody>
 	</table>
+	<div class="row">
+	
+		<div class="col-md-2 pull-right">
+			<button type="button" class="btn btn-danger pull-right"id="deleteMember">삭제</button>
+		</div>
+	</div>
+	
+	<form id="frmDelete" class="frmForDelete" action="" method="post" hidden="hidden">
+
+	</form>
+
+</div>
+
+<!-- 레이어 팝업  Wrapper-->
+<div id="popupWrapper" style="display: none;"></div>
 
 
 
 
-	<%@include file="include/footer.jsp" %>
+<%@include file="include/footer.jsp"%>
 
 <!-- jQuery 2.2.3 -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -134,105 +107,146 @@
 <script src="/resources/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/dist/js/demo.js"></script>
+<!--  bpopup -->
+<script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
 
 
 
 <script>
+	// 체크박스 모두선택, 모두해제
+	$(document).ready(function() {
+
+		$("#selectAll").click(function() {
+
+			if ($("#selectAll").prop("checked")) {
+
+				$("input[name=selectMember]").prop("checked", true);
+
+			} else {
+
+				$("input[name=selectMember]").prop("checked", false);
+			}
+		})
+	})
 
 	// DataTable 옵션 변경, 미처리 문의사항 옵션 설정
-    var quest_not = $("#quest_not, #quest_cmpl").DataTable({
-           "language" : {
-        	     search : "검색 : ",
-        	    'zeroRecords'	: "검색결과가 없습니다.",
-   				'infoFiltered'	: " ",
-   				'lengthMenu'	: "출력 개수 : _MENU_",
-   				'paginate'		: {
-   					"first"			: "처음",
-   					"last"			: "마지막",
-   					"next"			: "다음",
-   					"previous"		: "이전"
-   				}
-   			},
-   		   "scrollY"		: 400,
-   		   "scrollCollapse" : true,
-           "lengthMenu"		: [15, 25, 50],
-           "pageLength"		: 25,
-           "pagingType"		: "full_numbers",
-           "lengthChange": true,
-           "searching": true,
-    	   "paging": true,
-           "info": false, 
-           "ordering": false,   // 칼럼별로 따로 오름차순, 내림차순할 필요 없어서 설정 꺼놨음
-           "autoWidth": false,
-           "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
-			    'rt' +
-			    '<"bottom"<"col-md-8"p><"col-md-4"B>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
-      });
-	
-    $('#questSearch').on( 'keyup', function () {
-    	quest_not
-            .columns( $('#questCategory > option:selected').val() )
-            .search( this.value )
-            .draw();
-    });
-    
-    function selectChange(){
-        var temp = $("#questSearch").val();
-        quest_not
-              .search('')
-              .columns().search('')
-              .draw();
-        quest_not
-              .columns( $('#questCategory > option:selected').val() )
-              .search(temp)
-              .draw();
-      }
+	var memberList = $("#memberList").DataTable(
+			{
+				"language" : {
+					search : "검색 : ",
+					'zeroRecords' : "검색결과가 없습니다.",
+					'infoFiltered' : " ",
+					'lengthMenu' : "출력 개수 : _MENU_",
+					'paginate' : {
+						"first" : "처음",
+						"last" : "마지막",
+						"next" : "다음",
+						"previous" : "이전"
+					}
+				},
+				"scrollY" : 400,
+				"scrollCollapse" : true,
+				"lengthMenu" : [ 15, 25, 50 ],
+				"pageLength" : 25,
+				"pagingType" : "full_numbers",
+				"lengthChange" : true,
+				"searching" : true,
+				"paging" : true,
+				"info" : false,
+				"ordering" : false, // 칼럼별로 따로 오름차순, 내림차순할 필요 없어서 설정 꺼놨음
+				"autoWidth" : false,
+				"dom" : '<"top"<"col-md-10"B><"col-md-2"l>>' + 'rt'
+						+ '<"bottom"<"col-md-8"p><"col-md-4"B>>' // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
+			});
 
-     
-	$('#mouseclick').on('click', 'tr', function () {
-	    alert();
-    });
-    
-    function selectMouse(){
-    	var popup = quest_not.row(this).popup();
-        alert();
-    }
-    
-    
-    
-    <%--
-    itemChange();
-    if($('#selectItem').val() == "문의자" ){  // 1번째 카테고리가 '문의자'일 때
-    	$('#select2').hide();   // 2번째 카테고리 드롭박스를 숨김
-    } else if($('#selectItem').val() == "문의유형" ){  // 1번째 카테고리가 '문의유형'일 때
-    	$('#select2').show();   // 2번째 카테고리 드롭박스를 보여줌
-    } 
-    
-    function itemChange() {
-    	var quest_category = ["서비스", "투표", "회원관리", "금칙어", "운영", "기타"];
-    	var selectItem = $("#select1").val();
-    	var changeItem;
-    	if(selectItem == "문의유형") {
-    	  changeItem = quest_category;
-    	}
-    	
-    	$('#select2').empty();
-    	for(var count = 0; count < changeItem.length; count++){                
-    	         var option = $("<option>"+changeItem[count]+"</option>");
-    	         $('#select2').append(option);
-    	}
-    }
-	--%>
-  
-  // 처리/미처리 각 출력 건수를 count 해서 뿌려주는 역할
-  var num1 = $('#quest_not tr').length-1;
-  var num2 = $('#quest_cmpl tr').length-1;
-  $('#countNot').html("미처리 문의사항 :" + num1);
-  $('#countCmpl').html("처리 문의사항 :" + num2);
-  
-  
-	
-	
+	// 카테고리 + 키워드 검색
+	function searchMember() {
+
+		var searchCategory = $("#searchCategory option:selected").val();
+
+		var keywords = $("#keywords").val();
+
+		$('#memberList').DataTable().columns(searchCategory).search(keywords)
+				.draw()
+	}
+
+	// 수정 팝업 출력
+	function modify(mberno) {
+		//var mberNo = $(this).children("td").eq(0).val();
+		var mberNo = mberno;
+		console.log(mberNo);
+		openMemberInfoPopup(mberNo);
+	}
+
+	// 수정 팝업의 정보
+	function openMemberInfoPopup(mberNo) {
+
+		$.ajax({
+			type : "GET",
+			url : "/member/info",
+			data : {
+				memberNo : mberNo
+			},
+			dataType : "html",
+			success : function(data) {
+				$("#popupWrapper").bPopup({
+					follow : [ true, true ],
+				position : [ 700, 40 ]
+				});
+				$("#popupWrapper").html(data);
+
+			},
+			error : function(request, status) {
+				$("#popupWrapper").hide();
+				alert("팝업 오류");
+			}
+		});
+	}
+
+	// 회원 삭제
+	$("#deleteMember").click(
+			function() {
+
+				var cnt = $("input[type='checkbox']:checked").length;
+
+				if (cnt < 1) {
+					alert("선택된 회원이 없습니다.");
+				} else {
+
+					memberList.$("input[type='checkbox']").each(
+							function() {
+								if (this.checked) { //체크된게 있으면 form에 input 동적 추가		
+									$("#frmDelete").append(
+											$('<input>').attr('type', 'hidden')
+													.attr('name', 'deleteMemberList')
+													.val($(this).parents("td").next().text()));
+								}
+							});
+
+					$.ajax({
+
+						type : "GET",
+						url : "/member/confirm",
+						data : {
+
+						},
+						dataType : "html",
+						success : function(data) {
+
+							$("#popupWrapper").bPopup({
+								follow : [ true, true ],
+							//position: [465, 0] 
+							});
+							$("#popupWrapper").html(data);
+
+						},
+						error : function(request, status) {
+							$("#popupWrapper").hide();
+							alert("팝업 오류");
+						}
+					});
+				}
+			});
 </script>
 </body>
 </html>

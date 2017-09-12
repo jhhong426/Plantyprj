@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.plantynet.mapper.MemberMapper">
+
+
+<select id= "selectAll" resultType="MemberVO">
+	SELECT
+		mber_no, phone, email, gender, birth, survey_cnt, quest_cnt, report_cnt, reported_cnt, reg_date
+	FROM 
+		TB_MEMBER;
+
+</select>
+
+<select id= "selectOne" resultType="MemberVO">
+	SELECT
+		mber_no, phone, email, gender, birth, survey_cnt, quest_cnt, report_cnt, reported_cnt
+	FROM 
+		TB_MEMBER
+	WHERE
+		mber_no = #{mber_no};
+
+</select>
+
+<update id="update">
+	UPDATE 
+		TB_MEMBER
+	SET 
+		phone = #{phone}, email = #{email}, gender = #{gender}, birth = #{birth}
+	WHERE
+		mber_no = #{mber_no};
+
+</update>
+
+<delete id="delete">
+	DELETE FROM
+		TB_MEMBER
+	WHERE
+		mber_no = #{mber_no};
+</delete>
+
+</mapper>
