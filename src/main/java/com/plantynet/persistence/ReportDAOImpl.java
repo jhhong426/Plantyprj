@@ -28,4 +28,23 @@ public class ReportDAOImpl implements ReportDAO {
 		public List<ReportDoneVO> getReportDone(){
 			return sqlSession.selectList(namespace+".reportDoneSelect"); 
 		}
+		@Override
+		public ReportDoneVO getReportDonePick(int report_no) {
+			return sqlSession.selectOne(namespace+".reportDonePick",report_no); 
+		}
+		
+		@Override
+		public ReportYetVO getReportYetPick(int report_no) {
+			return sqlSession.selectOne(namespace+".reportYetPick",report_no); 
+		}
+		@Override
+		public void answerInsert(ReportDoneVO vo) {
+				sqlSession.insert(namespace+".answerInsert",vo); 
+		}
+		
+		@Override
+		public void answerUpdate(ReportDoneVO vo) {
+			sqlSession.update(namespace+".answerUpdate",vo); 
+		}
+		
 }

@@ -19,5 +19,5 @@ public interface VoteService {
 	public SurveyVO getSurvey(Integer survey_no) throws Exception;
 	
 	public List<SurResultDTO> getSurResult(Integer survey_no) throws Exception;
-	
+
 }

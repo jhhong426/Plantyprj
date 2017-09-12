@@ -117,9 +117,7 @@
 
 
 <!-- 레이어 팝업  Wrapper-->
-	        <div id="popupWrapper" style="display:none;">
-	        
-	        </div>
+<div id="popupWrapper" style="display: none;"></div>
 
 
 <%@include file="include/footer.jsp"%>
@@ -140,7 +138,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/dist/js/demo.js"></script>
 <!-- page script -->
- <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
+<script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
 <!--  bpopup -->
 <script>
 	$(function() {
@@ -239,23 +237,22 @@
 
 	$("#report1 tr").dblclick(function() {
 		var reportNo = $(this).children("td").eq(0).text();
-		console.log("reportNo클릭:"+reportNo);
-		openReportInfoPopup(reportNo);
+		console.log("미처리reportNo클릭:" + reportNo);
+		openReportYetInfoPopup(reportNo);
 	});
 
-	
 	$("#report2 tr").dblclick(function() {
 		var reportNo = $(this).children("td").eq(0).text();
-		console.log("reportNo클릭:"+reportNo);
-		openReportInfoPopup(reportNo);
+		console.log("처리reportNo클릭:" + reportNo);
+		openReportDoneInfoPopup(reportNo);
 	});
 
-	function openReportInfoPopup(selectedReportNo) {
-		console.log("openReportInfoPopup Function gogo");
-		 
+	function openReportDoneInfoPopup(selectedReportNo) {
+		console.log("처리 팝업 스크립트 함수 수행");
+
 		$.ajax({
 			type : "GET",
-			url : "/report/info",
+			url : "/report/doneInfo",
 			data : {
 				reportNo : selectedReportNo
 			},
@@ -274,7 +271,31 @@
 			}
 		});
 	}
-	
+
+	function openReportYetInfoPopup(selectedReportNo) {
+		console.log("미처리 팝업 스크립트 함수 수행");
+
+		$.ajax({
+			type : "GET",
+			url : "/report/yetInfo",
+			data : {
+				reportNo : selectedReportNo
+			},
+			dataType : "html",
+			success : function(data) {
+				$("#popupWrapper").bPopup({
+					follow : [ true, true ],
+					position : [ 150, 40 ]
+				});
+				$("#popupWrapper").html(data);
+
+			},
+			error : function(request, status) {
+				$("#popupWrapper").hide();
+				alert("리뷰 팝업 오류");
+			}
+		});
+	}
 </script>
 
 <%@include file="include/footer.jsp"%>
