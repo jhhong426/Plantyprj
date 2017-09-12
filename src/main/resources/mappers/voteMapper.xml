@@ -65,14 +65,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 질문글의 결과 통계를 가져오는 쿼리문 -->
 	<select id="getSurResult" resultType="com.plantynet.domain.SurResultVO">
-		SELECT B.item_contents,
-		B.item_no, D.gender, COUNT(D.gender) AS "SCORE"
-		FROM TB_SURVEY A, TB_SURVEY_ITEM B, TB_VOTE C, TB_MEMBER D
-		WHERE A.survey_no = #{survey_no}
-		AND A.survey_no = B.survey_no
-		AND A.survey_no = C.survey_no
-		AND B.item_no = C.item_no
-		AND C.mber_no = D.mber_no
+		SELECT B.item_contents, B.item_no, D.gender, COUNT(D.gender) AS "SCORE"
+		  FROM TB_SURVEY A, TB_SURVEY_ITEM B, TB_VOTE C, TB_MEMBER D
+		  WHERE A.survey_no = #{survey_no}
+		  AND A.survey_no = B.survey_no 
+		  AND A.survey_no = C.survey_no
+		  AND B.item_no = C.item_no 
+		  AND C.mber_no = D.mber_no
 		GROUP BY B.item_no, D.gender;
-	</select>
+	</select> 
 </mapper>

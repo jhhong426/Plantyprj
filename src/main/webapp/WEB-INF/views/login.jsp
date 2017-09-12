@@ -29,22 +29,42 @@
 </head>
 <body>
   
- 	<h1>Manager Login</h1>
-
-	<!-- 로그인 Form -->
- 	<form name="frmLogin" action="/loginPost" method="POST" onSubmit="return frmChk();">
- 	
- 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	 	<input type="text" name="mngr_id" id="mngr_id" placeholder="관리자 아이디" /> <br>
-	  	<input type="password" name="password" id="password" placeholder="관리자 비밀번호"/>
-	  	
-	  	<input type="submit" id="btn-login" value="로그인" />
-	  	
-	  	<!-- 로그인 실패시 실패 문구가 들어간 페이지 상태로 Redirect -->
-	
-	  	
-	
-  	</form>
+ 	<!-- 로그인 form -->
+  <div class="container" style="margin-top:150px;">
+    <div class="row">
+      <div class="formWrapper center-block" style="width:520px; height:360px; border:1px solid; background-color:#243849; border-radius:10px;">
+        <h1 class="text-center" style="color:#ffffff">물어보자 관리 시스템</h1>
+        <div class="center-block" style="background-color:#ffffff; height:250px; width:470px; border-radius: 10px;" >
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <h3 class="box-title">로그인</h3>
+            </div>
+            <form name="frmLogin" class="form-horizontal" action="/loginPost" method="post" onsubmit="return frmChk();" >
+              <div class="box-body">
+                <div class="form-group">
+                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                  <label for="" class="col-sm-3 control-label">관리자 ID</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="mngr_id" id="mngr_id" class="form-control">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="" class="col-sm-3 control-label">비밀번호</label>
+                  <div class="col-sm-9">
+                    <input type="password" name="password" id="password" class="form-control">
+                  </div>
+                </div>
+                <div class="box-footer">
+                  <br>
+                  <button type="submit" id="btn-login" class="btn btn-large btn-primary center-block">로그인</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- jQuery 2.2.3 -->
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -65,6 +85,17 @@
 
 <!-- page script -->
 <script type="text/javascript">
+
+	
+	var flag = "<c:out value='${flag}'/>";
+	
+
+	
+	if(flag == "false"){
+		var str = "<h6 style='color:#FF0040'>아이디 혹은 비밀번호가 올바르지 않습니다.</h6>";
+		$(".box-footer").children("br").remove();
+		$(".box-footer").prepend(str);
+	}
 	
 	
 

@@ -58,7 +58,7 @@
               <textarea class="form-control" rows="8" cols="30" disabled>${survyInfo.survey_contents }</textarea>
             </div>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="tabResult">
               <tbody>
                 <tr>
                   <th>선택지</th>
@@ -66,18 +66,16 @@
                   <th>남자</th>
                   <th>여자</th>
                 </tr>
-                <tr>
-                  <td>선택지1</td>
-                  <td>40</td>
-                  <td>30</td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <td>선택지2</td>
-                  <td>40</td>
-                  <td>30</td>
-                  <td>10</td>
-                </tr>
+                <c:forEach items="${survyResult}" var="result">
+                	<tr>
+                		<td>${result.item }</td>
+                		<td>${result.male_score + result.female_score }  명</td>
+                		<td>${result.male_score }  명</td>
+                		<td>${result.female_score}  명</td>
+                	</tr>
+                </c:forEach>
+                
+                
               </tbody>
             </table>
 
@@ -91,10 +89,43 @@
       <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
       <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
       <script type="text/javascript">
+			
+      		var rowCount = 0;
+      		var totalCount = 0;
+      		var maleCount = 0;
+      		var femaleCount = 0;
+      		
+      		$("#tabResult tr").each(function(){
+      			if(rowCount != 0){
+      				
+      				var tds = $(this).children("td");
+      				
+      				totalCount += parseInt($(tds).eq(1).text());
+      				maleCount += parseInt($(tds).eq(2).text());
+      				femaleCount += parseInt($(tds).eq(3).text());
+      			}
+      			
+      			rowCount ++;
+      		});
+      		
+      		if(rowCount > 1){
+      			
+      			var str = "<tr><td>합계</td><td>" +
+      						totalCount + " 명</td><td>" +
+      						maleCount + " 명</td><td>" +
+      						femaleCount + " 명</td></tr>"
+      			$("#tabResult > tbody:last").append(str);
+      		}
+      		
+      		console.log(totalCount, maleCount, femaleCount);
       
-		      $("#btnClosePopup").click(function(){
-		 		 $("#popupWrapper").bPopup().close();
-		 	 }); 
+			$("#btnClosePopup").click(function(){
+				$("#popupWrapper").bPopup().close();
+			}); 
+		      
+		      
+		      
+		      
       
       </script>
       
