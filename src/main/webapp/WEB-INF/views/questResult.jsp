@@ -7,6 +7,7 @@
 	<div class="box-header with-border">
     </div>
         <div class="box-body">
+        <c:forEach var="questResultSelect" items="${questResultSelect}">
           <div class="form-group">
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
@@ -57,6 +58,7 @@
         <div class="box-footer">
           <button id="btnClosePopup" type="button" name="button" class="btn btn-primary center-block">확인</button>
         </div>
+        </c:forEach>
       </div>
       </div>
       
