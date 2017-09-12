@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
@@ -75,6 +76,11 @@ public class ManagerController {
 		model.addAttribute("mngrVO", managerVO);  
 	
 		return "manager";  
+	}
+	
+	@RequestMapping(value = "/create", method = RequestMethod.GET) 
+	public String managerCreate(Model model)  {   
+		return "managerCreate";
 	}
 }
 

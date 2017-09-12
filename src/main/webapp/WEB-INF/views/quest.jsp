@@ -216,7 +216,7 @@
 		$.ajax({
 			
 		type:"GET",
-		url:"/quest/Answer",
+		url:"/quest/selectAnswer",
 		data: {
 			answerNo : selectedAnswerNo
 		},
@@ -301,7 +301,37 @@
     var num2 = $('#questDoneSelect tr').length-1;  // 처리 출력 건수를 count 해서 뿌려주는 역할
     $('#countDone').html("처리 문의사항 :" + num2);
   
-    
+    // 처리 문의사항 Table row 클릭 이벤트
+	$("#questDoneSelect tr").dblclick(function(){
+		var resultNo = $(this).children("td").eq(0).text()
+		openResultPopup(resultNo);
+    });
+	  
+	// 처리 문의사항 상세 팝업 함수
+	function openResultPopup(selectedResultNo){
+		$.ajax({
+			
+		type:"GET",
+		url:"/quest/selectResult",
+		data: {
+			resultNo : selectedResultNo	
+		},
+		dataType:"html",
+		success:function(data){
+				
+		$("#popupWrapper").bPopup({
+			follow: [true, true],
+		    position: [465, 0] 
+		});
+		$("#popupWrapper").html(data);
+				
+		},
+		error:function(request, status){
+			$("#popupWrapper").hide();
+			alert("팝업 오류");
+		}
+		});
+	}
     
     
     
