@@ -12,4 +12,5 @@ public interface ReportDAO {
 		public ReportYetVO getReportYetPick(int report_no);
 		public void answerInsert(ReportDoneVO vo);
 		public void answerUpdate(ReportDoneVO vo);
+		public void reportPlus(ReportDoneVO vo);
 }

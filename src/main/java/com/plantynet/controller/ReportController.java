@@ -91,7 +91,7 @@ public class ReportController {
 
 	@RequestMapping(value = "/report_answerInsert", method = RequestMethod.POST)
 	public String report_answerInsert(int report_no, String mngr_id, String answer_category, String answer_contents,
-			Model model) { // 뷰로부터 DB에 삽입할 금칙어의 이름을 String word로 가져옴
+			int survey_no, Model model) { // 뷰로부터 DB에 삽입할 금칙어의 이름을 String word로 가져옴
 		logger.info("report_answerInsert");
 		ReportDoneVO vo = new ReportDoneVO();
 		vo.setReport_no(report_no);
@@ -101,9 +101,11 @@ public class ReportController {
 		} else {
 			vo.setAnswer_category("블라인드");
 		}
+		vo.setSurvey_no(survey_no);
 		vo.setAnswer_contents(answer_contents);
 		reportService.answerInsert(vo);
 		reportService.answerUpdate(vo);
+		//reportService.reportPlus(vo);
 		return "redirect:/report";// 삽입 완료시 금칙어 관리페이지로 리다이렉트
 	}
 }

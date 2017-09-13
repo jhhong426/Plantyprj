@@ -42,4 +42,9 @@ public class ReportServiceImpl implements ReportService {
 		reportDAO.answerUpdate(vo);
 	}
 	
+	@Override
+	public void reportPlus(ReportDoneVO vo) {
+		reportDAO.reportPlus(vo);
+	}
+	
 }

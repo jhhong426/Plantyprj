@@ -80,9 +80,10 @@
 
 					</tbody>
 				</table>
-
 			</div>
 		</div>
+
+
 		<div class="col-md-6">
 
 			<form action="/report_answerInsert" onsubmit="onSubmitFunction()"
@@ -92,8 +93,8 @@
 				<div class="row">
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
 						<label for="">신고글 번호</label> <input type="text" name="report_no"
-							value="${vo.report_no}" readOnly> <label>신고자</label>
-						<input type="text" value="${vo.email}" readOnly>
+							value="${vo.report_no}" readOnly> <label>신고자</label> <input
+							type="text" value="${vo.email}" readOnly>
 					</div>
 				</div>
 
@@ -115,8 +116,10 @@
 
 				<div class="row">
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
+
 						<label for="">담당자</label> <input type="text" name="mngr_id" value="${login.getMngr_id()}" readOnly> 
 							<label for="">처리시간</label> <input type="text" name="" value="" readOnly>
+
 					</div>
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
 						<label>처리유형</label> <select id="answer_category"
@@ -134,8 +137,8 @@
 							cols="30"></textarea>
 						<label>금칙어 추가</label> <input type="text" id="answerCategoryInput"
 							name="popupWord">
-						<button id="createBtn" style="display: inline;" type="submit"
-							onclick="return validateInsertForm()">추가</button>
+						<button id="createBtn" style="display: inline;" type="button"
+							onclick="return validateInsert()">추가</button>
 					</div>
 
 					<div class="col-md-5"></div>
@@ -145,15 +148,11 @@
 						<button id="btnClosePopup" type="button" class="btn btn-primary">취소</button>
 					</div>
 				</div>
+				<input type="hidden" name="survey_no"value="${survyInfo.survey_no}"> 
 			</form>
 		</div>
 	</div>
 </div>
-
-
-
-
-
 
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
@@ -162,7 +161,7 @@
 		$("#popupWrapper").bPopup().close();
 	});
 
-	function validateInsertForm() {
+	function validateInsert() {
 		var insertWord = $('#answerCategoryInput').val();
 		if (confirm(insertWord + "를 삽입하시겠습니까 ?")) {
 			jQuery.ajax({
@@ -192,11 +191,10 @@
 		}
 
 	}
-	
+
 	$("#btnClosePopup").click(function() {
 		$("#popupWrapper").bPopup().close();
 	});
-	
 </script>
 
 

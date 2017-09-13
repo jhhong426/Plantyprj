@@ -40,8 +40,8 @@
 							<td>${vo.word}
 								<form style="display: inline;" name="prohibit_delete"
 									method="post" action="/prohibit_delete"
-									onsubmit="return validateDeleteForm()">
-									<button id="row" style="display: inline;" type="submit"
+									onsubmit="return validateDeleteForm('${vo.word}')">
+									<button id="${vo.word}" style="display: inline;" type="submit"
 										name="word" value="${vo.word}">X</button>
 								</form>
 							</td>
@@ -118,9 +118,8 @@
 	}
 
 	//삭제 하시겠습니까 ?? validation
-	function validateDeleteForm() {
-		var deleteWord = $('#row').val();
-		if (confirm(deleteWord + "를 삭제 하시겠습니까 ?")) {
+	function validateDeleteForm(word) {
+		if (confirm(word + "를 삭제 하시겠습니까 ?")) {
 			return true;
 		} else {
 			return false;

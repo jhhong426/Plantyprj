@@ -182,6 +182,7 @@
 	}
     
     function yetCategoryChange() {  // 미처리 검색 카테고리(문의유형) 설정
+    	$('#questYetSelect').DataTable().columns().search("").draw();
 		if($("#yetCategory option:selected").val() == 1 ){
 			$("#yetDynamicCategory").html(
 					"<select id='yetCategoryInput' class='form-control form-group-inline'"
@@ -280,6 +281,7 @@
 			}
 	}
     function doneCategoryChange() {
+    	$('#questDoneSelect').DataTable().columns().search("").draw();
 		if($("#doneCategory option:selected").val() == 1){
 			$("#doneDynamicCategory").html(
 					"<select id='doneCategoryInput' class='form-control form-group-inline'"
