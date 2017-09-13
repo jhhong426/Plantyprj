@@ -20,20 +20,20 @@
 </select>
 
 <select id= "questDoneSelect" resultType="com.plantynet.domain.QuestDoneVO">
-	select
+       select
 		a.quest_no,
 		a.quest_category,
 		a.title,
 		a.reg_date,
-		c.email,
-		b.cmpl_date,
+		b.email,
+		c.cmpl_date,
 		d.mngr_id
 	from 
-		TB_QUESTION a, TB_QUESTION_ANSWER b, TB_MEMBER c, TB_MANAGER d
+		TB_QUESTION a, TB_MEMBER b, TB_QUESTION_ANSWER c, TB_MANAGER d
 	where
-		a.mber_no = c.mber_no and
-        a.quest_no = b.quest_no and
-        b.mngr_id = d.mngr_id and
+		a.quest_no = c.quest_no and
+		a.mber_no = b.mber_no and
+		c.mngr_id = d.mngr_id and
         a.status = '처리';
 </select>
 

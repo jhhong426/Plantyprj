@@ -11,10 +11,11 @@ public class ManagerVO {
 	private String mngr_id;		// 관리자 ID
 	private String password;	// 관리자 PW
 	private String mngr_name;	// 관리자 이름
-	private String emp_no;		// 관리자 사원번호
+	private int emp_no;		    // 관리자 사원번호
 	private String department;	// 관리자 부서
 	private String position;	// 관리자 직책
 	private String authority;	// 관리자 권한
+	private String status;      // 관리자 상태
 
 	public Integer getMngr_no() {
 		return mngr_no;
@@ -48,11 +49,11 @@ public class ManagerVO {
 	    this.mngr_name = mngr_name;
 	}
 	  
-	public String getEmp_no() {
+	public int getEmp_no() {
 		return emp_no;
 	}
 	
-	public void setEmp_no(String emp_no) {
+	public void setEmp_no(int emp_no) {
 		this.emp_no = emp_no;
 	}
 	
@@ -79,7 +80,16 @@ public class ManagerVO {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+	
 		
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "ManagerVO [mngr_id=" + mngr_id + ", mngr_name=" + mngr_name +

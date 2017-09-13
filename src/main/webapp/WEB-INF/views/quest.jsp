@@ -167,7 +167,7 @@
            "autoWidth": false,
            "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
 			    'rt' +
-			    '<"bottom"<"col-md-8"p><"col-md-4"B>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
+			    '<"bottom pull-left"<"col-md-12"p>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
     		});
     		
     function yetSearch() {  // 미처리 검색 옵션 설정
@@ -266,7 +266,7 @@
         "autoWidth": false,
         "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
 			    'rt' +
-			    '<"bottom"<"col-md-8"p><"col-md-4"B>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
+			    '<"bottom pull-left"<"col-md-12"p>>'  // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
  		});
     
     function doneSearch() {

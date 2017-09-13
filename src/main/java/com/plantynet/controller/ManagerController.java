@@ -78,9 +78,40 @@ public class ManagerController {
 		return "manager";  
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET) 
-	public String managerCreate(Model model)  {   
-		return "managerCreate";
+	// 관리자계정 생성 팝업창 띄우기
+	@RequestMapping(value = "/createPopup", method = RequestMethod.GET)
+	public String managerPopupCreate() throws Exception {
+
+		return "/managerCreate";
 	}
+	
+	// 관리자계정 입력값 DB로 insert하기
+	@RequestMapping(value = "/create", method = RequestMethod.POST) 
+	public String managerCreate(ManagerVO vo, @RequestParam("password") String password)  {   
+		//System.out.println(password);
+		PasswordEncoder sha256Encoder = new PasswordEncoder();
+		vo.setPassword(sha256Encoder.SHA256(password));
+		service.regist(vo);
+		
+		return "redirect:/manager";
+	}
+	
+	// 관리자계정 정보수정 팝업창 띄우기
+	@RequestMapping(value = "/updatePopup", method = RequestMethod.GET)
+	public String managerPopupUpdate(@RequestParam("updateNo") Integer updateNo, Model model) throws Exception {
+		model.addAttribute("updateManagerSelect", service.updateManagerSelect(updateNo));
+		
+		return "managerUpdate";
+	}
+	
+	
+	// 관리자계정 정보수정 입력값 DB로 insert하기
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String managerPopupUpdate(ManagerVO vo, Model model) throws Exception {
+		service.update(vo);
+		
+		return "redirect:/manager";	
+	}
+	
 }
 
