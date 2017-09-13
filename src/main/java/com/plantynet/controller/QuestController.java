@@ -35,9 +35,8 @@ public class QuestController {
 	}
 	
 	@RequestMapping(value = "/insertAnswer", method = RequestMethod.POST)
-	public String answerPopupInsert(@RequestParam("answer_contents") String answer_contents, int quest_no, Model model) throws Exception {
+	public String answerPopupInsert(@RequestParam("answer_contents") String answer_contents, int quest_no, String mngr_id, Model model) throws Exception {
 		QuestDoneVO doneVO = new QuestDoneVO();
-		String mngr_id = "admin123";   // 로그인한 세션 계정으로 바뀌어야함!!
 		doneVO.setMngr_id(mngr_id);
 		doneVO.setAnswer_contents(answer_contents);
 		doneVO.setQuest_no(quest_no);
@@ -50,12 +49,6 @@ public class QuestController {
 	
 	@RequestMapping(value = "/selectResult", method = RequestMethod.GET)
 	public String resultPopupSelect(@RequestParam("resultNo") int selectedResultNo, Model model) throws Exception {
-		
-		ArrayList<QuestDoneVO> vo = (ArrayList<QuestDoneVO>) service.questResultSelect(selectedResultNo);
-		for (QuestDoneVO questDoneVO : vo) {
-			System.out.println(questDoneVO);
-		}
-		
 		model.addAttribute("questResultSelect", service.questResultSelect(selectedResultNo));
 		
 		return "questResult";

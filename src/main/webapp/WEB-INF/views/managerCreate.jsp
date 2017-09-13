@@ -1,73 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="box box-primary">
+	<form style="display: inline;" name="registManager" method="post" action="/create">
 	<div class="box-header with-border">
 		<div class="box-title">
-        	<p>관리자 계정 생성</p>
+        	<p><strong>관리자 계정 생성</strong></p>
         </div>
     </div>
-
         <div class="box-body">
           <div class="form-group">
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">사원번호</label>
-                 <input type="text" name="" value="">
+                <input type="text" name="emp_no" value="${registManager.emp_no}">
+                &emsp; &emsp; &emsp; &emsp; &emsp;
+                <label for="">이 &emsp; &ensp; 름 </label>
+                <input type="text" name="mngr_name" value="${registManager.mngr_name}">
               </div>
             </div>
+           
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <label for="">이름</label>
-                 <input type="text" name="" value="">
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
-                <label for="">아이디</label>
-                 <input type="text" name="" value="">
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
+                <label for="">아 &ensp;이&ensp;디</label>
+                <input type="text" name="mngr_id" value="${registManager.mngr_id}">
+                &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">비밀번호</label>
-                <input type="text" name="" value="">
+                <input type="text" name="password" value="${registManager.password}">
               </div>
             </div>
+            
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <label for="">소속</label>
-                 <input type="text" name="" value="">
+                <label for="">소 &emsp; &ensp; 속 </label>
+                <input type="text" name="department" value="${registManager.department}">
+                &emsp; &emsp; &emsp; &emsp; &emsp;
+                <label for="">직 &emsp; &ensp; 책 </label>
+                <input type="text" name="position" value="${registManager.position}">
               </div>
             </div>
+     
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <label for="">직책</label>
-                 <input type="text" name="" value="">
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
-                <label for="">권한</label>
-                  <select id="" class="form-control form-group-inline"
-                    onchange="" style="display:inline-block">
+                <label for="">권 &emsp; &ensp; 한 </label>
+                 <input type="text" name="authority" value="${registManager.authority}">
+                  <!-- <select id="" class="form-control form-group-inline"
+                    style="display:inline-block">
                     <option value="1">오퍼레이터</option>
                     <option value="2">슈퍼관리자</option>
-                </select>
+                </select> -->
               </div>
             </div>
           </div>
-
           <hr />
        </div>
-
         <div class="box-footer">
-          <button id="btnRegistPopup" type="button" name="button" class="btn btn-primary center-block">생성</button>
-          <button id="btnClosePopup" type="button" name="button" class="btn btn-danger center-block">취소</button>
+          <button id="btnRegistPopup" style="float:left" type="submit" name="registManager" class="btn btn-primary inline-block col-md-offset-4">생성</button>
+		  <button id="btnClosePopup" style="float:left" type="button" name="closeBtn" class="btn btn-danger inline-block col-md-offset-1">취소</button>
         </div>
-      </div>
+     </form>
+   </div>
 
     
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>

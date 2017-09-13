@@ -9,7 +9,7 @@
 <!-- Content start -->
         <div class="box">
            <div class="box-header">
-             <p><h2 class="box-title"><mark>질문 글</mark></h2></p>
+             <h2 class="box-title"><mark>질문 글</mark></h2>
 
            </div>
            <!-- /.box-header -->
@@ -319,7 +319,7 @@
 		  				
 		  				$("#popupWrapper").bPopup({
 		  					follow: [true, true],
-		  		            //position: [465, 0] 
+		  		            position: [465, 0] 
 		  				});
 		  				$("#popupWrapper").html(data);
 		  				

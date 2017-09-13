@@ -28,7 +28,7 @@
 			</div>
 			<div class="col-md-2">
 				<button class="fa fa-search" id="searchMember"
-					onclick="searchMember()" style="height: 30px; width: 40px;"></button>
+					 style="height: 30px; width: 40px;"></button>
 			</div>
 		</div>
 	</div>
@@ -38,7 +38,8 @@
 		<thead>
 			<tr>
 				<th><input type="checkbox" id="selectAll" name="selectAll"
-					value="chkVal" /></th>
+					value="1" /></th>
+				<th style="text-align: center">회원번호</th>
 				<th style="text-align: center">전화번호</th>
 				<th style="text-align: center">이메일</th>
 				<th style="text-align: center">성별</th>
@@ -54,8 +55,8 @@
 		</thead>
 		<c:forEach var="member" items="${member}">
 			<tr>
-				<td><input type="checkbox" id="selectMember"
-					name="selectMember" value="${member.mber_no}" /></td>
+				<td></td>
+				<td>${member.mber_no}</td>
 				<td>${member.phone}</td>
 				<td>${member.email}</td>
 				<td>${member.gender}</td>
@@ -113,6 +114,8 @@
 
 
 <script>
+
+<!--
 	// 체크박스 모두선택, 모두해제
 	$(document).ready(function() {
 
@@ -128,9 +131,11 @@
 			}
 		})
 	})
+	
+	
 
 	// DataTable 옵션 변경, 미처리 문의사항 옵션 설정
-	var memberList = $("#memberList").DataTable(
+	var memberList1 = $("#memberList1").DataTable(
 			{
 				"language" : {
 					search : "검색 : ",
@@ -159,6 +164,7 @@
 						+ '<"bottom"<"col-md-8"p><"col-md-4"B>>' // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
 			});
 
+
 	// 카테고리 + 키워드 검색
 	function searchMember() {
 
@@ -169,7 +175,77 @@
 		$('#memberList').DataTable().columns(searchCategory).search(keywords)
 				.draw()
 	}
+	-->
 
+	
+	var memberList = $("#memberList").DataTable({
+        "language"    : {
+          'zeroRecords'       : "검색결과가 없습니다.",
+          'info'              : "질문 글 수 :  _TOTAL_ 개",
+          'infoEmpty'         : "질문 글 수 :  _TOTAL_ 개",
+          'infoFiltered'      : " ",
+          "lengthMenu"        : "출력 개수 :  _MENU_",
+          'paginate'          : {
+            "first" : "처음",
+            "last"  : "마지막",
+            "next"  : "다음",
+            "previous" : "이전"
+          }
+
+        },
+        "scrollY"              : 400,
+        "scrollCollapse"       : true,
+        "lengthMenu"           : [ 15, 25, 50 ],
+        "pageLength"           : 25,
+        "pagingType"           : "full_numbers",
+        "dom"                  :'<"top"<"col-md-4"i><"col-md-6"B><"col-md-2"l>>' +
+                                 'rt' +
+                                 '<"bottom pull-left"<"col-md-12"p>>',
+
+        "select"              : "multi",
+        'columnDefs'          : [{
+                                   'targets': 0,
+                                   'searchable': false,
+                                   'orderable': false,
+                                   'className': 'dt-body-center',
+                                   'render': function (data, type, full, meta){
+                                       return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+                                           }
+                                }],
+        "autoWidth" : false,
+
+
+      });
+
+	 // 전체 체크박스 선택 및 해제 기능 구현
+    $('#selectAll').on('click', function(){
+  	  
+        var rows = memberList.rows({ 'search': 'applied' }).nodes();
+        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+
+   });
+	
+	// 검색 버튼 클릭 이벤트
+	  $("#searchMember").click(function(){
+		 searchMember(); 
+	  });
+	  
+	  // 입력창 엔터 이벤트
+	  $("#keywords").keydown(function(key){
+		  
+		 if(key.keyCode == 13){
+			 searchMember();
+		 } 
+	  });
+	  
+	  //질문 글 검색 후 테이블 그리는 함수
+	  function searchMember(){
+		  memberList
+        .columns( $('#searchCategory > option:selected').val() )
+        .search($("#keywords").val())
+        .draw();
+	  }
+	
 	// 수정 팝업 출력
 	function modify(mberno) {
 		//var mberNo = $(this).children("td").eq(0).val();
@@ -219,7 +295,7 @@
 									$("#frmDelete").append(
 											$('<input>').attr('type', 'hidden')
 													.attr('name', 'deleteMemberList')
-													.val($(this).parents("td").next().text()));
+													.val($(this).parents("td").next().text())); //.next().text()
 								}
 							});
 

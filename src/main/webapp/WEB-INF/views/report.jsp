@@ -25,7 +25,7 @@
 				<input type="text" id="yetInput" class="form-control"></input>
 			</div>
 			<div class="col-md-1">
-				<button id="yetSearch" onclick="yetSearch()">미처리 검색</button>
+				<button id="yetSearch" onclick="yetSearch()"><i class="fa fa-search"></i></button>
 			</div>
 		</div>
 
@@ -80,7 +80,7 @@
 			<input type="text" id="doneInput" class="form-control"></input>
 		</div>
 		<div class="col-md-1">
-			<button id="doneSearch" onclick="doneSearch()">처리 검색</button>
+			<button id="doneSearch" onclick="doneSearch()"><i class="fa fa-search"></i></button>
 		</div>
 		<table id="report2" class="table table-bordered table-hover display">
 			<thead>

@@ -8,7 +8,7 @@
   
   		SELECT mngr_no, mngr_id, mngr_name, emp_no, department, position, authority
   		FROM TB_MANAGER
-  		WHERE mngr_id = #{mngr_id} AND password = #{password}
+  		WHERE mngr_id = #{mngr_id} AND password = #{password};
   
   	</select>
   	
@@ -26,7 +26,7 @@
 		
 		UPDATE TB_MANAGER
 		SET password = #{newPW}
-		WHERE mngr_no = #{mngr_no} AND password = #{password}
+		WHERE mngr_no = #{mngr_no} AND password = #{password};
 
 	</update>  	
 	
@@ -34,17 +34,39 @@
 	
 	<select id= "managerSelect" resultType="com.plantynet.domain.ManagerVO">
 		select
-			emp_no,
-			mngr_name,
-			mngr_id,
-			department,
-			position,
-			authority
+		*
+		from 
+			TB_MANAGER
+		where 
+			1 order by authority DESC, status DESC; 
+	</select>
+	
+	<insert id="registManager">
+		 insert into TB_MANAGER 
+		 	(emp_no, mngr_name, mngr_id, password, department, position, authority, status)
+		 values
+		 	(${emp_no}, '${mngr_name}', '${mngr_id}', '${password}', '${department}', '${position}', '${authority}', '활성화');
+	 </insert> 
+	 
+	 
+	 <select id= "updateManagerSelect" resultType="com.plantynet.domain.ManagerVO">
+		select
+			*
 		from 
 			TB_MANAGER
 		where
-			 status = '활성화';
+			 mngr_no = #{mngr_no};
 	</select>
+	
+	
+	<update id= "updateManager" >
+		UPDATE 
+			TB_MANAGER
+		SET
+			mngr_name = "${mngr_name}", department = '${department}', position = '${position}', authority = '${authority}'
+		where
+			mngr_no = ${mngr_no};
+	</update>
 	
 	
 	

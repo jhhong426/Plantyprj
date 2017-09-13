@@ -116,9 +116,10 @@
 
 				<div class="row">
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
-						<label for="">담당자</label> <input type="text" name="mngr_id"
-							value="${login.mngr_id}" readOnly> <label for="">처리시간</label>
-						<input type="text" name="" value="" readOnly>
+
+						<label for="">담당자</label> <input type="text" name="mngr_id" value="${login.getMngr_id()}" readOnly> 
+							<label for="">처리시간</label> <input type="text" name="" value="" readOnly>
+
 					</div>
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
 						<label>처리유형</label> <select id="answer_category"

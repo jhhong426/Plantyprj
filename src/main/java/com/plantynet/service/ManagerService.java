@@ -6,6 +6,7 @@ import java.util.List;
 import com.plantynet.domain.EditPasswordDTO;
 import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.QuestDoneVO;
 import com.plantynet.domain.QuestYetVO;
 
 public interface ManagerService {
@@ -19,6 +20,13 @@ public interface ManagerService {
 	  
 	  
 	  public List<ManagerVO> managerSelect();
+	  
+	  void regist(ManagerVO vo);
+	  
+	  public List<ManagerVO> updateManagerSelect(Integer mngr_no) throws Exception;
+	  
+	  void update(ManagerVO vo);
+
 }
 
 

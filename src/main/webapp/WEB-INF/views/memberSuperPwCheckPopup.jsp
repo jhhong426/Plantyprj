@@ -8,7 +8,7 @@
         			<p>슈퍼 관리자 비밀번호 확인</p>
         		</div>
         		<div class="box-body">
-        			<form id="frmSuperPwCheck" action="/member/confirm" method="POST" class="form-group frmForDelete">
+        			<form id="frmSuperPwCheck" onsubmit="return false;" method="POST" class="form-group frmForDelete">
         				<input id="password" type="password" name="inputPassword" class="form-control"/>
         			</form>
         			<div class="center-block">
@@ -30,9 +30,11 @@
 		
 		var _data = $(".frmForDelete").serialize();
 			
+		console.log(_data);
+		
 		$.ajax({
 			type: "post",
-			url: "/member/confirm",
+			url: "/member/delete",
 			data: _data,
 			success: function(result){
 			
@@ -47,7 +49,7 @@
 			},
 			
 			error:function(request,status){
-	   			alert("팝업 에러");
+	   			alert("삭제 에러");
 	   		}
 		});
 		
