@@ -1,28 +1,22 @@
 package com.plantynet.controller;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.nio.charset.Charset;
-import java.security.MessageDigest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.plantynet.domain.EditPasswordDTO;
+import com.plantynet.domain.FlagVO;
 import com.plantynet.domain.ManagerVO;
 import com.plantynet.domain.QuestDoneVO;
-import com.plantynet.domain.QuestYetVO;
 import com.plantynet.domain.ReportDoneVO;
-import com.plantynet.persistence.QuestDAO;
 import com.plantynet.service.AuthService;
 import com.plantynet.service.MypageService;
 import com.plantynet.service.QuestService;
@@ -41,6 +35,7 @@ public class MyPageController {
 	private ReportService reportService;
 	@Autowired
 	private QuestService questService;
+	
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public void myPageGet(Model model) throws Exception {
@@ -56,22 +51,20 @@ public class MyPageController {
 	
 		
 	}
-	
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public void myPagePost() throws Exception {
-		
-	}
+
 	
 	@RequestMapping(value = "/modifyPW", method = RequestMethod.GET)
 	public String editPWGet() throws Exception {
 		
-		return "modifyPW";
+		return "myPageModPWPopup";
 		
 	}
 	
 	@RequestMapping(value = "/modifyPW", method = RequestMethod.POST)
-	public void editPWPost(EditPasswordDTO dto, HttpServletResponse response, HttpSession session, Model model) throws Exception {
+	public @ResponseBody FlagVO modPWPost(EditPasswordDTO dto, HttpServletResponse response, HttpSession session, Model model) throws Exception {
 		
+		FlagVO flag = new FlagVO();
+		flag.setFlag(false);
 		
 		ManagerVO loginSession = (ManagerVO) session.getAttribute("login");
 		
@@ -82,28 +75,21 @@ public class MyPageController {
 		String password = dto.getPassword();
 		
 		// TB_MANAGER 테이블에 있는 세션에 해당하는 사용자 Password
-		String DBPassword = authService.getPassword(mngr_no);
+		String dbPassword = authService.getPassword(mngr_no);
 		
 		System.out.println(mngr_no);
 		System.out.println(password);
-		System.out.println(authService.getPassword(mngr_no));
+		System.out.println(dbPassword);
 		System.out.println(dto);
-		
-		if ((mngr_no != null) && (password.equals(DBPassword))) {
 			
-			mypageService.editPassword(dto);
+		if((mngr_no != null) && (password.equals(dbPassword))) {
 			
-			response.sendRedirect("/myPage");
-			
+			mypageService.editPassword(dto);	
+			flag.setFlag(true);
 		}
-		else {
 			
-			//변경 실패시, alert창 "변경에 실패하였습니다!" (예정)
-			response.sendRedirect("/failPW");
-			
-		}
-	}
-	
+		return flag;
+	}		
 
 
 }

@@ -33,7 +33,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	    	// 세션의 login 파라미터에 들어갈 값
 	    	session.setAttribute(LOGIN, managerVO);
-
+//	    	session.setMaxInactiveInterval(40*60);
 	    	response.sendRedirect("/stat");
 
 	    	

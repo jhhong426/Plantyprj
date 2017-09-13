@@ -46,6 +46,10 @@
 function frmChk(){
 	
 	var frm = document.frmModifyPW;
+	var _data = $(".frmModifyPW").serialize();
+	
+	console.log(frm);
+	console.log(_data);
 	
 	if(frm.password.value=='') {
 		
@@ -53,15 +57,11 @@ function frmChk(){
 		
 		frm.password.focus();
 		
-		return false;
-		
 	} else if(frm.newPW.value=='') {
 		
 		alert("변경할 비밀번호를 입력하세요!!");  
 		
 		frm.newPW.focus();
-		
-		return false;
 		
 	} else if(frm.chkPW.value=='') {
 		
@@ -69,15 +69,11 @@ function frmChk(){
 		
 		frm.chkPW.focus();
 		
-		return false;
-		
 	} else if (frm.newPW.value != frm.chkPW.value){
 		
 		alert("변경할 비밀번호가 불일치합니다!");
 		
 		frm.newPW.focus();
-		
-		return false;
 					
 	} else {
 		
@@ -87,20 +83,21 @@ function frmChk(){
 			
 			frm.newPW.focus();
 			
-			return false;
-		}
+		} else {
 		
 		$.ajax({
 			type : "POST",
-			url : "/member/modifyPW",
-			data : frm,
-			success : function() {
+			url : "/myPage/modifyPW",
+			data : _data,
+			success : function(result) {
 
-				window.location.reload();
-				alert("변경 완료");
-				
-				return true;
-
+				if(result.flag){
+					window.location.reload();
+					alert("변경 완료");
+					
+				}else {
+					alert("비밀번호가 일치하지 않습니다.");
+				}
 			},
 
 			error : function(request, status) {
@@ -110,7 +107,7 @@ function frmChk(){
 			}
 		});
 		
-		
+		}
 		
 		}
 }
