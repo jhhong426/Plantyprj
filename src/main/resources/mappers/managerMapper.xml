@@ -8,7 +8,7 @@
   
   		SELECT mngr_no, mngr_id, mngr_name, emp_no, department, position, authority
   		FROM TB_MANAGER
-  		WHERE mngr_id = #{mngr_id} AND password = #{password}
+  		WHERE mngr_id = #{mngr_id} AND password = #{password};
   
   	</select>
   	
@@ -26,7 +26,7 @@
 		
 		UPDATE TB_MANAGER
 		SET password = #{newPW}
-		WHERE mngr_no = #{mngr_no} AND password = #{password}
+		WHERE mngr_no = #{mngr_no} AND password = #{password};
 
 	</update>  	
 	

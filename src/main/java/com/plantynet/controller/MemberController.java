@@ -39,7 +39,6 @@ public class MemberController {
 		List<MemberVO> memberVO = memberService.memberList();
 		model.addAttribute("member", memberVO);
 		
-		
 	}
 	
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
@@ -69,16 +68,20 @@ public class MemberController {
 		return "memberSuperPwCheckPopup";
 	}
 	
-	// 슈퍼관리자 확인 후 삭제
+	// 슈퍼관리자 비밀번호 확인 후 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public @ResponseBody FlagVO confirm(@RequestParam("inputPassword") String inputPassword, Integer[] deleteMemberList) throws Exception {
+	public @ResponseBody FlagVO delete(@RequestParam("inputPassword") String inputPassword, Integer[] deleteMemberList) throws Exception {
 		
 		FlagVO flag = new FlagVO();
 		flag.setFlag(false);
+		
+		System.out.println(inputPassword);
+		System.out.println(deleteMemberList);
 			
 		if(authService.checkSuperPassword(inputPassword)){
 			for (Integer mberNo : deleteMemberList) {
-				//memberService.delSurvy(survyNo);
+				System.out.println("삭제 완료 : " + mberNo);
+				memberService.deleteMember(mberNo);
 				System.out.println("삭제 완료 : " + mberNo);
 			}
 			flag.setFlag(true);
