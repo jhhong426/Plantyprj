@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
@@ -49,7 +50,19 @@
 			<td>${mngr.department}</td>
 			<td>${mngr.position}</td>
 			<td>${mngr.authority}</td>
-			<td>${mngr.status}</td>
+			<td>
+				<c:choose>
+	        		<c:when test="${mngr.status == 'MS01'}">
+	        			<c:out value="활성화"/>
+	        		</c:when>
+	        		<c:when test="${mngr.status == 'MS00'}">
+	        			<c:out value="비활성화"/>
+	        		</c:when>
+	        		<c:otherwise>
+	        			<c:out value="${mngr.status}"/>
+	        		</c:otherwise>
+	        	</c:choose>
+        	</td>
 			<td>
 				<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="modify(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
 			</td>

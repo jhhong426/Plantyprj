@@ -28,19 +28,19 @@
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">이 &emsp; &ensp; 름 </label>
-                <input type="text" name="mngr_name" value="${updateManager.mngr_name}">
+                <input type="text" name="mngr_name" value="${updateManagerSelect.mngr_name}">
                  &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">소 &emsp; &ensp; 속 </label>
-                <input type="text" name="department" value="${updateManager.department}">
+                <input type="text" name="department" value="${updateManagerSelect.department}">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">직 &emsp; &ensp; 책 </label>
-                <input type="text" name="position" value="${updateManager.position}">
+                <input type="text" name="position" value="${updateManagerSelect.position}">
                  &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">권 &emsp; &ensp; 한 </label>
-                <input type="text" name="authority" value="${updateManager.authority}">
+                <input type="text" name="authority" value="${updateManagerSelect.authority}">
                 <!-- <select id="" class="form-control form-group-inline"
                     style="display:inline-block">
                     <option value="1">오퍼레이터</option>
