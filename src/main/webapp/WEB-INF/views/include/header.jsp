@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -73,7 +74,9 @@
                  <li><a href="/report">신고관리</a></li>
                  <li><a href="/prohibit">금칙어관리</a></li>
                  <li><a href="/myPage">MyPage</a></li>
-                 <li><a href="/manager">운영진관리</a></li>
+                 <c:if test="${login.getAuthority() eq 'Super'}">
+                 	<li><a href="/manager">운영진관리</a></li>
+                 </c:if>
                </ul>
                <!-- RIGHT CONTENT -->
               <ul class="nav navbar-nav navbar-right">
