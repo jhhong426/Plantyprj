@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -185,6 +185,7 @@
 	}
 
 	function doneSearch() {
+		
 		if ($("#doneCategory option:selected").val() == 1) {
 			var doneCategoryInput = $("#doneCategoryInput option:selected")
 					.val();
@@ -200,6 +201,8 @@
 	}
 
 	function yetCategoryChange() {
+		$('#report1').DataTable().columns().search("").draw(); //데이터 테이블 초기화
+		console.log("진행");
 		if ($("#yetCategory option:selected").val() == 1) {
 			$("#yetDynamicCategory")
 					.html(
@@ -218,6 +221,7 @@
 	}
 
 	function doneCategoryChange() {
+		$('#report2').DataTable().columns().search("").draw(); //데이터 테이블 초기화
 		if ($("#doneCategory option:selected").val() == 1) {
 			$("#doneDynamicCategory")
 					.html(

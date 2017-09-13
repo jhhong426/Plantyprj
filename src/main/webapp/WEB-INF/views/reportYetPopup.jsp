@@ -82,8 +82,8 @@
 				</table>
 			</div>
 		</div>
-		
-		
+
+
 		<div class="col-md-6">
 
 			<form action="/report_answerInsert" onsubmit="onSubmitFunction()"
@@ -136,8 +136,8 @@
 							cols="30"></textarea>
 						<label>금칙어 추가</label> <input type="text" id="answerCategoryInput"
 							name="popupWord">
-						<button id="createBtn" style="display: inline;" type="submit"
-							onclick="return validateInsertForm()">추가</button>
+						<button id="createBtn" style="display: inline;" type="button"
+							onclick="return validateInsert()">추가</button>
 					</div>
 
 					<div class="col-md-5"></div>
@@ -147,15 +147,11 @@
 						<button id="btnClosePopup" type="button" class="btn btn-primary">취소</button>
 					</div>
 				</div>
+				<input type="hidden" name="survey_no"value="${survyInfo.survey_no}"> 
 			</form>
 		</div>
 	</div>
 </div>
-
-
-
-
-
 
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
@@ -164,7 +160,7 @@
 		$("#popupWrapper").bPopup().close();
 	});
 
-	function validateInsertForm() {
+	function validateInsert() {
 		var insertWord = $('#answerCategoryInput').val();
 		if (confirm(insertWord + "를 삽입하시겠습니까 ?")) {
 			jQuery.ajax({

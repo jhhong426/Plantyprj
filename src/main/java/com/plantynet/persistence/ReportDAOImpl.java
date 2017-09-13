@@ -47,4 +47,9 @@ public class ReportDAOImpl implements ReportDAO {
 			sqlSession.update(namespace+".answerUpdate",vo); 
 		}
 		
+		@Override
+		public void reportPlus(ReportDoneVO vo) {
+			sqlSession.update(namespace+".reportPlus",vo); 
+		}
+		
 }

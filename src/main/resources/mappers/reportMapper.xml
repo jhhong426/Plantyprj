@@ -92,6 +92,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	UPDATE TB_REPORT SET status = '처리' WHERE  report_no = #{report_no}
 </update>
 
+<update id = "reportPlus" parameterType="com.plantynet.domain.ReportDoneVO">
+	UPDATE TB_SURVEY SET reported_cnt =reported_cnt +1   where survey_no = #{survey_no}
+</update>
+
+
+
 <!-- <select id= "prohibitSelect" resultType="com.plantynet.domain.ProhibitVO">
 	select *
 	from TB_PRHIBIT_WORD
