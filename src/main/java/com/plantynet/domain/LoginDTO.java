@@ -22,7 +22,7 @@ public class LoginDTO {
 	public void setPassword(String password) {
 		PasswordEncoder sha256Encoder = new PasswordEncoder();
 		this.password = sha256Encoder.SHA256(password);
-//		this.password = password;
+	//	this.password = password;
 	}
 	
 	@Override

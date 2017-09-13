@@ -24,9 +24,7 @@
 		 <h3>운영진 리스트</h3>
 	 </div>
 	 <div class="col-md-6" style="text-align:right">
-		 <form style="display: inline;" name="managerCreate" method="get" action="/create">
-			<button id="row" style="display:inline; height:40px; width:80px;" type="submit"><strong>계정 생성</strong></button>
-		</form>
+			<button id="regist" style="display:inline; height:40px; width:80px;" type="submit"><strong>계정 생성</strong></button>
 	 </div>
 	 <table id="managerSelect" class="display" cellspacing="0" width="100%">
 			<thead>
@@ -37,6 +35,7 @@
 				<th style="text-align:center">소속</th>
 				<th style="text-align:center">직책</th>
 				<th style="text-align:center">권한</th>
+				<th style="text-align:center">상태</th>
 				<th style="text-align:center">정보 변경</th>
 				<th style="text-align:center">계정 삭제</th>
 				</tr>
@@ -50,19 +49,12 @@
 			<td>${mngr.department}</td>
 			<td>${mngr.position}</td>
 			<td>${mngr.authority}</td>
+			<td>${mngr.status}</td>
 			<td>
-				<form style="display: inline;" name="managerUpdate"
-					method="post" action="/managerUpdate">
-					<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="managerUpdate()" 
-						style="height:30px; width:40px;"></button>
-				</form>
+				<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="modify(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
 			</td>
 			<td>
-				<form style="display: inline;" name="managerDelete"
-					method="post" action="/managerDelete">
-					<button class="fa fa-trash" id="managerDelete" onclick="managerDelete()" 
-						style="height:30px; width:40px;"></button>
-				</form>
+				<button class="fa fa-trash" id="managerDelete" onclick="managerDelete()" style="height:30px; width:40px;"></button>
 			</td>
 			</tr>
 			</c:forEach>
@@ -142,7 +134,7 @@
            "autoWidth": false,
            "dom":  '<"top"<"col-md-12"B>>' +
 		 		   'rt' +
-		    		'<"bottom"<"col-md-8"p><"col-md-4"B>>'
+		 		  '<"bottom pull-left"<"col-md-12"p>>'
     		});
     		
     	
@@ -216,17 +208,20 @@
     	  })
     	  
     	  
-
-	$("#questYetSelect").click(function(){
+	// 관리자계정 생성 팝업 출력
+	$("#regist").click(function(){
 		createPopup();
     });
-	  
+	
+    // 관리자계정 생성 팝업의 출력
 	function createPopup(){
 		$.ajax({
 			
 		type:"GET",
-		url:"/manager/create",
+		url:"/createPopup",
 		dataType:"html",
+		data : {
+		},
 		success:function(data){
 		$("#popupWrapper").bPopup({
 			follow: [true, true],
@@ -237,8 +232,42 @@
 		},
 		error:function(request, status){
 			$("#popupWrapper").hide();
-			alert("팝업 오류");
+			alert("계정생성 팝업 오류");
 		}
+		});
+	}
+	
+	
+	// 관리자계정 수정 팝업 출력
+	function modify(mngrno) {
+		console.log("첫번째 엔오"+ mngrno);
+		console.log("파싱 엔오" + parseInt(mngrno));
+		var updateNo = mngrno;
+		openManagerInfoPopup(updateNo);
+	}
+
+	// 관리자계정 수정 팝업의 정보
+	function openManagerInfoPopup(updateNo) {
+	console.log(updateNo);
+		$.ajax({
+			type : "GET",
+			url : "/updatePopup",
+			data : {
+				updateNo : updateNo
+			},
+			dataType : "html",
+			success : function(data) {
+				$("#popupWrapper").bPopup({
+					follow : [ true, true ],
+				position : [ 700, 40 ]
+				});
+				$("#popupWrapper").html(data);
+
+			},
+			error : function(request, status) {
+				$("#popupWrapper").hide();
+				alert("팝업 오류");
+			}
 		});
 	}
 

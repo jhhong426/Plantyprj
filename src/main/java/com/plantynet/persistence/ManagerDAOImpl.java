@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.plantynet.domain.EditPasswordDTO;
 import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.QuestDoneVO;
 import com.plantynet.domain.QuestYetVO;
 
 @Repository
@@ -43,6 +44,21 @@ public class ManagerDAOImpl implements ManagerDAO {
 	@Override
 	public List<ManagerVO> managerSelect() {   
 		return  session.selectList(namespace+".managerSelect");
+	}
+	
+	@Override
+	public void regist(ManagerVO vo) {
+		session.insert(namespace+".registManager", vo);
+	}
+	
+	@Override
+	public List<ManagerVO> updateManagerSelect(Integer mngr_no) throws Exception {
+		return session.selectList(namespace+".updateManagerSelect", mngr_no);
+	}
+	
+	@Override
+	public void update(ManagerVO vo) {
+		session.update(namespace+".updateManager", vo);
 	}
 }
 

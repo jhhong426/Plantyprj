@@ -1,58 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
 <div class="box box-primary">
+	<form style="display: inline;" name="updateManager" method="post" action="/update">
 	<div class="box-header with-border">
 		<div class="box-title">
-        	<p>관리자 계정 생성</p>
+        	<p><strong>관리자 계정 수정</strong></p>
         </div>
     </div>
-
+	<c:forEach var="updateManagerSelect" items="${updateManagerSelect}">
         <div class="box-body">
           <div class="form-group">
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>사원 번호</strong></h5>
-                 <input type="text" name="" value="1234" disabled>
+                <label for="">사원번호</label>
+                <input type="text" name="" value="${updateManagerSelect.emp_no}" disabled>
+                 &emsp; &emsp; &emsp; &emsp; &emsp;
+                <label for="">아 &ensp;이&ensp;디</label>
+                <input type="text" name="" value="${updateManagerSelect.mngr_id}" disabled>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="center-block" style="width:600px; padding:15px;">
+                <label for="">이 &emsp; &ensp; 름 </label>
+                <input type="text" name="mngr_name" value="${updateManager.mngr_name}">
+                 &emsp; &emsp; &emsp; &emsp; &emsp;
+                <label for="">소 &emsp; &ensp; 속 </label>
+                <input type="text" name="department" value="${updateManager.department}">
               </div>
             </div>
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>이름</strong></h5>
-                 <input type="text" name="" value="홍길동">
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>아이디</strong></h5>
-                 <input type="text" name="" value="zajan" disabled>
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>소속</strong></h5>
-                 <input type="text" name="" value="기술연구소">
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>직책</strong></h5>
-                 <input type="text" name="" value="사원">
-              </div>
-            </div>
-            <div class="row">
-              <div class="center-block" style="width:600px; padding:15px;">
-                <h5><strong>권한</strong></h5>
-                  <select id="" class="form-control form-group-inline"
-                    onchange="" style="display:inline-block">
+                <label for="">직 &emsp; &ensp; 책 </label>
+                <input type="text" name="position" value="${updateManager.position}">
+                 &emsp; &emsp; &emsp; &emsp; &emsp;
+                <label for="">권 &emsp; &ensp; 한 </label>
+                <input type="text" name="authority" value="${updateManager.authority}">
+                <!-- <select id="" class="form-control form-group-inline"
+                    style="display:inline-block">
                     <option value="1">오퍼레이터</option>
                     <option value="2">슈퍼관리자</option>
-                </select>
-              </div>
+                </select> -->
+            </div>
             </div>
           </div>
 
@@ -60,9 +54,12 @@
        </div>
 
         <div class="box-footer">
-          <button id="btnSavePopup" type="button" name="button" class="btn btn-primary center-block">저장</button>
-          <button id="btnClosePopup" type="button" name="button" class="btn btn-danger center-block">취소</button>
+       	  <input type="hidden" name = "mngr_no" value="${updateManagerSelect.mngr_no}">
+          <button id="btnUpdatePopup" style="float:left" type="submit" name="updateManager" class="btn btn-primary inline-block col-md-offset-4">저장</button>
+		  <button id="btnClosePopup" style="float:left" type="button" name="closeBtn" class="btn btn-danger inline-block col-md-offset-1">취소</button>
         </div>
+        </c:forEach>
+        </form>
       </div>
 
 

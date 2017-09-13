@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.plantynet.domain.EditPasswordDTO;
 import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
+import com.plantynet.domain.QuestDoneVO;
 import com.plantynet.persistence.ManagerDAO;
 
 @Service
@@ -36,11 +37,24 @@ public class ManagerServiceImpl implements ManagerService {
 //	public ManagerVO checkManager(EditPasswordDTO dto) {
 //		
 //		return dao.checkManager(dto);
-//	}
+//	} 
 	
+	@Override
 	 public List<ManagerVO> managerSelect() {
 	 	return dao.managerSelect();
-	}
+	 }
 	
+	 public void regist(ManagerVO vo) {
+			dao.regist(vo);
+	 };
+		
+	 @Override
+	 public List<ManagerVO> updateManagerSelect(Integer mngr_no) throws Exception {
+		 return dao.updateManagerSelect(mngr_no);
+	 }
+		  
+	 public void update(ManagerVO vo) {
+		 dao.update(vo);
+	 }
 }
 
