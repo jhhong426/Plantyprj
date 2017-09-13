@@ -99,11 +99,7 @@ public class VoteServiceImpl implements VoteService {
 				break;
 			}
 		}	
-		
-		for (SurResultDTO dto : renderList) {
-			System.out.println(dto);
-		}
-		
+	
 		return renderList;
 	}
 

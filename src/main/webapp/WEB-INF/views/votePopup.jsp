@@ -6,7 +6,7 @@
 <div class="box box-primary">
         <div class="box-header with-border">
           <div class="box-title">
-            <p>투표 상세 정보</p>
+            <p>질문 글 상세 정보</p>
           </div>
         </div>
 

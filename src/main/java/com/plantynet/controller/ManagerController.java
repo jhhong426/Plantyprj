@@ -31,8 +31,16 @@ public class ManagerController {
 
 	// URL : /login
 	// LoginDTO 에서 처리
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public  String loginGet(@ModelAttribute("dto") LoginDTO dto) {
+	public  String loginGet(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("login") != null) {
+		      
+	    	return "redirect:/stat";
+	    }
 		return "login";
 	}
 	

@@ -22,7 +22,7 @@
                  <p><strong>총 가입자 수 : </strong></p>
                  <p><strong>총 탈퇴자 수 : </strong></p>
                  <ul class="nav nav-tabs jointab">
-                   <li class="active"><a href="#tab1" data-toggle="tab">주간</a></li>
+                   <li class="active"><a href="#tab1" data-toggle="tab">일간</a></li>
                    <li><a href="#tab2" data-toggle="tab">월간</a></li>
                  </ul>
                  <div class="tab-content">
@@ -50,7 +50,7 @@
                <div class="">
                  <p><strong>전체 질문 글 : </strong></p>
                  <ul class="nav nav-tabs" style="margin-top:40px;">
-                   <li class="active"><a href="#tab3" data-toggle="tab">주간</a></li>
+                   <li class="active"><a href="#tab3" data-toggle="tab">일간</a></li>
                    <li><a href="#tab4" data-toggle="tab">월간</a></li>
                  </ul>
                  <div class="tab-content">
@@ -80,7 +80,7 @@
                  <p><strong>미처리된 문의 글 : </strong></p>
                  <p><strong>처리된 문의 글 : </strong></p>
                  <ul class="nav nav-tabs">
-                   <li class="active"><a href="#tab5" data-toggle="tab">주간</a></li>
+                   <li class="active"><a href="#tab5" data-toggle="tab">일간</a></li>
                    <li><a href="#tab6" data-toggle="tab">월간</a></li>
                  </ul>
                  <div class="tab-content">
@@ -110,7 +110,7 @@
                  <p><strong>미처리된 신고 글 : </strong></p>
                  <p><strong>처리된 신고 글 : </strong></p>
                  <ul class="nav nav-tabs">
-                   <li class="active"><a href="#tab7" data-toggle="tab">주간</a></li>
+                   <li class="active"><a href="#tab7" data-toggle="tab">일간</a></li>
                    <li><a href="#tab8" data-toggle="tab">월간</a></li>
                  </ul>
                  <div class="tab-content">
@@ -130,15 +130,13 @@
      </div><!-- row -->
    </div><!-- container -->
 
-
-  <!-- Chart.js -->
   <script src="/resources/plugins/chartjs/Chart.js"></script>
   <script type="text/javascript">
     $(function () {
 
       var today = new Date();
 
-      /* 바 그래프에 표시할 날짜(주간) labels */
+      /* 바 그래프에 표시할 날짜(일간) labels */
       var week = new Array();
       for(var i=6; i>0; i--){
         var temp = "0"+(today.getMonth()+1) + "-" + (today.getDate()-i);
@@ -162,7 +160,7 @@
         예제 데이터
         실 데이터 DB에서 Json 형태로 받아 오기
       */
-      var weekDataArray = new Array(5);      // 데이터 가 들어갈 2차원 배열 (주간, 월간)
+      var weekDataArray = new Array(5);      // 데이터 가 들어갈 2차원 배열 (일간, 월간)
       var monthDataArray = new Array(5);
 
       for (var i = 0; i < weekDataArray.length; i++) {                  // 배열 난수로 초기화
@@ -180,10 +178,9 @@
       /* 그래프 파싱 */
       var chartArray = new Array(8);
 
-      for (var i = 0; i < chartArray.length+1; i++) {
+      for (var i = 0; i < chartArray.length; i++) {
         var temp = "#barChart" + (i+1);
         chartArray[i] = $(temp).get(0).getContext('2d');
-
         switch (i) {
           case 0:
             drawChart1(chartArray[i], week, weekDataArray[0], weekDataArray[1],colors[0],colors[1]);
