@@ -170,18 +170,19 @@
 	   		    'rt' +                                   // B는 공백, l은 게시글 개수 조정, p는 페이지네이션
 	            '<"bottom pull-left"<"col-md-12"p>>'
   	});
-	
+	 
   	 // 미처리 엔터 이벤트
 	 $("#yetInput").keydown(function(key){
 		if(key.keyCode == 13){
 			yetSearch();
 		} 
 	 });
-	  
+  	 
 	 // 미처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
 	 function yetCategoryChangeClick() {
 		 yetSearch();
 	 }
+	 
     // 미처리 검색 옵션 설정
     function yetSearch() { 
 		if($("#yetCategory option:selected").val() == 1){   // 문의자(value='4'), 문의유형(value='1')을 담은 카테고리    
@@ -193,9 +194,6 @@
 			$('#questYetSelect').DataTable().columns(yetCategoryNum).search(yetInput).draw(); // 테이블에서 yetCategoryNum의 값이 yetInput과 일치하는 값을 찾고 리로딩
 		}
 	 }
-    
-	 
-	 
     
     // 미처리 검색 카테고리(문의유형) 설정
     function yetCategoryChange() {  
