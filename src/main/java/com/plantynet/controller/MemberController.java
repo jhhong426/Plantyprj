@@ -74,10 +74,7 @@ public class MemberController {
 		
 		FlagVO flag = new FlagVO();
 		flag.setFlag(false);
-		
-		System.out.println(inputPassword);
-		System.out.println(deleteMemberList);
-			
+
 		if(authService.checkSuperPassword(inputPassword)){
 			for (Integer mberNo : deleteMemberList) {
 				System.out.println("삭제 완료 : " + mberNo);

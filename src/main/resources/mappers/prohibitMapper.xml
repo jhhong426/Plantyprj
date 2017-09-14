@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </delete>
  
 <insert id="prohibit_insert">
-		insert into TB_PRHIBIT_WORD (word, mngr_no)
-		values ('${word}', ${mngr_no})
+		insert into TB_PRHIBIT_WORD (word, mngr_id)
+		values ('${word}', '${mngr_id}')
 </insert> 
 
 <!-- 

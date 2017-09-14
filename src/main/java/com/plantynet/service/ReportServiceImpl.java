@@ -46,5 +46,8 @@ public class ReportServiceImpl implements ReportService {
 	public void reportPlus(ReportDoneVO vo) {
 		reportDAO.reportPlus(vo);
 	}
-	
+	@Override
+	public void reportedPlus(ReportDoneVO vo) {
+		reportDAO.reportedPlus(vo);
+	}
 }

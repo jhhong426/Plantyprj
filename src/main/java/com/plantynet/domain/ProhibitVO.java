@@ -6,15 +6,15 @@ public class ProhibitVO {
 	String word;
 	Timestamp reg_date;
 	int prhibit_no;
-	int mngr_no;
-	public int getMngr_no() {
-		return mngr_no;
+	String mngr_id;
+	public String getMngr_id() {
+		return mngr_id;
 	}
 	public int getPrhibit_no() {
 		return prhibit_no;
 	}
-	public void setMngr_no(int mngr_no) {
-		this.mngr_no = mngr_no;
+	public void setMngr_id(String mngr_id) {
+		this.mngr_id = mngr_id;
 	}
 	public void setPrhibit_no(int prhibit_no) {
 		this.prhibit_no = prhibit_no;

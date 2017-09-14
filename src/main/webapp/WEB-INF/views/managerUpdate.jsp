@@ -40,12 +40,11 @@
                 <input type="text" name="position" value="${updateManagerSelect.position}">
                  &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">권 &emsp; &ensp; 한 </label>
-                <input type="text" name="authority" value="${updateManagerSelect.authority}">
-                <!-- <select id="" class="form-control form-group-inline"
-                    style="display:inline-block">
-                    <option value="1">오퍼레이터</option>
-                    <option value="2">슈퍼관리자</option>
-                </select> -->
+                <select id="" class="form-control form-group-inline"
+                    style="display:inline-block"  onChange="registManager.submit()" name="authority">
+                    <option value="Operator">오퍼레이터</option>
+                    <option value="Super">슈퍼관리자</option>
+                </select>
             </div>
             </div>
           </div>

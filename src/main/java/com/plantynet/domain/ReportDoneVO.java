@@ -13,6 +13,14 @@ public class ReportDoneVO {
 	private String answer_category;
 	private int survey_no;
 	private String answer_contents;
+	private String survey_email;
+	
+	public String getSurvey_email() {
+		return survey_email;
+	}
+	public void setSurvey_email(String survey_email) {
+		this.survey_email = survey_email;
+	}
 	
 	public String getAnswer_contents() {
 		return answer_contents;

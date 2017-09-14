@@ -94,7 +94,7 @@
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
 						<label for="">신고글 번호</label> <input type="text" name="report_no"
 							value="${vo.report_no}" readOnly> <label>신고자</label> <input
-							type="text" value="${vo.email}" readOnly>
+							name="report_email" type="text" value="${vo.email}" readOnly>
 					</div>
 				</div>
 
@@ -117,8 +117,9 @@
 				<div class="row">
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
 
-						<label for="">담당자</label> <input type="text" name="mngr_id" value="${login.getMngr_id()}" readOnly> 
-							<label for="">처리시간</label> <input type="text" name="" value="" readOnly>
+						<label for="">담당자</label> <input type="text" name="mngr_id"
+							value="${login.getMngr_id()}" readOnly id="mngr_id"> <label for="">처리시간</label>
+						<input type="text" name="" value="" readOnly>
 
 					</div>
 					<div class="center-block" style="width: 600px; padding: 5px 15px;">
@@ -148,7 +149,9 @@
 						<button id="btnClosePopup" type="button" class="btn btn-primary">취소</button>
 					</div>
 				</div>
-				<input type="hidden" name="survey_no"value="${survyInfo.survey_no}"> 
+				<input type="hidden" name="survey_no" value="${survyInfo.survey_no}">
+				<input type="hidden" name="survey_email" value="${survyInfo.email}">
+
 			</form>
 		</div>
 	</div>
@@ -164,11 +167,14 @@
 	function validateInsert() {
 		var insertWord = $('#answerCategoryInput').val();
 		if (confirm(insertWord + "를 삽입하시겠습니까 ?")) {
+			
+			var _mngr_id = $("#mngr_id").val();
 			jQuery.ajax({
 				type : "get",
 				url : "/reportRegister",
 				data : {
-					"popupWord" : insertWord
+					"popupWord" : insertWord,
+					"mngr_id" : _mngr_id
 				},
 				success : function(data) {
 					alert(data + "가 금칙어에 추가되었습니다.");

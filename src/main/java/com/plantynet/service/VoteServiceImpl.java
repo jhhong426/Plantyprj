@@ -45,62 +45,69 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	@Override
-	public List<SurResultDTO> getSurResult(Integer survey_no) throws Exception {
-		
-		List<SurResultDTO> renderList = new ArrayList<>();
-		List<SurResultVO> orginList = voteDao.getSurResult(survey_no);
-		
-		for (int i = 0; i < orginList.size()/2; i++) {
-			SurResultDTO dto = new SurResultDTO();
-			renderList.add(dto);
-		}
-				
-		for (SurResultVO vo : orginList) {
-					
-			switch (vo.getItem_no()) {
-			case "1":
-				if(vo.getGender().equals("남자")){
-					renderList.get(0).setItem(vo.getItem_contents());
-					renderList.get(0).setMale_score(vo.getScore());
-				}
-				else{
-					renderList.get(0).setFemale_score(vo.getScore());
-				}
-				break;
-			case "2":
-				if(vo.getGender().equals("남자")){
-					renderList.get(1).setItem(vo.getItem_contents());
-					renderList.get(1).setMale_score(vo.getScore());
-				}
-				else{
-					renderList.get(1).setFemale_score(vo.getScore());
-				}
-				break;
-			case "3":
-				if(vo.getGender().equals("남자")){
-					renderList.get(2).setItem(vo.getItem_contents());
-					renderList.get(2).setMale_score(vo.getScore());
-				}
-				else{
-					renderList.get(2).setFemale_score(vo.getScore());
-				}
-				break;
-			case "4":
-				if(vo.getGender().equals("남자")){
-					renderList.get(3).setItem(vo.getItem_contents());
-					renderList.get(3).setMale_score(vo.getScore());
-				}
-				else{
-					renderList.get(3).setFemale_score(vo.getScore());
-				}
-				break;
-
-			default:
-				break;
-			}
-		}	
-	
-		return renderList;
+	public List<SurResultVO> getSurResult(Integer survey_no) throws Exception {
+		return voteDao.getSurResult(survey_no);
 	}
+	
+	
+
+//	@Override
+//	public List<SurResultDTO> getSurResult(Integer survey_no) throws Exception {
+//		
+//		List<SurResultDTO> renderList = new ArrayList<>();
+//		List<SurResultVO> orginList = voteDao.getSurResult(survey_no);
+//		
+//		for (int i = 0; i < orginList.size()/2; i++) {
+//			SurResultDTO dto = new SurResultDTO();
+//			renderList.add(dto);
+//		}
+//				
+//		for (SurResultVO vo : orginList) {
+//					
+//			switch (vo.getItem_no()) {
+//			case "SI01":
+//				if(vo.getGender().equals("남자")){
+//					renderList.get(0).setItem(vo.getItem_contents());
+//					renderList.get(0).setMale_score(vo.getScore());
+//				}
+//				else{
+//					renderList.get(0).setFemale_score(vo.getScore());
+//				}
+//				break;
+//			case "SI02":
+//				if(vo.getGender().equals("남자")){
+//					renderList.get(1).setItem(vo.getItem_contents());
+//					renderList.get(1).setMale_score(vo.getScore());
+//				}
+//				else{
+//					renderList.get(1).setFemale_score(vo.getScore());
+//				}
+//				break;
+//			case "SI03":
+//				if(vo.getGender().equals("남자")){
+//					renderList.get(2).setItem(vo.getItem_contents());
+//					renderList.get(2).setMale_score(vo.getScore());
+//				}
+//				else{
+//					renderList.get(2).setFemale_score(vo.getScore());
+//				}
+//				break;
+//			case "SI04":
+//				if(vo.getGender().equals("남자")){
+//					renderList.get(3).setItem(vo.getItem_contents());
+//					renderList.get(3).setMale_score(vo.getScore());
+//				}
+//				else{
+//					renderList.get(3).setFemale_score(vo.getScore());
+//				}
+//				break;
+//
+//			default:
+//				break;
+//			}
+//		}	
+//	
+//		return renderList;
+//	}
 
 }
