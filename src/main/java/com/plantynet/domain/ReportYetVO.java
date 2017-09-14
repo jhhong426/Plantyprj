@@ -10,7 +10,7 @@ public class ReportYetVO {
 	private String email;
 	private Timestamp reg_date;
 	private String survey_no;
-	
+
 	
 	public int getReport_no() {
 		return report_no;

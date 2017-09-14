@@ -12,7 +12,7 @@
 	<div class="box-body">
 		<div class="row">
 			<div class="col-md-1">
-				<h4>검색</h4>
+				<h4>&emsp;&emsp;검색</h4>
 			</div>
 			<div class="col-md-2">
 				<select id="yetCategory" class="form-control form-group-inline"
@@ -25,11 +25,12 @@
 				<input type="text" id="yetInput" class="form-control"></input>
 			</div>
 			<div class="col-md-1">
-				<button id="yetSearch" onclick="yetSearch()"><i class="fa fa-search"></i></button>
+				<button id="yetSearch" class="fa fa-search" onclick="yetSearch()"
+					style="height: 30px; width: 40px;"></button>
 			</div>
 		</div>
 
-		<table id="report1" class="table table-bordered table-hover display">
+		<table id="report1" class="display">
 			<thead>
 				<tr>
 					<th style="text-align: center">등록번호</th>
@@ -65,7 +66,7 @@
 	</div>
 	<div class="box-body">
 		<div class="col-md-1">
-			<h4>검색</h4>
+			<h4>&emsp;&emsp;검색</h4>
 		</div>
 
 		<div class="col-md-2">
@@ -80,7 +81,8 @@
 			<input type="text" id="doneInput" class="form-control"></input>
 		</div>
 		<div class="col-md-1">
-			<button id="doneSearch" onclick="doneSearch()"><i class="fa fa-search"></i></button>
+			<button class="fa fa-search" id="doneSearch" onclick="doneSearch()"
+				style="height: 30px; width: 40px;"></button>
 		</div>
 		<table id="report2" class="table table-bordered table-hover display">
 			<thead>
@@ -142,7 +144,7 @@
 <!--  bpopup -->
 <script>
 	$(function() {
-		$("#report1, #report2").DataTable(
+		$("#report1").DataTable(
 				{
 					"language" : {
 						'zeroRecords' : "검색결과가 없습니다.",
@@ -162,11 +164,43 @@
 					"lengthChange" : true,
 					"searching" : true,
 					"paging" : true,
-					"ordering" : false,
+					"ordering" : true,
 					"info" : true,
 					"autoWidth" : false,
 					"dom" : '<"top"<"col-md-4"i><"col-md-6"B><"col-md-2"l>>'
-							+ 'rt' + '<"bottom pull-left"<"col-md-12"p>>'
+							+ 'rt' + '<"bottom pull-left"<"col-md-12"p>>',
+					"order" : [ [ 4, "desc" ] ]
+
+				})
+	});
+
+	$(function() {
+		$("#report2").DataTable(
+				{
+					"language" : {
+						'zeroRecords' : "검색결과가 없습니다.",
+						'info' : "질문 글 수 :  _TOTAL_ 개",
+						'infoEmpty' : "질문 글 수 :  _TOTAL_ 개",
+						'infoFiltered' : " ",
+						"lengthMenu" : "출력 개수 :  _MENU_",
+						'paginate' : {
+							"first" : "처음",
+							"last" : "마지막",
+							"next" : "다음",
+							"previous" : "이전"
+						}
+
+					},
+					"lengthMenu" : [ 15, 25, 50 ],
+					"lengthChange" : true,
+					"searching" : true,
+					"paging" : true,
+					"ordering" : true,
+					"info" : true,
+					"autoWidth" : false,
+					"dom" : '<"top"<"col-md-4"i><"col-md-6"B><"col-md-2"l>>'
+							+ 'rt' + '<"bottom pull-left"<"col-md-12"p>>',
+					"order" : [ [ 6, "desc" ] ]
 
 				})
 	});
@@ -185,7 +219,7 @@
 	}
 
 	function doneSearch() {
-		
+
 		if ($("#doneCategory option:selected").val() == 1) {
 			var doneCategoryInput = $("#doneCategoryInput option:selected")
 					.val();
@@ -206,7 +240,7 @@
 		if ($("#yetCategory option:selected").val() == 1) {
 			$("#yetDynamicCategory")
 					.html(
-							"<select id='yetCategoryInput' class='form-control form-group-inline'"
+							"<select onchange='yetCategoryChangeClick()'  id='yetCategoryInput' class='form-control form-group-inline'"
 						+"style='display: inline-block'>"
 									+ "<option value='욕설'>욕설</option>"
 									+ "<option value='성적표현'>성적표현</option>"
@@ -225,7 +259,7 @@
 		if ($("#doneCategory option:selected").val() == 1) {
 			$("#doneDynamicCategory")
 					.html(
-							"<select id='doneCategoryInput' class='form-control form-group-inline'"
+							"<select onchange='doneCategoryChangeClick()' id='doneCategoryInput' class='form-control form-group-inline'"
 					+"style='display: inline-block'>"
 									+ "<option value='욕설'>욕설</option>"
 									+ "<option value='성적표현'>성적표현</option>"
@@ -250,6 +284,30 @@
 		console.log("처리reportNo클릭:" + reportNo);
 		openReportDoneInfoPopup(reportNo);
 	});
+
+	$("#yetInput").keydown(function(key) {
+
+		if (key.keyCode == 13) {
+			yetSearch();
+		}
+	});
+
+	$("#DoneInput").keydown(function(key) {
+
+		if (key.keyCode == 13) {
+			doneSearch();
+		}
+	});
+	
+	function yetCategoryChangeClick(){
+		yetSearch();
+	}
+	
+	
+	function doneCategoryChangeClick(){
+		doneSearch();
+	}
+	
 
 	function openReportDoneInfoPopup(selectedReportNo) {
 		console.log("처리 팝업 스크립트 함수 수행");
