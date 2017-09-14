@@ -40,7 +40,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void deleteMember(Integer mber_no) {
 		
-		sqlSession.update(namespace + ".delete", mber_no);
+		sqlSession.delete(namespace + ".delete", mber_no);
 		
 	}
 }

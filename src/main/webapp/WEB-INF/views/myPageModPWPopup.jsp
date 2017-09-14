@@ -30,8 +30,8 @@
 
 			</form>
 			<div class="center-block">
-				<button id="btnModifyPW" class="btn btn-primary" onclick="frmChk()">비밀번호 변경</button>
-				<button id="btnClosePopup" class="btn btn-danger">취소</button>
+				<button id="btnModifyPW" class="btn btn-danger pull-left" onclick="frmChk()" >비밀번호 변경</button>
+				<button id="btnClosePopup" class="btn btn-primary pull-right">취소</button>
 			</div>
 
 		</div>
@@ -42,14 +42,21 @@
 <script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
 <script type="text/javascript">
+
+$("#password, #newPW, #chkPW").keydown(function(key) {
+
+	if (key.keyCode == 13) {
+		frmChk();
+	}
+});
+
+
 	
 function frmChk(){
 	
 	var frm = document.frmModifyPW;
 	var _data = $(".frmModifyPW").serialize();
 	
-	console.log(frm);
-	console.log(_data);
 	
 	if(frm.password.value=='') {
 		
