@@ -251,6 +251,11 @@
 			$("#yetDynamicCategory")
 					.html(
 							"<input type='text' id='yetInput' class='form-control'></input>");
+			$("#yetInput").on("keydown" ,function(key) {
+				if (key.keyCode == 13) {
+					yetSearch();
+				}
+			});
 		}
 	}
 
@@ -269,7 +274,13 @@
 		} else {
 			$("#doneDynamicCategory")
 					.html(
-							"<input type='text' id='doneInput' class='form-control'></input>");
+							"<input type='text' id='doneInput'  class='form-control'></input>");
+			
+			$("#doneInput").on("keydown" ,function(key) {
+				if (key.keyCode == 13) {
+					doneSearch();
+				}
+			});
 		}
 	}
 
@@ -285,19 +296,20 @@
 		openReportDoneInfoPopup(reportNo);
 	});
 
-	$("#yetInput").keydown(function(key) {
-
-		if (key.keyCode == 13) {
-			yetSearch();
-		}
-	});
-
-	$("#DoneInput").keydown(function(key) {
-
+	
+	
+	$("#doneInput").on("keydown" ,function(key) {
 		if (key.keyCode == 13) {
 			doneSearch();
 		}
 	});
+	
+	$("#yetInput").on("keydown" ,function(key) {
+		if (key.keyCode == 13) {
+			yetSearch();
+		}
+	});
+	
 	
 	function yetCategoryChangeClick(){
 		yetSearch();
