@@ -43,7 +43,7 @@
 		password = '탈퇴한 회원',
 		mber_name = null,
 		phone = null,
-		birth = null
+		birth = null,
 		gender = null,
 		reg_date = null,
 		survey_cnt = null,

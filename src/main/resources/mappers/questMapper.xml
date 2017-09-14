@@ -16,7 +16,7 @@
 		TB_QUESTION a, TB_MEMBER b
 	where
 		 a.mber_no = b.mber_no and
-		 a.status = '미처리' and
+		 a.status = 'QS00' and
 		 1 order by a.reg_date DESC;
 </select>
 
@@ -35,7 +35,7 @@
 		a.quest_no = c.quest_no and
 		a.mber_no = b.mber_no and
 		c.mngr_id = d.mngr_id and
-        a.status = '처리' and
+        a.status = 'QS01' and
         1 order by c.cmpl_date DESC;
 </select>
 
@@ -53,7 +53,7 @@
 	where
 		 a.mber_no = b.mber_no and
 		 a.quest_no = #{quest_no} and
-		 a.status = '미처리';
+		 a.status = 'QS00';
 </select>
 
 
@@ -69,7 +69,7 @@
 	UPDATE 
 		TB_QUESTION
 	SET
-		status = "처리"
+		status = "QS01"
 	where
 		quest_no = #{quest_no};
 </update>
@@ -93,7 +93,7 @@
 		a.mber_no = b.mber_no and
 		c.mngr_id = d.mngr_id and
         a.quest_no = #{quest_no} and
-        a.status = '처리';
+        a.status = 'QS01';
 </select>
 
 

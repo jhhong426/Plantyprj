@@ -94,7 +94,7 @@
 		</div>
 		<div class="box-body">
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 				<h4 class="inline">기간 설정 :</h4>
 				&emsp;&emsp;<input type="text" id="questPreDate" class="inline">&emsp;~&emsp;<input
 					type="text" id="questPostDate" class="inline">&emsp;&emsp;&emsp;
@@ -139,7 +139,7 @@
 		</div>
 		<div class="box-body">
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 				<h4 class="inline">기간 설정 :</h4>
 				&emsp;&emsp;<input type="text" id="reportPreDate" class="inline">&emsp;~&emsp;<input
 					type="text" id="reportPostDate" class="inline">&emsp;&emsp;&emsp;

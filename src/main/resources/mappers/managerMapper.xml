@@ -44,7 +44,7 @@
 		 insert into TB_MANAGER 
 		 	(emp_no, mngr_name, mngr_id, password, department, position, authority, status)
 		 values
-		 	(${emp_no}, '${mngr_name}', '${mngr_id}', '${password}', '${department}', '${position}', '${authority}', '활성화');
+		 	(${emp_no}, '${mngr_name}', '${mngr_id}', '${password}', '${department}', '${position}', '${authority}', 'MS01');
 	 </insert> 
 	 
 	 
