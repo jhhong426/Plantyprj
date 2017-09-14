@@ -26,7 +26,10 @@ public interface ManagerService {
 	  public List<ManagerVO> updateManagerSelect(Integer mngr_no) throws Exception;
 	  
 	  void update(ManagerVO vo);
-
+	  
+	  public List<ManagerVO> deleteTest(Integer mngr_no) throws Exception;
+	  
+	  void deleteManager(Integer mngr_no);
 }
 
 

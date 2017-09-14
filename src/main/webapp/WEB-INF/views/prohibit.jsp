@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<!-- general form elements -->
 			<h1>금칙어 관리</h1>
-			
+
 			<p id=totalCount></p>
 			<table id="example1" class="display" cellspacing="0" width="100%">
 				<thead>
@@ -26,10 +26,12 @@
 						<td align="left">
 							<form style="display: inline;" name="prohibit_insert"
 								method="post" action="/prohibit_insert"
-								onsubmit="return validateInsertForm()">
+								onsubmit="return validateInsertForm()" id="frmProhibit">
 								<input type="text" class="global_filter" id="global_filter"
 									name="word">
 								<button id="createBtn" style="display: inline;" type="submit">생성하기</button>
+								<input type="hidden" name="mngr_id"
+									value="${login.getMngr_id()}">
 							</form>
 						</td>
 					</tr>
@@ -46,6 +48,7 @@
 								</form>
 							</td>
 						</tr>
+
 					</c:forEach>
 				</tbody>
 			</table>
@@ -86,7 +89,17 @@
 			"scrollY" : "300px",
 			"scrollCollapse" : true,
 			"paging" : false,
-			"sDom" : 't'
+			"sDom" : 't',
+			"language" : {
+				'zeroRecords' : "검색결과가 없습니다.",
+				'info' : "질문 글 수 :  _TOTAL_ 개",
+				'infoEmpty' : "질문 글 수 :  _TOTAL_ 개",
+				'infoFiltered' : " ",
+				"lengthMenu" : "출력 개수 :  _MENU_"
+			},
+			"ordering" : true,
+			"order" : [ [ 0, "asc" ] ]
+
 		});
 		var tempCount = $('#example1 tr').length - 1;
 		$('#totalCount').text("총 금칙어 개수 :" + tempCount);
@@ -125,6 +138,12 @@
 			return false;
 		}
 	}
+	
+	 $("#global_filter").keydown(function(key) {
+		if (key.keyCode == 13) {
+			$("#frmProhibit").submit();
+		}
+	});
 </script>
 </body>
 </html>

@@ -2,16 +2,9 @@
 <%@ page session="true"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@include file="include/header.jsp"%>
-
-
 <h2>회원 리스트</h2>
-
 <hr>
-
-
-
 <div class="box-body">
 	<div class="input-group">
 		<div class="row">
@@ -28,7 +21,7 @@
 			</div>
 			<div class="col-md-2">
 				<button class="fa fa-search" id="searchMember"
-					 style="height: 30px; width: 40px;"></button>
+					style="height: 30px; width: 40px;"></button>
 			</div>
 		</div>
 	</div>
@@ -73,15 +66,15 @@
 		</tbody>
 	</table>
 	<div class="row">
-	
+
 		<div class="col-md-2 pull-right">
-			<button type="button" class="btn btn-danger pull-right"id="deleteMember">삭제</button>
+			<button type="button" class="btn btn-danger pull-right"
+				id="deleteMember">삭제</button>
 		</div>
 	</div>
-	
-	<form id="frmDelete" class="frmForDelete" action="" method="post" hidden="hidden">
 
-	</form>
+	<form id="frmDelete" class="frmForDelete" action="" method="post"
+		hidden="hidden"></form>
 
 </div>
 

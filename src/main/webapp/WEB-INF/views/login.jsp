@@ -87,16 +87,12 @@
 <script type="text/javascript">
 
 	
-	var flag = "<c:out value='${flag}'/>";
-	
-
-	
-	if(flag == "false"){
-		var str = "<h6 style='color:#FF0040'>아이디 혹은 비밀번호가 올바르지 않습니다.</h6>";
+	var errorMsg = "<c:out value='${errorMsg}'/>";
+	if(errorMsg != null){
+		var str = "<h6 style='color:#FF0040'>"+errorMsg+"</h6>";
 		$(".box-footer").children("br").remove();
 		$(".box-footer").prepend(str);
-	}
-	
+	}	
 	
 
 	function frmChk(){

@@ -6,7 +6,7 @@
 
 
 <div class="box box-primary">
-	<form style="display: inline;" name="updateManager" method="post" action="/update">
+	<form style="display: inline;" name="updateManager" method="post" action="/update" onsubmit="return validateConfirmForm()">
 	<div class="box-header with-border">
 		<div class="box-title">
         	<p><strong>관리자 계정 수정</strong></p>
@@ -40,12 +40,11 @@
                 <input type="text" name="position" value="${updateManagerSelect.position}">
                  &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">권 &emsp; &ensp; 한 </label>
-                <input type="text" name="authority" value="${updateManagerSelect.authority}">
-                <!-- <select id="" class="form-control form-group-inline"
-                    style="display:inline-block">
-                    <option value="1">오퍼레이터</option>
-                    <option value="2">슈퍼관리자</option>
-                </select> -->
+                <select id="" class="form-control form-group-inline"
+                    style="display:inline-block"  onChange="registManager.submit()" name="authority">
+                    <option value="Operator">오퍼레이터</option>
+                    <option value="Super">슈퍼관리자</option>
+                </select>
             </div>
             </div>
           </div>
@@ -55,7 +54,7 @@
 
         <div class="box-footer">
        	  <input type="hidden" name = "mngr_no" value="${updateManagerSelect.mngr_no}">
-          <button id="btnUpdatePopup" style="float:left" type="submit" name="updateManager" class="btn btn-primary inline-block col-md-offset-4">저장</button>
+          <button id="btnUpdatePopup" style="float:left" type="submit" name="updateManager" class="btn btn-primary inline-block col-md-offset-4">수정</button>
 		  <button id="btnClosePopup" style="float:left" type="button" name="closeBtn" class="btn btn-danger inline-block col-md-offset-1">취소</button>
         </div>
         </c:forEach>
@@ -72,5 +71,14 @@
 	$("#btnClosePopup").click(function(){
 		$("#popupWrapper").bPopup().close();
 	}); 
+	
+	// 정보를 수정하시겠습니까?  확인 Alert 띄우기
+	function validateConfirmForm() {
+		if (confirm("정보를 수정하시겠습니까?")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
  
 </script>

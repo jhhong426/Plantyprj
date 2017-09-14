@@ -50,9 +50,7 @@ public class VoteController {
 	
 	@RequestMapping(value = "/info", method = RequestMethod.GET)
 	public String voteInfoPop(@RequestParam("surveyNo") int selectedSurvyNo, Model model) throws Exception {
-		
-		System.out.println("팝업 진입진입");
-		
+
 		model.addAttribute("survyInfo", voteService.getSurvey(selectedSurvyNo));
 		model.addAttribute("survyResult", voteService.getSurResult(selectedSurvyNo));
 

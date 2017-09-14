@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		TB_REPORT a, TB_MEMBER b
 	where
 		 a.mber_no = b.mber_no and
-		 a.status = '미처리'
+		 a.status = 'RS00'
 </select>
 
 <select id="reportDoneSelect" resultType="com.plantynet.domain.ReportDoneVO">
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		a.mber_no = c.mber_no and
         a.report_no = b.report_no and
         b.mngr_id = d.mngr_id and
-        a.status = '처리'
+        a.status = 'RS01'
 </select>
 
 
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		a.mber_no = c.mber_no and
         a.report_no = b.report_no and
         b.mngr_id = d.mngr_id and
-        a.status = '처리' and
+        a.status = 'RS01' and
         a.report_no = #{report_no}
 </select>
 
@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		TB_REPORT a, TB_MEMBER b
 	where
 		 a.mber_no = b.mber_no and
-		 a.status = '미처리' and
+		 a.status = 'RS00' and
 		 a.report_no = #{report_no}
 </select>
 
@@ -89,11 +89,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert> 
 
 <update id = "answerUpdate" parameterType="com.plantynet.domain.ReportDoneVO">
-	UPDATE TB_REPORT SET status = '처리' WHERE  report_no = #{report_no}
+	UPDATE TB_REPORT SET status = 'RS01' WHERE  report_no = #{report_no}
 </update>
 
 <update id = "reportPlus" parameterType="com.plantynet.domain.ReportDoneVO">
-	UPDATE TB_SURVEY SET reported_cnt =reported_cnt +1   where survey_no = #{survey_no}
+	UPDATE TB_MEMBER SET report_cnt =report_cnt +1   where email = #{email}
+	
+</update>
+<update id = "reportedPlus" parameterType="com.plantynet.domain.ReportDoneVO">
+	UPDATE TB_MEMBER SET reported_cnt =reported_cnt +1   where email = #{survey_email}
 </update>
 
 

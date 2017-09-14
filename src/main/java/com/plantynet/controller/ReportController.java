@@ -3,7 +3,9 @@ package com.plantynet.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.plantynet.domain.ManagerVO;
 import com.plantynet.domain.ProhibitVO;
 import com.plantynet.domain.ReportDoneVO;
 import com.plantynet.domain.ReportYetVO;
@@ -61,7 +64,7 @@ public class ReportController {
 	}
 
 	@RequestMapping(value = "/report/yetInfo", method = RequestMethod.GET)
-	public String reportYetInfo(@RequestParam("reportNo") int reportNo, Model model)
+	public String reportYetInfo(@RequestParam("reportNo") int reportNo,  Model model)
 			throws NumberFormatException, Exception {
 
 		System.out.println("Controller 미처리  reportNo:" + reportNo + " 진입");
@@ -76,12 +79,11 @@ public class ReportController {
 	}
 
 	@RequestMapping(value = "/reportRegister", method = RequestMethod.GET)
-	public void reportRegister(HttpServletResponse response, String popupWord) throws IOException {
+	public void reportRegister(HttpServletResponse response, String mngr_id,String popupWord ) throws IOException {
 		System.out.println("컨트롤러 실행");
 		System.out.println(popupWord);
 		ProhibitVO prohibitVO = new ProhibitVO();
-		int mngr_no = 1; // 매니저이름 설정하기
-		prohibitVO.setMngr_no(mngr_no);
+		prohibitVO.setMngr_id(mngr_id);
 		prohibitVO.setWord(popupWord);
 		prohibitService.insert(prohibitVO);
 		response.setCharacterEncoding("UTF-8");
@@ -90,8 +92,8 @@ public class ReportController {
 	}
 
 	@RequestMapping(value = "/report_answerInsert", method = RequestMethod.POST)
-	public String report_answerInsert(int report_no, String mngr_id, String answer_category, String answer_contents,
-			int survey_no, Model model) { // 뷰로부터 DB에 삽입할 금칙어의 이름을 String word로 가져옴
+	public String report_answerInsert(int report_no,String report_email, String mngr_id, String answer_category, String answer_contents,
+			int survey_no ,String survey_email, Model model) { // 뷰로부터 DB에 삽입할 금칙어의 이름을 String word로 가져옴
 		logger.info("report_answerInsert");
 		ReportDoneVO vo = new ReportDoneVO();
 		vo.setReport_no(report_no);
@@ -103,9 +105,21 @@ public class ReportController {
 		}
 		vo.setSurvey_no(survey_no);
 		vo.setAnswer_contents(answer_contents);
+		vo.setEmail(report_email);
+		vo.setSurvey_email(survey_email);
+		
+		
 		reportService.answerInsert(vo);
 		reportService.answerUpdate(vo);
-		//reportService.reportPlus(vo);
+		
+		System.out.println("스테이터스 값 :" + answer_category);
+		System.out.println("리포트 이메일 값 :" + report_email);
+		System.out.println("리포티드 값 :" + survey_email);
+		if(answer_category.equals("2")) {	
+		reportService.reportPlus(vo);
+		reportService.reportedPlus(vo);
+		}
+		
 		return "redirect:/report";// 삽입 완료시 금칙어 관리페이지로 리다이렉트
 	}
 }
