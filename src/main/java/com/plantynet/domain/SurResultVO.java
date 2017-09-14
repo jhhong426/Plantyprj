@@ -4,8 +4,8 @@ public class SurResultVO {
 	
 	private String item_contents;
 	private String item_no;
-	private String gender;
-	private int score;
+	private int male_score;
+	private int female_score;
 	
 	public String getItem_contents() {
 		return item_contents;
@@ -19,18 +19,20 @@ public class SurResultVO {
 	public void setItem_no(String item_no) {
 		this.item_no = item_no;
 	}
-	public String getGender() {
-		return gender;
+	public int getMale_score() {
+		return male_score;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setMale_score(int male_score) {
+		this.male_score = male_score;
 	}
-	public int getScore() {
-		return score;
+	public int getFemale_score() {
+		return female_score;
 	}
-	public void setScore(int score) {
-		this.score = score;
+	public void setFemale_score(int female_score) {
+		this.female_score = female_score;
 	}
+	
+	
 	
 	
 	

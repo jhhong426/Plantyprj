@@ -2,7 +2,7 @@ package com.plantynet.service;
 
 import java.util.List;
 
-import com.plantynet.domain.SurResultDTO;
+import com.plantynet.domain.SurResultVO;
 import com.plantynet.domain.SurveyVO;
 import com.plantynet.domain.VoteVO;
 
@@ -18,6 +18,6 @@ public interface VoteService {
 	
 	public SurveyVO getSurvey(Integer survey_no) throws Exception;
 	
-	public List<SurResultDTO> getSurResult(Integer survey_no) throws Exception;
+	public List<SurResultVO> getSurResult(Integer survey_no) throws Exception;
 
 }
