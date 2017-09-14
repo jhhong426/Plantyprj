@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="box box-primary">
-	<form style="display: inline;" name="registManager" method="post" action="/create">
+	<form style="display: inline;" name="registManager" method="post" action="/create" onsubmit="return validateConfirmForm()">
 	<div class="box-header with-border">
 		<div class="box-title">
         	<p><strong>관리자 계정 생성</strong></p>
@@ -70,5 +70,14 @@
 	$("#btnClosePopup").click(function(){
 		$("#popupWrapper").bPopup().close();
 	}); 
- 
+	
+	// 계정을 등록하시겠습니까?  확인 Alert 띄우기
+	function validateConfirmForm() {
+		if (confirm("계정을 등록하시겠습니까?")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 </script>

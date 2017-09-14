@@ -63,13 +63,33 @@
 		UPDATE 
 			TB_MANAGER
 		SET
-			mngr_name = "${mngr_name}", department = '${department}', position = '${position}', authority = '${authority}'
+			mngr_name = '${mngr_name}', department = '${department}', position = '${position}', authority = '${authority}'
 		where
 			mngr_no = ${mngr_no};
 	</update>
 	
 	
+	<select id= "deleteTest" resultType="com.plantynet.domain.ManagerVO">
+		select
+			mngr_no
+		from 
+			TB_MANAGER
+		where
+			 mngr_no = #{mngr_no};
+	</select>
 	
+	
+	<update id= "deleteUpdateManager" >
+		UPDATE 
+			TB_MANAGER
+		SET
+			status = 'MS00'
+		where
+			mngr_no = #{mngr_no};
+	</update>
+	
+
+
 </mapper>
 	
   	  <!-- 

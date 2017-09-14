@@ -16,11 +16,12 @@
 		TB_QUESTION a, TB_MEMBER b
 	where
 		 a.mber_no = b.mber_no and
-		 a.status = '미처리';
+		 a.status = '미처리' and
+		 1 order by a.reg_date DESC;
 </select>
 
 <select id= "questDoneSelect" resultType="com.plantynet.domain.QuestDoneVO">
-       select
+     select
 		a.quest_no,
 		a.quest_category,
 		a.title,
@@ -34,7 +35,8 @@
 		a.quest_no = c.quest_no and
 		a.mber_no = b.mber_no and
 		c.mngr_id = d.mngr_id and
-        a.status = '처리';
+        a.status = '처리' and
+        1 order by c.cmpl_date DESC;
 </select>
 
 

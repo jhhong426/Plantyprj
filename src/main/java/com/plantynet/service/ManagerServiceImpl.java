@@ -56,5 +56,14 @@ public class ManagerServiceImpl implements ManagerService {
 	 public void update(ManagerVO vo) {
 		 dao.update(vo);
 	 }
+	 
+	 @Override
+	 public List<ManagerVO> deleteTest(Integer mngr_no) throws Exception {
+		 return dao.deleteTest(mngr_no);
+	 }
+	 
+	 public void deleteManager(Integer mngr_no) {
+		 dao.deleteManager(mngr_no);
+	 }
 }
 

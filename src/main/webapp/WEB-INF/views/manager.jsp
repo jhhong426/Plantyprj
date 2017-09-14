@@ -67,7 +67,18 @@
 				<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="modify(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
 			</td>
 			<td>
-				<button class="fa fa-trash" id="managerDelete" onclick="managerDelete()" style="height:30px; width:40px;"></button>
+				<c:choose>
+	        		<c:when test="${mngr.authority == 'Super'}">
+	        			<c:out value=""/>
+	        		</c:when>
+	        		<c:when test="${mngr.status == 'MS00'}">
+	        			<c:out value=""/>
+	        		</c:when>
+	        		<c:otherwise>
+	        			<button class="fa fa-trash" id="deleteManager" onclick="deleteUpdate(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
+	        		</c:otherwise>
+	        	</c:choose>
+				
 			</td>
 			</tr>
 			</c:forEach>
@@ -129,6 +140,9 @@
 <script>
     	var managerSelect = $("#managerSelect").DataTable({
            "language" : {
+        	   'zeroRecords'	: "검색결과가 없습니다.",
+				'infoFiltered'	: " ",
+				'lengthMenu'	: "출력 개수 : _MENU_",
    				'paginate'		: {
    					"first"			: "처음",
    					"last"			: "마지막",
@@ -136,29 +150,31 @@
    					"previous"		: "이전"
    				}
    			},
-   		   "scrollY"		: 400,
+   		   "scrollY"		: 600,
    		   "scrollCollapse" : true,
+   		   "lengthMenu"		: [15, 25, 50],
+   	       "pageLength"		: 25,
            "pagingType"		: "full_numbers",
-           "lengthChange": false,
+           "lengthChange": true,
            "searching": false,
     	   "paging": true,
            "info": false, 
            "ordering": false,   
            "autoWidth": false,
-           "dom":  '<"top"<"col-md-12"B>>' +
+           "dom":  '<"top"<"col-md-10"B><"col-md-2"l>>' +
 		 		   'rt' +
 		 		  '<"bottom pull-left"<"col-md-12"p>>'
     		});
     		
-    	
-    	$( function() {
+    	// 날짜선택 라이브러리 datepicker() 설정
+    	$(function() {
     	     $( "#datepicker1" ).datepicker();
     	     $( "#datepicker2" ).datepicker();
-    	 });
+    	});
 
     	
-    	
-    	  $(function () {
+    	// AdminLTE BarChart 불러오기
+    	$(function () {
     	    var barChartCanvas        = $('#barChart').get(0).getContext('2d')
     	    var barChart              = new Chart(barChartCanvas)
     	    var barChartData = {
@@ -250,18 +266,17 @@
 		});
 	}
 	
-	
 	// 관리자계정 수정 팝업 출력
 	function modify(mngrno) {
-		console.log("첫번째 엔오"+ mngrno);
-		console.log("파싱 엔오" + parseInt(mngrno));
+		//console.log("첫번째 mngrno"+ mngrno);
+		//console.log("파싱 mngrno" + parseInt(mngrno));
 		var updateNo = mngrno;
 		openManagerInfoPopup(updateNo);
 	}
 
 	// 관리자계정 수정 팝업의 정보
 	function openManagerInfoPopup(updateNo) {
-	console.log(updateNo);
+		//console.log(updateNo);
 		$.ajax({
 			type : "GET",
 			url : "/updatePopup",
@@ -273,6 +288,36 @@
 				$("#popupWrapper").bPopup({
 					follow : [ true, true ],
 				position : [ 700, 40 ]
+				});
+				$("#popupWrapper").html(data);
+
+			},
+			error : function(request, status) {
+				$("#popupWrapper").hide();
+				alert("팝업 오류");
+			}
+		});
+	}
+	
+	// 관리자계정 삭제 팝업 출력
+	function deleteUpdate(mngrno) {
+		var deleteNo = mngrno;
+		openManagerDeletePopup(deleteNo);
+	}
+	
+	// 관리자계정 삭제
+	function openManagerDeletePopup(deleteNo) {
+		$.ajax({
+			type : "GET",
+			url : "/super",
+			data : {
+				deleteNo : deleteNo
+			},
+			dataType : "html",
+			success : function(data) {
+				$("#popupWrapper").bPopup({
+					follow : [ true, true ],
+					position : [ 500, 30 ]
 				});
 				$("#popupWrapper").html(data);
 
