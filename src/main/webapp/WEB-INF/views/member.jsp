@@ -11,9 +11,9 @@
 			<div class="col-md-5">
 				<select id="searchCategory" class="form-control form-group-inline"
 					style="display: inline-block">
-					<option value="2">이메일</option>
-					<option value="1">전화번호</option>
-					<option value="4">생년월일</option>
+					<option value="3">이메일</option>
+					<option value="2">전화번호</option>
+					<option value="5">생년월일</option>
 				</select>
 			</div>
 			<div class="col-md-5" id="yetDynamicCategory">
@@ -60,8 +60,7 @@
 				<td>${member.report_cnt}</td>
 				<td>${member.reported_cnt}</td>
 				<td>${member.reg_date}</td>
-				<td><button type="button" id="modifyMember"
-						onclick="modify(${member.mber_no})">정보수정</button></td>
+				<td><button type="button" id="modifyMember" class="fa fa-pencil-square-o" onclick="modify(${member.mber_no})"></button></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -109,68 +108,6 @@
 
 <script>
 
-<!--
-	// 체크박스 모두선택, 모두해제
-	$(document).ready(function() {
-
-		$("#selectAll").click(function() {
-
-			if ($("#selectAll").prop("checked")) {
-
-				$("input[name=selectMember]").prop("checked", true);
-
-			} else {
-
-				$("input[name=selectMember]").prop("checked", false);
-			}
-		})
-	})
-	
-	
-
-	// DataTable 옵션 변경, 미처리 문의사항 옵션 설정
-	var memberList1 = $("#memberList1").DataTable(
-			{
-				"language" : {
-					search : "검색 : ",
-					'zeroRecords' : "검색결과가 없습니다.",
-					'infoFiltered' : " ",
-					'lengthMenu' : "출력 개수 : _MENU_",
-					'paginate' : {
-						"first" : "처음",
-						"last" : "마지막",
-						"next" : "다음",
-						"previous" : "이전"
-					}
-				},
-				"scrollY" : 400,
-				"scrollCollapse" : true,
-				"lengthMenu" : [ 15, 25, 50 ],
-				"pageLength" : 25,
-				"pagingType" : "full_numbers",
-				"lengthChange" : true,
-				"searching" : true,
-				"paging" : true,
-				"info" : false,
-				"ordering" : false, // 칼럼별로 따로 오름차순, 내림차순할 필요 없어서 설정 꺼놨음
-				"autoWidth" : false,
-				"dom" : '<"top"<"col-md-10"B><"col-md-2"l>>' + 'rt'
-						+ '<"bottom"<"col-md-8"p><"col-md-4"B>>' // 페이지네이션 위치는 임의로 설정해놔서 해상도에 따라 가운데에서 벗어날 수 있음
-			});
-
-
-	// 카테고리 + 키워드 검색
-	function searchMember() {
-
-		var searchCategory = $("#searchCategory option:selected").val();
-
-		var keywords = $("#keywords").val();
-
-		$('#memberList').DataTable().columns(searchCategory).search(keywords)
-				.draw()
-	}
-	-->
-
 	
 	var memberList = $("#memberList").DataTable({
         "language"    : {
@@ -210,6 +147,10 @@
 
 
       });
+	
+	function tableInit() {
+		$('#memberList').DataTable().columns().search("").draw();
+	}
 
 	 // 전체 체크박스 선택 및 해제 기능 구현
     $('#selectAll').on('click', function(){
@@ -234,6 +175,7 @@
 	  
 	  //질문 글 검색 후 테이블 그리는 함수
 	  function searchMember(){
+		  tableInit();
 		  memberList
         .columns( $('#searchCategory > option:selected').val() )
         .search($("#keywords").val())

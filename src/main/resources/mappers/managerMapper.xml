@@ -5,7 +5,6 @@
 <mapper namespace="com.plantynet.mapper.ManagerMapper">
 
 	<select id="login" resultType="ManagerVO">
-  
   		SELECT mngr_no, mngr_id, mngr_name, emp_no, department, position, authority, status
   		FROM TB_MANAGER
   		WHERE mngr_id = #{mngr_id} AND password = #{password};

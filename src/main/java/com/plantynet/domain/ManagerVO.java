@@ -93,6 +93,6 @@ public class ManagerVO {
 	@Override
 	public String toString() {
 		return "ManagerVO [mngr_id=" + mngr_id + ", mngr_name=" + mngr_name +
-				  ", emp_no=" + emp_no +", department=" + department + ", position=" + position + ", authority=" +authority +"]";
+				  ", emp_no=" + emp_no +", department=" + department + ", position=" + position + ", authority=" +authority + ", status=" + status +"]";
 	}
 }
