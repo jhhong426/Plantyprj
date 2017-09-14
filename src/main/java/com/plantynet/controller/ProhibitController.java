@@ -45,14 +45,13 @@ public class ProhibitController {
 	
 	//금칙어 삽입
 	@RequestMapping(value = "/prohibit_insert", method = RequestMethod.POST)
-	public String prohibit_insert(@RequestParam("word")String word) {   //뷰로부터 DB에 삽입할 금칙어의 이름을 String word로 가져옴
+	public String prohibit_insert(@RequestParam("word")String word, String mngr_id ) {   //뷰로부터 DB에 삽입할 금칙어의 이름을 String word로 가져옴
 		logger.info("prohibit_insert");
 		ProhibitVO prohibitVO = new ProhibitVO();
-		int mngr_no = 1;  //매니저이름 설정하기
-		prohibitVO.setMngr_no(mngr_no);
+		prohibitVO.setMngr_id(mngr_id);
 		prohibitVO.setWord(word);
 		
-		System.out.println("금칙어"+ word +"mngr_no" +mngr_no+"실행");
+		System.out.println("금칙어"+ word +"mngr_id" +mngr_id+"실행");
 		prohibitService.insert(prohibitVO);   // 뷰로부터  가져온 word로  DB에 가지고있는 금칙어를  삭제
 		
 		
