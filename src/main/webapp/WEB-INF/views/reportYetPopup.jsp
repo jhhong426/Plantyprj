@@ -71,10 +71,10 @@
 						</tr>
 						<c:forEach items="${survyResult}" var="result">
 							<tr>
-								<td>${result.item}</td>
-								<td>${result.male_score + result.female_score}</td>
-								<td>${result.male_score}</td>
-								<td>${result.female_score}</td>
+								<td>${result.item_contents} </td>
+								<td>${result.male_score + result.female_score} 명</td>
+								<td>${result.male_score} 명 </td>
+								<td>${result.female_score} 명</td>
 							</tr>
 						</c:forEach>
 
@@ -196,6 +196,31 @@
 			return false;
 		}
 
+	}
+	
+	var rowCount = 0;
+	var totalCount = 0;
+	var maleCount = 0;
+	var femaleCount = 0;
+
+	$("#surveyTable tr").each(function() {
+		if (rowCount != 0) {
+
+			var tds = $(this).children("td");
+
+			totalCount += parseInt($(tds).eq(1).text());
+			maleCount += parseInt($(tds).eq(2).text());
+			femaleCount += parseInt($(tds).eq(3).text());
+		}
+
+		rowCount++;
+	});
+
+	if (rowCount > 1) {
+
+		var str = "<tr><td>합계</td><td>" + totalCount + " 명</td><td>"
+				+ maleCount + " 명</td><td>" + femaleCount + " 명</td></tr>"
+		$("#surveyTable > tbody:last").append(str);
 	}
 
 	$("#btnClosePopup").click(function() {

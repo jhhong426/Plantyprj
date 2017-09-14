@@ -46,28 +46,28 @@
 
 		<div class="row">
 			<div class="col-md-3">
-				<label for="">I&emsp;&emsp;D&emsp;:&emsp;${login.getMngr_id()}</label>
+				<h4><strong>&emsp;&emsp;I&emsp;&emsp;&emsp;D&emsp;&emsp;:</strong>&emsp;${login.getMngr_id()}</h4>
 			</div>
 
 			<div class="col-md-3">
-				<label for="">이&emsp;&emsp;름&emsp;:&emsp;${login.getMngr_name()}</label>
+				<h4><strong>이&emsp;&emsp;름&emsp;:</strong>&emsp;${login.getMngr_name()}</h4>
 			</div>
 			<div class="col-md-3">
-				<label for="">사원번호&emsp;:&emsp;${login.getEmp_no()}</label>
+				<h4><strong>사원번호&emsp;:</strong>&emsp;${login.getEmp_no()}</h4>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-3">
-				<label for="">소속부서&emsp;&emsp;:&emsp;${login.getDepartment()}</label>
+				<h4><strong>&emsp;&emsp;소속부서&emsp;&emsp;:</strong>&emsp;${login.getDepartment()}</h4>
 			</div>
 
 			<div class="col-md-3">
-				<label for="">직&emsp;&emsp;책&emsp;:&emsp;${login.getPosition()}</label>
+				<h4><strong>직&emsp;&emsp;책&emsp;:</strong>&emsp;${login.getPosition()}</h4>
 			</div>
 
 			<div class="col-md-3">
-				<label for="">권&emsp;&emsp;한&emsp;:&emsp;${login.getAuthority()}</label>
+				<h4><strong>권&emsp;&emsp;한&emsp;:</strong>&emsp;${login.getAuthority()}</h4>
 			</div>
 		</div>
 	</div>
@@ -94,7 +94,7 @@
 		</div>
 		<div class="box-body">
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 				<h4 class="inline">기간 설정 :</h4>
 				&emsp;&emsp;<input type="text" id="questPreDate" class="inline">&emsp;~&emsp;<input
 					type="text" id="questPostDate" class="inline">&emsp;&emsp;&emsp;
@@ -139,7 +139,7 @@
 		</div>
 		<div class="box-body">
 
-			<div class="col-md-4">
+			<div class="col-md-12">
 				<h4 class="inline">기간 설정 :</h4>
 				&emsp;&emsp;<input type="text" id="reportPreDate" class="inline">&emsp;~&emsp;<input
 					type="text" id="reportPostDate" class="inline">&emsp;&emsp;&emsp;
@@ -272,7 +272,7 @@
 					.draw();
 		});
 
-		function questinoInit() {
+		function questionInit() {
 			$('#question').DataTable().columns().search("").draw();
 
 		}

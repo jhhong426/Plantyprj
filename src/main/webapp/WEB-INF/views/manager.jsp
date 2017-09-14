@@ -64,7 +64,9 @@
 	        	</c:choose>
         	</td>
 			<td>
-				<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="modify(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
+				<c:if test="${mngr.status eq 'MS01' }">
+					<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="modify(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
+				</c:if>
 			</td>
 			<td>
 				<c:choose>

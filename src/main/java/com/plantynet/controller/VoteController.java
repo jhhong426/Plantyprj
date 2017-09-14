@@ -66,8 +66,8 @@ public class VoteController {
 		if(authService.checkSuperPassword(inputPassword)){
 			
 			for (Integer survyNo : delSurvyNoList) {
-				//voteService.delSurvy(survyNo);
-				System.out.println("삭제 완료 : " + survyNo);
+				voteService.delSurvy(survyNo);
+				//System.out.println("삭제 완료 : " + survyNo);
 			}
 			flag.setFlag(true);
 		}

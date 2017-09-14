@@ -204,7 +204,31 @@
 
 				})
 	});
+	
+	
+	$("#yetInput").keydown(function(key) {
 
+		if (key.keyCode == 13) {
+			yetSearch();
+		}
+	});
+
+	$("#DoneInput").keydown(function(key) {
+	
+		if (key.keyCode == 13) {
+			doneSearch();
+		}
+	});
+	
+	function yetCategoryChangeClick(){
+		yetSearch();
+	}
+	
+	
+	function doneCategoryChangeClick(){
+		doneSearch();
+	}
+	
 	function yetSearch() {
 		if ($("#yetCategory option:selected").val() == 1) { //yetCategory -> 신고자(value='3'), 신고유형(value='1')을 담은 카테고리    
 			var yetCategoryInput = $("#yetCategoryInput option:selected").val(); //yetCategoryInput ->욕설, 성적표현, 정치적발연, 기타의 값을 가지고 있음 ,yetCategoryChange에서 동저긍로 생성
@@ -296,8 +320,7 @@
 		openReportDoneInfoPopup(reportNo);
 	});
 
-	
-	
+
 	$("#doneInput").on("keydown" ,function(key) {
 		if (key.keyCode == 13) {
 			doneSearch();
@@ -314,11 +337,9 @@
 	function yetCategoryChangeClick(){
 		yetSearch();
 	}
+
 	
 	
-	function doneCategoryChangeClick(){
-		doneSearch();
-	}
 	
 
 	function openReportDoneInfoPopup(selectedReportNo) {

@@ -23,6 +23,14 @@
          </div>
          <div class="col-md-5" id="yetDynamicCategory">
            <input type="text" id="yetInput" class="form-control"></input>
+           <select onchange='yetCategoryChangeClick()' id='yetCategoryInput' class='form-control form-group-inline' style='display: inline-block' hidden="hidden">
+						<option value='서비스'>서비스</option>
+						<option value='투표'>투표</option>
+						<option value='회원관리'>회원관리</option>
+						<option value='금칙어'>금칙어</option>
+						<option value='운영'>운영</option>
+						<option value='기타'>기타</option>
+			</select>
          </div>
          <div class="col-md-2">
          		<button class="fa fa-search" id="yetSearch" onclick="yetSearch()" style="height:30px; width:40px;"></button>
@@ -170,7 +178,24 @@
 	   		    'rt' +                                   // B는 공백, l은 게시글 개수 조정, p는 페이지네이션
 	            '<"bottom pull-left"<"col-md-12"p>>'
   	});
-		
+	
+  	 // 미처리 엔터 이벤트
+	 /* $("#yetInput").keydown(function(key){
+		if(key.keyCode == 13){
+			yetSearch();
+		} 
+	 }); */
+  	 
+  	 $(document).on("keydown","#yetInput",function(key){
+  		if(key.keyCode == 13){
+			yetSearch();
+		} 
+  	 });
+	  
+	 // 미처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
+	 function yetCategoryChangeClick() {
+		 yetSearch();
+	 }
     // 미처리 검색 옵션 설정
     function yetSearch() { 
 		if($("#yetCategory option:selected").val() == 1){   // 문의자(value='4'), 문의유형(value='1')을 담은 카테고리    
@@ -183,24 +208,14 @@
 		}
 	 }
     
-	  // 미처리 엔터 이벤트
-	 $("#yetInput").keydown(function(key){
-		if(key.keyCode == 13){
-			yetSearch();
-		} 
-	 });
-	  
-	 // 미처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
-	 function yetCategoryChangeClick() {
-		 yetSearch();
-	 }
+	 
 	 
     
     // 미처리 검색 카테고리(문의유형) 설정
     function yetCategoryChange() {  
     	$('#questYetSelect').DataTable().columns().search("").draw();
     	
-		if($("#yetCategory option:selected").val() == 1 ){
+		/* if($("#yetCategory option:selected").val() == 1 ){
 			$("#yetDynamicCategory").html(
 					"<select onchange='yetCategoryChangeClick()' id='yetCategoryInput' class='form-control form-group-inline'"
 						+"style='display: inline-block'>"
@@ -215,6 +230,14 @@
 		} else {
 			$("#yetDynamicCategory").html(
 					"<input type='text' id='yetInput' class='form-control'></input>"
+			);
+		} */
+    	if($("#yetCategory option:selected").val() == 1 ){
+    		$("#yetDynamicCategory").children("input").hide();
+			$("#yetDynamicCategory").children("select").show();
+		} else {
+			$("#yetDynamicCategory").children("input").show();
+			$("#yetDynamicCategory").children("select").hide();
 			);
 		}
 	}
@@ -290,6 +313,19 @@
 			    '<"bottom pull-left"<"col-md-12"p>>'
  	});
     
+	  // 처리 엔터 이벤트
+	  $("#doneInput").keydown(function(key){
+		  
+		 if(key.keyCode == 13){
+			 doneSearch();
+		 } 
+	  });
+	  
+	  // 처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
+	  function doneCategoryChangeClick() {
+		  doneSearch();
+	  }
+	  
     // 처리 검색 옵션 설정
     function doneSearch() {
 		if($("#doneCategory option:selected").val() == 1){  // 담당자(value='6') 카테고리 추가
@@ -302,18 +338,7 @@
 			}
 	}
     
- 	  // 처리 엔터 이벤트
-	  $("#doneInput").keydown(function(key){
-		  
-		 if(key.keyCode == 13){
-			 doneSearch();
-		 } 
-	  });
  	  
-	  // 처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
-	  function doneCategoryChangeClick() {
-		  doneSearch();
-	  }
     
 	// 처리 검색 카테고리(문의유형) 설정
     function doneCategoryChange() {
