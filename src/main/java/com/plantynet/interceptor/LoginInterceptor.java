@@ -29,22 +29,23 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	    
 	    // 로그인 성공
 	    if (managerVO != null) {
+	    		    		    	
+	    	//삭제된 관리자 일 경우
+	    	if(managerVO.getStatus().equals("MS00")){
+	    		request.setAttribute("errorMsg", "삭제된 관리자 입니다.");
+		    	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+	    	}
+	    	else{
+	    		// 세션의 login 파라미터에 들어갈 값
+		    	session.setAttribute(LOGIN, managerVO);
+		    	response.sendRedirect("/stat");
+	    	}
 
-
-	    	// 세션의 login 파라미터에 들어갈 값
-	    	session.setAttribute(LOGIN, managerVO);
-//	    	session.setMaxInactiveInterval(40*60);
-	    	response.sendRedirect("/stat");
-
-	    	
-	    	System.out.println(session.getAttribute(LOGIN));
-	    	
-	    	
 	    }
 	    // 로그인 실패
 	    else {
 	    	
-	    	request.setAttribute("flag", "false");
+	    	request.setAttribute("errorMsg", "올바른 아이디 혹은 비밀번호가 아닙니다.");
 	    	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	    	    
 	    }

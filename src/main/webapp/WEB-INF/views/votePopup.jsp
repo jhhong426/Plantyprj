@@ -68,7 +68,7 @@
                 </tr>
                 <c:forEach items="${survyResult}" var="result">
                 	<tr>
-                		<td>${result.item }</td>
+                		<td>${result.item_contents }</td>
                 		<td>${result.male_score + result.female_score }  명</td>
                 		<td>${result.male_score }  명</td>
                 		<td>${result.female_score}  명</td>

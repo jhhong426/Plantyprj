@@ -7,9 +7,11 @@
 
 <select id= "selectAll" resultType="MemberVO">
 	SELECT
-		mber_no, phone, email, gender, birth, survey_cnt, quest_cnt, report_cnt, reported_cnt, reg_date
+		mber_no, phone, email, gender, birth, survey_cnt, quest_cnt, report_cnt, reported_cnt, reg_date, status
 	FROM 
-		TB_MEMBER;
+		TB_MEMBER
+	WHERE
+		status = 'MS01';
 
 </select>
 
@@ -33,11 +35,25 @@
 
 </update>
 
-<delete id="delete">
-	DELETE FROM
+<update id="delete">
+	UPDATE 
 		TB_MEMBER
+	SET 
+		email = '탈퇴한 회원',
+		password = '탈퇴한 회원',
+		mber_name = null,
+		phone = null,
+		birth = null
+		gender = null,
+		reg_date = null,
+		survey_cnt = null,
+		quest_cnt = null,
+		vote_cnt = null,
+		report_cnt = null,
+		reported_cnt = null,
+		status = 'MS00'
 	WHERE
 		mber_no = #{mber_no};
-</delete>
+</update>
 
 </mapper>

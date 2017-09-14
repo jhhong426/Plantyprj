@@ -15,42 +15,41 @@
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">사원번호</label>
-                <input type="text" name="emp_no" value="${registManager.emp_no}">
+                <input type="text" name="emp_no" value="">
                 &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">이 &emsp; &ensp; 름 </label>
-                <input type="text" name="mngr_name" value="${registManager.mngr_name}">
+                <input type="text" name="mngr_name" value="">
               </div>
             </div>
            
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">아 &ensp;이&ensp;디</label>
-                <input type="text" name="mngr_id" value="${registManager.mngr_id}">
+                <input type="text" name="mngr_id" value="">
                 &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">비밀번호</label>
-                <input type="text" name="password" value="${registManager.password}">
+                <input type="text" name="password" value="">
               </div>
             </div>
             
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">소 &emsp; &ensp; 속 </label>
-                <input type="text" name="department" value="${registManager.department}">
+                <input type="text" name="department" value="">
                 &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">직 &emsp; &ensp; 책 </label>
-                <input type="text" name="position" value="${registManager.position}">
+                <input type="text" name="position" value="">
               </div>
             </div>
      
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">권 &emsp; &ensp; 한 </label>
-                 <input type="text" name="authority" value="${registManager.authority}">
-                  <!-- <select id="" class="form-control form-group-inline"
-                    style="display:inline-block">
-                    <option value="1">오퍼레이터</option>
-                    <option value="2">슈퍼관리자</option>
-                </select> -->
+                 <select id="" class="form-control form-group-inline"
+                    style="display:inline-block"  onChange="registManager.submit()" name="authority">
+                    <option value="Operator">오퍼레이터</option>
+                    <option value="Super">슈퍼관리자</option>
+                </select>
               </div>
             </div>
           </div>
