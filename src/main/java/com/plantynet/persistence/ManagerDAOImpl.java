@@ -60,5 +60,15 @@ public class ManagerDAOImpl implements ManagerDAO {
 	public void update(ManagerVO vo) {
 		session.update(namespace+".updateManager", vo);
 	}
+	
+	@Override
+	public List<ManagerVO> deleteTest(Integer mngr_no) throws Exception {
+		return session.selectList(namespace+".deleteTest", mngr_no);
+	}
+	
+	@Override
+	public void deleteManager(Integer mngr_no) {
+		session.update(namespace+".deleteUpdateManager", mngr_no);
+	}
 }
 

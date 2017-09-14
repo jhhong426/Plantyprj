@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.plantynet.domain.FlagVO;
 import com.plantynet.domain.LoginDTO;
 import com.plantynet.domain.ManagerVO;
 import com.plantynet.domain.QuestDoneVO;
 import com.plantynet.domain.QuestYetVO;
+import com.plantynet.service.AuthService;
 import com.plantynet.service.ManagerService;
 import com.plantynet.service.PasswordEncoder;
 
@@ -28,6 +31,9 @@ public class ManagerController {
 
 	@Autowired
 	private ManagerService service;
+	
+	@Autowired
+	private AuthService authService;
 
 	// URL : /login
 	// LoginDTO 에서 처리
@@ -112,7 +118,6 @@ public class ManagerController {
 		return "managerUpdate";
 	}
 	
-	
 	// 관리자계정 정보수정 입력값 DB로 insert하기
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String managerPopupUpdate(ManagerVO vo, Model model) throws Exception {
@@ -121,5 +126,28 @@ public class ManagerController {
 		return "redirect:/manager";	
 	}
 	
+	// 관리자계정 삭제시, 슈퍼관리자 확인 비밀번호 팝업 띄우기
+	@RequestMapping(value = "/super", method = RequestMethod.GET)
+	public String checkPwPop(@RequestParam("deleteNo") Integer deleteNo, Model model) throws Exception {
+		model.addAttribute("deleteTest", deleteNo);
+		
+		return "managerSuperPwCheckPopup";
+	}
+	
+	// 슈퍼관리자 비밀번호 확인 후 삭제
+	@RequestMapping(value = "/superCheck", method = RequestMethod.POST)
+	public @ResponseBody FlagVO managerPopupUpdateDelete(@RequestParam("inputPassword") String inputPassword, Integer deleteNo) throws Exception {
+		
+		FlagVO flag = new FlagVO();
+		flag.setFlag(false);
+		
+		if(authService.checkSuperPassword(inputPassword)){
+			service.deleteManager(deleteNo);
+			
+			flag.setFlag(true);
+		}
+			
+		return flag;
+	}
 }
 

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="box box-primary">
-	<form style="display: inline;" name="registManager" method="post" action="/create">
+	<form style="display: inline;" name="registManager" method="post" action="/create" onsubmit="return validateConfirmForm()">
 	<div class="box-header with-border">
 		<div class="box-title">
         	<p><strong>관리자 계정 생성</strong></p>
@@ -45,11 +45,10 @@
             <div class="row">
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">권 &emsp; &ensp; 한 </label>
-                 <input type="text" name="authority" value="${registManager.authority}">
-                  <!-- <select id="" class="form-control form-group-inline"
-                    style="display:inline-block">
-                    <option value="1">오퍼레이터</option>
-                    <option value="2">슈퍼관리자</option>
+                <input type="text" name="authority" value="${registManager.authority}">
+                <!-- <select id="optionSelect" name="authority" MULTIPLE class="form-control form-group-inline" style="display:inline-block">
+                    <option value="1">Operator</option>
+                    <option value="2">Super</option>
                 </select> -->
               </div>
             </div>
@@ -71,5 +70,14 @@
 	$("#btnClosePopup").click(function(){
 		$("#popupWrapper").bPopup().close();
 	}); 
- 
+	
+	// 계정을 등록하시겠습니까?  확인 Alert 띄우기
+	function validateConfirmForm() {
+		if (confirm("계정을 등록하시겠습니까?")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 </script>

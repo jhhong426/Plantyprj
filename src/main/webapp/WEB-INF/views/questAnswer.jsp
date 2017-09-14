@@ -44,7 +44,7 @@
 			<hr />
 
 			<h3>답변 작성</h3>
-			<form style="display: inline;" name="insertAnswer" method="post" action="/quest/insertAnswer">
+			<form style="display: inline;" name="insertAnswer" method="post" action="/quest/insertAnswer" onsubmit="return validateConfirmForm()">
 			<div class="form-group">
 				<div class="row">
 					<div class="center-block" style="width: 600px; padding: 15px;">
@@ -52,7 +52,7 @@
 						<input type="text" name="mngr_id" value="${login.getMngr_id()}" readOnly>
 						&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
 						<label for="">답변시간</label> 
-						<input type="text" name="" value="현재시각 자동입력" disabled>
+						<input type="text" name="" value="" disabled>
 					</div>
 				</div>
 			</div>
@@ -77,10 +77,19 @@
 <script src="/resources/plugins/jQuery/jquery.bpopup.min.js"></script>
 <script type="text/javascript">
 
-
+	// 팝업창 '취소' 버튼 클릭시 close 하기
 	$("#btnClosePopup").click(function() {
 		$("#popupWrapper").bPopup().close();
 	});
+	
+	// 답변을 등록하시겠습니까?  확인 Alert 띄우기
+	function validateConfirmForm() {
+		if (confirm("답변을 등록하시겠습니까?")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	
 </script>
