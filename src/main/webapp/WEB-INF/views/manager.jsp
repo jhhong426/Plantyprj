@@ -14,7 +14,7 @@
 <%@include file="include/header.jsp" %>
 
  
-   <h2>운영진 관리</h2>
+   <h3><strong>&emsp;운영진 관리</strong></h3>
    
    <div class="box">
 	<div class="box-body">
@@ -22,7 +22,7 @@
      </div>
 	 <!-- DataTable로 운영진 리스트 출력 -->
 	 <div class="col-md-6">
-		 <h3>운영진 리스트</h3>
+		 <h4>&bull; &ensp;운영진 리스트</h4>
 	 </div>
 	 <div class="col-md-6" style="text-align:right">
 			<button id="regist" style="display:inline; height:40px; width:80px;" type="submit"><strong>계정 생성</strong></button>
@@ -50,7 +50,7 @@
 			<td>${mngr.department}</td>
 			<td>${mngr.position}</td>
 			<td>${mngr.authority}</td>
-			<td>
+			<td>  <!-- DB의 status 값들을 치환 개념으로 출력값 바꿔서 출력, 시스템코드 값을 사용자가 보기 쉽게 바꿈  -->
 				<c:choose>
 	        		<c:when test="${mngr.status == 'MS01'}">
 	        			<c:out value="활성화"/>
@@ -64,14 +64,14 @@
 	        	</c:choose>
         	</td>
 			<td>
-				<c:if test="${mngr.status eq 'MS01' }">
+				<c:if test="${mngr.status eq 'MS01'}">    <!-- status가 활성화된 상태일 때만 정보 변경 아이콘이 보이도록 설정 -->
 					<button class="fa fa-pencil-square-o" id="managerUpdate" onclick="modify(${mngr.mngr_no})" style="height:30px; width:40px;"></button>
 				</c:if>
 			</td>
-			<td>
-				<c:choose>
+			<td>  <!-- authority가 Super이거나 status가 비활성화 상태이면 계정 비활성화 시키면 안되니까(정책에 어긋나므로) 삭제 아이콘이 보이지 않도록 설정  -->
+				<c:choose> 
 	        		<c:when test="${mngr.authority == 'Super'}">
-	        			<c:out value=""/>
+	        			<c:out value=""/>  
 	        		</c:when>
 	        		<c:when test="${mngr.status == 'MS00'}">
 	        			<c:out value=""/>
@@ -90,7 +90,7 @@
 	
 	 
 	<div class="col-md-12">
-		 <h3>처리 현황</h3>
+		 <h4>&bull; &ensp;처리 현황</h4>
 	</div>
 	<p>기간 설정: 
 		<input type="text" id="datepicker1">
@@ -101,7 +101,7 @@
 	 
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
-     	<div class="chart">
+     	<div class="chart">   <!-- Admin LTE BarChart 출력, 설정들은 아래 JQuery에서! -->
              <canvas id="barChart" width="400" height="100"></canvas>
         </div>
     </div>
@@ -144,7 +144,6 @@
            "language" : {
         	   'zeroRecords'	: "검색결과가 없습니다.",
 				'infoFiltered'	: " ",
-				'lengthMenu'	: "출력 개수 : _MENU_",
    				'paginate'		: {
    					"first"			: "처음",
    					"last"			: "마지막",
@@ -154,16 +153,15 @@
    			},
    		   "scrollY"		: 600,
    		   "scrollCollapse" : true,
-   		   "lengthMenu"		: [15, 25, 50],
    	       "pageLength"		: 25,
            "pagingType"		: "full_numbers",
-           "lengthChange": true,
+           "lengthChange": false,
            "searching": false,
     	   "paging": true,
            "info": false, 
            "ordering": false,   
            "autoWidth": false,
-           "dom":  '<"top"<"col-md-10"B><"col-md-2"l>>' +
+           "dom":  '<"top"<"col-md-12"B>>' +
 		 		   'rt' +
 		 		  '<"bottom pull-left"<"col-md-12"p>>'
     		});
@@ -175,7 +173,7 @@
     	});
 
     	
-    	// AdminLTE BarChart 불러오기
+    	// AdminLTE BarChart 불러오기, DB값+날짜에 맞춰서 뿌려줘야함........!!!
     	$(function () {
     	    var barChartCanvas        = $('#barChart').get(0).getContext('2d')
     	    var barChart              = new Chart(barChartCanvas)
@@ -270,8 +268,7 @@
 	
 	// 관리자계정 수정 팝업 출력
 	function modify(mngrno) {
-		//console.log("첫번째 mngrno"+ mngrno);
-		//console.log("파싱 mngrno" + parseInt(mngrno));
+		//console.log("mngrno 출력 : "+ mngrno);
 		var updateNo = mngrno;
 		openManagerInfoPopup(updateNo);
 	}
@@ -289,7 +286,7 @@
 			success : function(data) {
 				$("#popupWrapper").bPopup({
 					follow : [ true, true ],
-				position : [ 700, 40 ]
+				position : [ 500, 30 ]
 				});
 				$("#popupWrapper").html(data);
 
