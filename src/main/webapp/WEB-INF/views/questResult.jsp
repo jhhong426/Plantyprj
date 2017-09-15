@@ -13,7 +13,7 @@
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">등록번호</label>
                 <input type="text" name="" value="${questResultSelect.quest_no}" disabled>
-                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">문의유형</label>
                 <input type="text" name="" value="${questResultSelect.quest_category}" disabled>
               </div>
@@ -22,7 +22,7 @@
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">문&ensp;의&ensp;자</label>
                 <input type="text" name="" value="${questResultSelect.email}" disabled>
-                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
                 <label for="">문의시간</label>
                 <input type="text" name="" value="${questResultSelect.reg_date}" disabled>
               </div>
@@ -36,7 +36,7 @@
             <div class="form-group">
               <label for="">문의 내용</label>
               <p>
-              <textarea type="text" rows="5" cols="90" disabled>${questResultSelect.quest_contents}</textarea>
+              <textarea type="text" rows="5" cols="85" disabled>${questResultSelect.quest_contents}</textarea>
             </div>
           </div>
           
@@ -48,7 +48,7 @@
               <div class="center-block" style="width:600px; padding:15px;">
                 <label for="">담&ensp;당&ensp;자</label>
                 <input type="text" name="" value="${questResultSelect.mngr_id}" disabled>
-                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+                &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 
          		<label for="">답변시간</label>
                 <input type="text" name="" value="${questResultSelect.cmpl_date}" disabled>
          	  </div>
@@ -56,7 +56,7 @@
            <div class="form-group">
               <label for="">답변 내용</label>
               <p>
-              <textarea type="text" rows="5" cols="90" disabled>${questResultSelect.answer_contents}</textarea>
+              <textarea type="text" rows="5" cols="85" disabled>${questResultSelect.answer_contents}</textarea>
            </div>
        </div>
              

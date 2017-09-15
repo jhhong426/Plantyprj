@@ -5,10 +5,13 @@
 
 <%@include file="include/header.jsp" %>
 
-   <!-- 미처리 문의사항 Count 출력 -->
-   <h2>  
-	 <div id='countYet' ></div>
-   </h2>
+
+
+
+
+
+
+ <h3><strong>&emsp;미처리 문의사항</strong></h3>
    
    <!-- 미처리 문의사항 검색 부분 -->
    <div class="box">
@@ -17,30 +20,22 @@
        <div class="row">
          <div class="col-md-5">
            <select id="yetCategory" class="form-control form-group-inline" onchange="yetCategoryChange()" style="display:inline-block">
-             <option value="4">문의자</option>
+             <option value="4">문의자</option>    <!-- 검색 카테고리 설정 -->
              <option value="1">문의유형</option>
            </select>
          </div>
-         <div class="col-md-5" id="yetDynamicCategory">
-           <input type="text" id="yetInput" class="form-control"></input>
-           <select onchange='yetCategoryChangeClick()' id='yetCategoryInput' class='form-control form-group-inline' style='display: inline-block' hidden="hidden">
-						<option value='서비스'>서비스</option>
-						<option value='투표'>투표</option>
-						<option value='회원관리'>회원관리</option>
-						<option value='금칙어'>금칙어</option>
-						<option value='운영'>운영</option>
-						<option value='기타'>기타</option>
-			</select>
+         <div class="col-md-5" id="yetDynamicCategory"> <!-- 문의유형 선택시 나타나는 동적 카테고리 설정(아래 JQuery에서 설정) -->
+           <input type="text" id="yetInput" class="form-control"></input>  <!-- 검색창 -->
          </div>
          <div class="col-md-2">
-         		<button class="fa fa-search" id="yetSearch" onclick="yetSearch()" style="height:30px; width:40px;"></button>
+         		<button class="fa fa-search" id="yetSearch" onclick="yetSearch()" style="height:30px; width:40px;"></button>  <!-- 검색 버튼 (돋보기 모양 이미지) -->
 			</div>
        </div>
      </div>
 
 	<!-- 미처리 문의사항 데이터 출력 -->
-	<table id="questYetSelect" class="display" cellspacing="0" width="100%">
-			<thead>
+	<table id="questYetSelect" class="display" cellspacing="0" width="100%">  <!-- JQuery에서 이 id만 받아와서  온갖 설정을 다 한다 -->
+			<thead>  
 				<tr>
 				<th style="text-align:center">등록번호</th>
 				<th style="text-align:center">문의유형</th>
@@ -50,15 +45,15 @@
 				</tr>
 			</thead>	
 	        <tbody style="text-align:center">
-	        <c:forEach var="Yet" items="${questYetSelect}">
-			<tr>
-			<td>${Yet.quest_no}</td>
-			<td>${Yet.quest_category}</td>
-			<td>${Yet.title}</td>
-			<td>${Yet.reg_date}</td>
-			<td>${Yet.email}</td>
-			</tr>
-			</c:forEach>
+		        <c:forEach var="Yet" items="${questYetSelect}">
+					<tr>
+					<td>${Yet.quest_no}</td>
+					<td>${Yet.quest_category}</td>
+					<td>${Yet.title}</td>
+					<td>${Yet.reg_date}</td>
+					<td>${Yet.email}</td>
+					</tr>
+				</c:forEach>
 	        </tbody>
 	</table>
    </div>	
@@ -66,10 +61,13 @@
 	
 
 	
-   <!-- 처리 문의사항 Count 출력 -->
-   <h2> 
-	 <div id='countDone' ></div>
-   </h2>
+	
+	
+	
+	
+	
+	
+    <h3><strong>&emsp;처리 문의사항</strong></h3>
    
    <!-- 처리 문의사항 검색 부분 -->
    <div class="box">
@@ -106,24 +104,36 @@
 				</tr>
 			</thead>	
 	        <tbody style="text-align:center">
-	        <c:forEach var="Done" items="${questDoneSelect}">
-			<tr>
-			<td>${Done.quest_no}</td>
-			<td>${Done.quest_category}</td>
-			<td>${Done.title}</td>
-			<td>${Done.reg_date}</td>
-			<td>${Done.email}</td>
-			<td>${Done.cmpl_date}</td>
-			<td>${Done.mngr_id}</td>
-			</tr>
-			</c:forEach>
+		        <c:forEach var="Done" items="${questDoneSelect}">
+					<tr>
+					<td>${Done.quest_no}</td>
+					<td>${Done.quest_category}</td>
+					<td>${Done.title}</td>
+					<td>${Done.reg_date}</td>
+					<td>${Done.email}</td>
+					<td>${Done.cmpl_date}</td>
+					<td>${Done.mngr_id}</td>
+					</tr>
+				</c:forEach>
 	        </tbody>
 	</table>
    </div>
   </div>
 
-  <div id="popupWrapper" style="display:none;"></div>
 
+
+
+<div id="popupWrapper" style="display:none;"></div>
+
+
+<!-- 처리/미처리 총 개수 출력
+   <h2>  
+	 <div id='countYet' ></div>
+   </h2>
+
+   <h2> 
+	 <div id='countDone' ></div>
+   </h2> -->
 
 
 
@@ -154,13 +164,15 @@
   	var questYetSelect = $("#questYetSelect").DataTable({
          "language" : {    // 영어로 되어있는 기본 설정값들을 한글로 변경
       	        'zeroRecords'	: "검색결과가 없습니다.",
+      	     	'info'          : "검색결과  :  _TOTAL_ 개",
+            	'infoEmpty'     : "검색결과  :  _TOTAL_ 개",
  				'infoFiltered'	: " ",
  				'lengthMenu'	: "출력 개수 : _MENU_",
  				'paginate'		: {
- 					"first"			: "처음",
- 					"last"			: "마지막",
- 					"next"			: "다음",
- 					"previous"		: "이전"
+ 					"first"		: "처음",
+ 					"last"		: "마지막",
+ 					"next"		: "다음",
+ 					"previous"	: "이전"
  				 }
  	     },
  		 "scrollY"		: 400,                // 스크롤바 길이 선언
@@ -171,34 +183,71 @@
          "lengthChange": true,
          "searching": true,
   	     "paging": true,
-         "info": false,       // 테이블에 출력되어있는 게시글 수가 몇 개인지 세어주는 기능
+         "info": true,       // 테이블에 출력되어있는 게시글 수가 몇 개인지 세어주는 기능
          "ordering": false,   // 칼럼별로 따로 오름차순, 내림차순 할 수 있는 기능
          "autoWidth": false,
-         "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +   // DataTable 옵션들 위치 수동으로 설정
+         "dom": '<"top"<"col-md-4"i><"col-md-6"B><"col-md-2"l>>' +   // DataTable 옵션들 위치 수동으로 설정
 	   		    'rt' +                                   // B는 공백, l은 게시글 개수 조정, p는 페이지네이션
 	            '<"bottom pull-left"<"col-md-12"p>>'
   	});
-	 
-  	 // 미처리 엔터 이벤트
-	 /* $("#yetInput").keydown(function(key){
-		if(key.keyCode == 13){
-			yetSearch();
-		} 
-
-	 }); */
-  	 
-  	 $(document).on("keydown","#yetInput",function(key){
-  		if(key.keyCode == 13){
-			yetSearch();
-		} 
-  	 });
-	  
-
+	
+ // 처리 문의사항 옵션 설정
+	var questDoneSelect = $("#questDoneSelect").DataTable({
+        "language" : {
+     	     search : "검색 : ",
+     	    'zeroRecords'	: "검색결과가 없습니다.",
+     	  	    'info'          : "검색결과  :  _TOTAL_ 개",
+       	        'infoEmpty'     : "검색결과  :  _TOTAL_ 개",
+				'infoFiltered'	: " ",
+				'lengthMenu'	: "출력 개수 : _MENU_",
+				'paginate'		: {
+					"first"			: "처음",
+					"last"			: "마지막",
+					"next"			: "다음",
+					"previous"		: "이전"
+				}
+			},
+		   "scrollY"		: 400,
+		   "scrollCollapse" : true,
+        "lengthMenu"		: [15, 25, 50],
+        "pageLength"		: 25,
+        "pagingType"		: "full_numbers",
+        "lengthChange": true,
+        "searching": true,
+ 	    "paging": true,
+        "info": true, 
+        "ordering": false, 
+        "autoWidth": false,
+        "dom": '<"top"<"col-md-4"i><"col-md-6"B><"col-md-2"l>>' +
+			    'rt' +
+			    '<"bottom pull-left"<"col-md-12"p>>'
+ 	});
+	
+	  // 미처리 엔터 이벤트
+	  $("#yetInput").keydown(function(key){
+		 if(key.keyCode == 13){
+		 	yetSearch();
+		 } 
+	  }); 
+	
+	  // 처리 엔터 이벤트
+	  $("#doneInput").keydown(function(key){
+		  
+		 if(key.keyCode == 13){
+			 doneSearch();
+		 } 
+	  });
+	
 	 // 미처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
 	 function yetCategoryChangeClick() {
 		 yetSearch();
 	 }
-	 
+	
+	 // 처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
+	 function doneCategoryChangeClick() {
+	     doneSearch();
+	 }
+	
     // 미처리 검색 옵션 설정
     function yetSearch() { 
 		if($("#yetCategory option:selected").val() == 1){   // 문의자(value='4'), 문의유형(value='1')을 담은 카테고리    
@@ -211,11 +260,22 @@
 		}
 	 }
     
+    // 처리 검색 옵션 설정
+    function doneSearch() {
+		if($("#doneCategory option:selected").val() == 1){  // 담당자(value='6') 카테고리 추가
+			var doneCategoryInput = $("#doneCategoryInput option:selected").val();
+			$('#questDoneSelect').DataTable().columns(1).search(doneCategoryInput).draw();   
+		}else{
+			var doneCategoryNum = $("#doneCategory option:selected").val();
+			var doneInput = $('#doneInput').val()						      
+			$('#questDoneSelect').DataTable().columns(doneCategoryNum).search(doneInput).draw(); 
+			}
+	}
+    
     // 미처리 검색 카테고리(문의유형) 설정
     function yetCategoryChange() {  
     	$('#questYetSelect').DataTable().columns().search("").draw();
-    	
-		/* if($("#yetCategory option:selected").val() == 1 ){
+		 if($("#yetCategory option:selected").val() == 1 ){
 			$("#yetDynamicCategory").html(
 					"<select onchange='yetCategoryChangeClick()' id='yetCategoryInput' class='form-control form-group-inline'"
 						+"style='display: inline-block'>"
@@ -229,29 +289,54 @@
 			);
 		} else {
 			$("#yetDynamicCategory").html(
-					"<input type='text' id='yetInput' class='form-control'></input>"
+					"<input type='text' id='yetInput' class='form-control'></input>");
+			$("#yetInput").on("keydown" ,function(key) {
+				if (key.keyCode == 13) {
+					yetSearch();
+				}
+			});
+		} 
+	}
+    
+ 	// 처리 검색 카테고리(문의유형) 설정
+    function doneCategoryChange() {
+    	$('#questDoneSelect').DataTable().columns().search("").draw();
+    	
+		if($("#doneCategory option:selected").val() == 1){
+			$("#doneDynamicCategory").html(
+					"<select onchange='doneCategoryChangeClick()' id='doneCategoryInput' class='form-control form-group-inline'"
+					+"style='display: inline-block'>"
+					+"<option value='서비스'>서비스</option>"
+					+"<option value='투표'>투표</option>"
+					+"<option value='회원관리'>회원관리</option>"
+					+"<option value='금칙어'>금칙어</option>"
+					+"<option value='운영'>운영</option>"
+					+"<option value='기타'>기타</option>"
+					+"</select>"	
 			);
-		} */
-    	if($("#yetCategory option:selected").val() == 1 ){
-    		$("#yetDynamicCategory").children("input").hide();
-			$("#yetDynamicCategory").children("select").show();
-		} else {
-			$("#yetDynamicCategory").children("input").show();
-			$("#yetDynamicCategory").children("select").hide();
-			);
+		}else{
+			$("#doneDynamicCategory").html(
+					"<input type='text' id='doneInput' class='form-control'></input>");
+			$("#doneInput").on("keydown" ,function(key) {
+				if (key.keyCode == 13) {
+					doneSearch();
+				}
+			});
 		}
 	}
     
- 	// 미처리 출력 건수를 count 해서 뿌려주는 역할
-    var num1 = $('#questYetSelect tr').length-1;  // 미처리 테이블의 총 row 길이에 칼럼부분 한 줄(1)을 뺀 값
-    $('#countYet').html("미처리 문의사항 :" + num1);   // 결국 이 값이 화면에 출력된 데이터의 개수이고, count된 값이다.
-    
-    // 미처리 Table row 클릭 이벤트
+ 	// 미처리 Table row 클릭 이벤트
 	$("#questYetSelect tr").dblclick(function(){
 		var answerNo = $(this).children("td").eq(0).text();  // 테이블에서 더블클릭한 줄의 값, 0은 첫번째 칼럼이니 '등록번호'를 의미
 		openAnswerPopup(answerNo);                           // question 테이블의 PK인 quest_no와 매핑
     });
-	  
+ 	
+	// 처리 문의사항 Table row 클릭 이벤트
+	$("#questDoneSelect tr").dblclick(function(){
+		var resultNo = $(this).children("td").eq(0).text()
+		openResultPopup(resultNo);
+    });
+    
 	// 미처리 문의사항 팝업창
 	function openAnswerPopup(selectedAnswerNo){
 		$.ajax({
@@ -278,101 +363,6 @@
 		});
 	}
     
-	
-	
-	
-	
-	
-	// 처리 문의사항 옵션 설정
-	var questDoneSelect = $("#questDoneSelect").DataTable({
-        "language" : {
-     	     search : "검색 : ",
-     	    'zeroRecords'	: "검색결과가 없습니다.",
-				'infoFiltered'	: " ",
-				'lengthMenu'	: "출력 개수 : _MENU_",
-				'paginate'		: {
-					"first"			: "처음",
-					"last"			: "마지막",
-					"next"			: "다음",
-					"previous"		: "이전"
-				}
-			},
-		   "scrollY"		: 400,
-		   "scrollCollapse" : true,
-        "lengthMenu"		: [15, 25, 50],
-        "pageLength"		: 25,
-        "pagingType"		: "full_numbers",
-        "lengthChange": true,
-        "searching": true,
- 	    "paging": true,
-        "info": false, 
-        "ordering": false, 
-        "autoWidth": false,
-        "dom": '<"top"<"col-md-10"B><"col-md-2"l>>' +
-			    'rt' +
-			    '<"bottom pull-left"<"col-md-12"p>>'
- 	});
-    
-	  // 처리 엔터 이벤트
-	  $("#doneInput").keydown(function(key){
-		  
-		 if(key.keyCode == 13){
-			 doneSearch();
-		 } 
-	  });
-	  
-	  // 처리 카테고리는 해당 카테고리 선택시 자동으로 검색 결과 출력
-	  function doneCategoryChangeClick() {
-		  doneSearch();
-	  }
-	  
-    // 처리 검색 옵션 설정
-    function doneSearch() {
-		if($("#doneCategory option:selected").val() == 1){  // 담당자(value='6') 카테고리 추가
-			var doneCategoryInput = $("#doneCategoryInput option:selected").val();
-			$('#questDoneSelect').DataTable().columns(1).search(doneCategoryInput).draw();   
-		}else{
-			var doneCategoryNum = $("#doneCategory option:selected").val();
-			var doneInput = $('#doneInput').val()						      
-			$('#questDoneSelect').DataTable().columns(doneCategoryNum).search(doneInput).draw(); 
-			}
-	}
-    
- 	  
-    
-	// 처리 검색 카테고리(문의유형) 설정
-    function doneCategoryChange() {
-    	$('#questDoneSelect').DataTable().columns().search("").draw();
-    	
-		if($("#doneCategory option:selected").val() == 1){
-			$("#doneDynamicCategory").html(
-					"<select onchange='doneCategoryChangeClick()' id='doneCategoryInput' class='form-control form-group-inline'"
-					+"style='display: inline-block'>"
-					+"<option value='서비스'>서비스</option>"
-					+"<option value='투표'>투표</option>"
-					+"<option value='회원관리'>회원관리</option>"
-					+"<option value='금칙어'>금칙어</option>"
-					+"<option value='운영'>운영</option>"
-					+"<option value='기타'>기타</option>"
-					+"</select>"	
-			);
-		}else{
-			$("#doneDynamicCategory").html(
-					"<input type='text' id='doneInput' class='form-control'></input>"
-			);
-		}
-	}
-	
-    // 처리 출력 건수를 count 해서 뿌려주는 역할
-    var num2 = $('#questDoneSelect tr').length-1; 
-  	$('#countDone').html("처리 문의사항 :" + num2);
-  
-    // 처리 문의사항 Table row 클릭 이벤트
-	$("#questDoneSelect tr").dblclick(function(){
-		var resultNo = $(this).children("td").eq(0).text()
-		openResultPopup(resultNo);
-    });
-	  
 	// 처리 문의사항 팝업창
 	function openResultPopup(selectedResultNo){
 		$.ajax({
@@ -399,8 +389,16 @@
 		});
 	}
 	
-	
-   
+	/* 
+	// 미처리 출력 건수를 count 해서 뿌려주는 역할
+    var num1 = $('#questYetSelect tr').length-1;  // 미처리 테이블의 총 row 길이에 칼럼부분 한 줄(1)을 뺀 값
+    $('#countYet').html("미처리 문의사항 :" + num1);   // 결국 이 값이 화면에 출력된 데이터의 개수이고, count된 값이다.
+ 	 
+    // 처리 출력 건수를 count 해서 뿌려주는 역할
+    var num2 = $('#questDoneSelect tr').length-1; 
+  	$('#countDone').html("처리 문의사항 :" + num2);
+   */
+
     
 </script>
 </body>

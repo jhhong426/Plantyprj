@@ -6,7 +6,7 @@
 
 
 <div class="box box-primary">
-	<form style="display: inline;" name="updateManager" method="post" action="/update" onsubmit="return validateConfirmForm()">
+	<form style="display: inline;" name="updateManager" method="post" action="/update" onsubmit="return validateConfirmForm()">  <!-- 아래 JQuery 설정 참조 -->
 	<div class="box-header with-border">
 		<div class="box-title">
         	<p><strong>관리자 계정 수정</strong></p>
@@ -39,9 +39,9 @@
                 <label for="">직 &emsp; &ensp; 책 </label>
                 <input type="text" name="position" value="${updateManagerSelect.position}">
                  &emsp; &emsp; &emsp; &emsp; &emsp;
-                <label for="">권 &emsp; &ensp; 한 </label>
-                <select id="" class="form-control form-group-inline"
-                    style="display:inline-block"  onChange="registManager.submit()" name="authority">
+                <label for="">권 &emsp; &ensp; 한 &ensp;</label>
+                <select id="" class="form-control inline-block"
+                    style="display:inline; width:160px; height:35px" onChange="registManager.submit()" name="authority">
                     <option value="Operator">오퍼레이터</option>
                     <option value="Super">슈퍼관리자</option>
                 </select>
