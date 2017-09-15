@@ -54,7 +54,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="blindSurvy">
 		update TB_SURVEY SET
 		status = 'SS02'
-		,reported_cnt = reported_cnt+1
 		WHERE survey_no = #{survey_no};
 	</update>
 

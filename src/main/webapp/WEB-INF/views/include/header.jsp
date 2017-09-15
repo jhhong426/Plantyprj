@@ -75,7 +75,7 @@
                  <li><a href="/prohibit">금칙어관리</a></li>
                  <li><a href="/myPage">MyPage</a></li>
                  <c:if test="${login.getAuthority() eq 'Super'}">
-                 	<li><a href="/manager">운영진관리</a></li>
+                 	<li><a href="/admin">운영진관리</a></li>
                  </c:if>
                </ul>
                <!-- RIGHT CONTENT -->

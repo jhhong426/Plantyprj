@@ -84,7 +84,7 @@ public class ManagerController {
 	
 	
 	// 운영진관리 View 매핑
-	@RequestMapping(value = "/manager", method = RequestMethod.GET) 
+	@RequestMapping(value = "/admin", method = RequestMethod.GET) 
 	public String manager(Model model)  {   
 		List<ManagerVO> managerVO = service.managerSelect();
 		model.addAttribute("mngrVO", managerVO);  
@@ -107,7 +107,7 @@ public class ManagerController {
 		vo.setPassword(sha256Encoder.SHA256(password));
 		service.regist(vo);
 		
-		return "redirect:/manager";
+		return "redirect:/admin";
 	}
 	
 	// 관리자계정 정보수정 팝업창 띄우기
@@ -123,7 +123,7 @@ public class ManagerController {
 	public String managerPopupUpdate(ManagerVO vo, Model model) throws Exception {
 		service.update(vo);
 		
-		return "redirect:/manager";	
+		return "redirect:/admin";	
 	}
 	
 	// 관리자계정 삭제시, 슈퍼관리자 확인 비밀번호 팝업 띄우기
